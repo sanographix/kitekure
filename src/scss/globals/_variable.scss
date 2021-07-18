@@ -1,0 +1,29 @@
+$bg: #fff;
+$bg-light: #f3f2f0;
+$text-primary: #252525;
+$text: #444;
+$light: #6a6d7b;
+$link: #4445ab;
+$hover: darken($link,8%);
+$border: #e6e2dd;
+$border-strong:#9c9c9c;
+
+$btn-bg: #f3f2f0; // button
+$btn-bg-primary: #252525;
+
+$border-radius-base: 4px;
+$border-radius-box: $border-radius-base * 1.5;
+
+$font: 'TTHoves', -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+$font-heading: 'TTHoves', -apple-system, BlinkMacSystemFont, 'Avenir Next', 'Segoe UI', Arial, '游ゴシック体', YuGothic, '游ゴシック', 'Yu Gothic', sans-serif;
+
+// column
+$col-width-lg: 1200px;
+$col-width-md: 800px; // entry-contentの最大サイズ
+$col-width-sm: 728px;
+
+$mq-sm: "(min-width: 576px)";
+$mq-md: "(min-width: 768px)";
+$mq-lg: "(min-width: 992px)";
+$mq-xl: "(min-width: 1200px)";
+$mq-xxl: "(min-width: 1600px)";

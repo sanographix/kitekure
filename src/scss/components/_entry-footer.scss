@@ -1,0 +1,48 @@
+// entry-footer
+.entry-footer {
+    margin-bottom: 2em;
+}
+
+// meta
+
+.entry-meta-footer {
+    font-size: 85%;
+    color: $light;
+    line-height: 1.5;
+    margin-bottom: 1.5em;
+
+    a {
+        color: $light;
+        &:hover {
+            color: $link;
+        }
+    }
+
+    .meta {
+        margin-bottom: .7em;
+    }
+
+    .hastags a {
+        margin-right: .5em;
+    }
+
+    .rebloggedfrom {
+        .favicon {
+            vertical-align: middle;
+            border-radius: 16px;
+        }
+    }
+
+}
+
+.hatena-star-star-container {
+    margin-left: .8em;
+}
+
+.hatena-star-add-button-image {
+    background-image: url('//static.tumblr.com/xlsgtjb/yBinhsg6o/hatena-star-add-button.png');
+}
+
+.page-permalink.page- .hatena-star-star-container {
+    display: none;
+}

@@ -1,0 +1,13 @@
+.breadcrumb {
+    padding-top: 1rem;
+    font-size: .85rem;
+    letter-spacing: .04em;
+    color: $light;
+    a {
+        text-decoration: none;
+        color: $light;
+        &:hover {
+            color: $hover;
+        }
+    }
+}

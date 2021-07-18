@@ -1,0 +1,28 @@
+// Common
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "TTHoves",-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
+    background: $bg;
+    color: $text;
+    line-height: 1.75;
+    word-wrap: break-word;
+}
+
+p a,
+.link {
+    text-decoration: none;
+    color: $text-primary;
+    border-bottom: 1px solid $border-strong;
+    font-weight: 500;
+}
+
+
+a {
+    color: $link;
+    &:hover {
+        color: $hover;
+    }
+}
