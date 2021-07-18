@@ -1,8 +1,51 @@
 
 body {
-    width: 640px;
-    margin: auto;
     img {
         max-width: 100%;
     }
+    color: white;
+    background: black;
+    font-family: 'Lexend', sans-serif;
+    font-size: 120%;
+  h1 {
+      font-size: 10vw;
+      margin: -20vh 0 0;
+  }
+}
+
+.hero {
+    width: 100%;
+    object-fit: cover;
+    height: 70vh;
+}
+
+.container {
+    margin: auto;
+    max-width: 1200px;
+}
+
+.section-schedule, .section-stream, .section-about {
+    .container {
+        display: flex;
+        h2 {
+            margin: 0;
+            font-size: 64px;
+            width: 40%;
+        }
+    }
+}
+
+section {
+    margin: 40px 0;
+}
+
+.section-stream {
+    background: #772ce8;
+}
+
+.schedule-item + .schedule-item {
+    margin-top: 32px;
+}
+.schedule-name {
+    font-size: 32px;
 }

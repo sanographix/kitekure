@@ -1,6 +1,5 @@
 // watchされているので保存したらビルドされる
 
-const output_csv = document.getElementById('csv');
 
 function csv_data(dataPath) {
     const request = new XMLHttpRequest(); // HTTPでファイルを読み込む
@@ -18,9 +17,6 @@ function csv_array(data) {
         array[i] = dataString[i].split(',');
     }
     console.log(array);
-    output_csv.innerHTML = array; //表示
-
-
 
     /////////////////////////////////////
     // サイトの設定項目を組み立てる
@@ -74,6 +70,17 @@ function csv_array(data) {
     }
     schedule.remove(); // コピー元を削除
 
+    // Twitch
+    const optionTwitch = array.filter(value => value[0] === 'Twitch');
+    const varTwitch = optionTwitch[0][1];
+    const twitch = document.querySelector('.js-stream');
+    const twitchPlayer = document.querySelector('.js-stream-twitch');
+    if(varTwitch){
+        twitchPlayer.setAttribute('src', 'https://player.twitch.tv/?channel=' + varTwitch + '&parent=localhost');
+    } else {
+
+    }
+
     // Stream
     const optionStream = array.filter(value => value[0] === 'Stream');
     const varStream = optionStream[0][1];
@@ -84,20 +91,26 @@ function csv_array(data) {
     } else {
         stream.remove();
     }
+
+
 }
 
 csv_data('../sample.csv'); // csvのパス
 
-// ロードが終わってからDOMを取得する
-window.addEventListener('load', function() {
-    const snapshot = new XMLSerializer().serializeToString(document);
-    console.log(snapshot);
-
-    let blob = new Blob([snapshot],{type:"text/plan"});
-    let link = document.getElementById('download');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'result.html';
-
-})
-
-
+// クエリパラメータが?preview=trueのときテンプレートをダウンロード
+const urlParam = location.search;
+console.log(urlParam);
+if ( urlParam ===  '?preview=true' )  {
+    // jsでの書き換えがロードしきってからDOMを取得する
+    window.addEventListener('load', function() {
+        const snapshot = new XMLSerializer().serializeToString(document);
+        // このjs（プレビュー用のjs）をhtml文字列から抜き取る
+        const snapshotRemoveJs = snapshot.replace('<script src="js/scripts.js"></script>', '');
+        // ダウンロード
+        let blob = new Blob([snapshotRemoveJs],{type:"text/plan"});
+        let link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'result.html';
+        link.click();
+    })
+}

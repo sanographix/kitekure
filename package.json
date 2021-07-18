@@ -12,7 +12,7 @@
     "autoprefixer": "postcss --use autoprefixer -r build/css/style.css",
     "ejs": "ejs-cli --base-dir src/templates/pages/ --file '**/**.ejs' --out build/ --options site.json",
     "server": "browser-sync start -c bs-config.js",
-    "clean": "rimraf build/{css/*,js/*,images/*}",
+    "clean": "rimraf build/{css/*,js/*}",
     "build": "npm run clean & npm-run-all -p build:* & npm run ejs",
     "build:css": "npm-run-all scss autoprefixer",
     "build:js": "uglifyjs src/js/* --compress -o build/js/scripts.js",
