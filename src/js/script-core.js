@@ -17,12 +17,21 @@ function csv_array(data) {
     for (let i = 0; i < dataString.length; i++) { //あるだけループ
         array[i] = dataString[i].split(',');
     }
+    console.log(array);
     output_csv.innerHTML = array; //表示
 
     // サイトの設定項目を組み立てる
-    const varTitle = array[1][1];
+
+    const optionTitle = array.filter(value => value[0] === 'Title');
+    const varTitle = optionTitle[0][1];
+
+    const optionIntroduction = array.filter(value => value[0] === 'Introduction');
+    const varIntroduction = optionIntroduction[0][1];
+
     const varDate = array[2][1];
-    const varIntroduction = array[3][1];
+
+    const optionStream = array.filter(value => value[0] === 'Stream');
+    const varStream = optionStream[0][1];
 
     document.querySelector('.js-title').innerText = varTitle;
     document.querySelector('.js-introduction').innerText = varIntroduction;
@@ -40,6 +49,15 @@ function csv_array(data) {
         }
     }
     schedule.remove(); // コピー元を削除
+
+    // ストリーム
+    const stream = document.querySelector('.js-stream');
+    const streamPlayer = document.querySelector('.js-stream-player');
+    if(varStream){
+        streamPlayer.setAttribute('src', 'https://www.youtube.com/embed/' + varStream);
+    } else {
+        stream.remove();
+    }
 }
 
 csv_data('../sample.csv'); // csvのパス
