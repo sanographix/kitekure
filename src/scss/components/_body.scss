@@ -1,10 +1,8 @@
 
 body {
-    margin-top: 56px; // ヘッダ固定
-    @media #{$mq-md} {
-        margin-top: 88px;
-    }
-    &.is-fixed {
-        overflow-y: hidden;
+    width: 640px;
+    margin: auto;
+    img {
+        max-width: 100%;
     }
 }
