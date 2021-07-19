@@ -1,6 +1,5 @@
 // watchされているので保存したらビルドされる
 
-
 function csv_data(dataPath) {
     const request = new XMLHttpRequest(); // HTTPでファイルを読み込む
     request.addEventListener('load', (event) => { // ロードさせ実行
@@ -10,6 +9,7 @@ function csv_data(dataPath) {
     request.open('GET', dataPath, true); // csvのパスを指定
     request.send();
 }
+
 function csv_array(data) {
     const array = []; //配列を用意
     const dataString = data.split('\n'); //改行で分割
@@ -18,6 +18,11 @@ function csv_array(data) {
     }
     console.log(array);
 
+    // サイトの設定項目を組み立てる
+    buildSite(array);
+}
+
+function buildSite(array) {
     /////////////////////////////////////
     // サイトの設定項目を組み立てる
 
@@ -55,6 +60,46 @@ function csv_array(data) {
     // Date
     const optionDate = array.filter(value => value[0] === 'Date');
     const varDate = optionDate[0][1];
+    document.querySelector('.js-date').innerText = varDate;
+
+
+    // カウントダウンタイマー
+    var endDate = new Date('2021/10/01 00:00');
+    var interval = 1000;
+
+    function countdownTimer(){
+      var nowDate = new Date();
+      var period = endDate - nowDate ;
+      var addZero = function(n){return('0'+n).slice(-2);}
+      var addZeroDay = function(n){return('00'+n).slice(-3);}
+      if(period >= 0) {
+      var day = Math.floor(period / (1000 * 60 * 60 * 24));
+      period -=  (day *(1000 * 60 * 60 * 24));
+      var hour = Math.floor(period / (1000 * 60 * 60));
+      period -= (hour *(1000 * 60 * 60));
+      var minutes =  Math.floor(period / (1000 * 60));
+      period -= (minutes * (1000 * 60));
+      var insert = "";
+      insert += '<span class="h">' + addZeroDay(day) +':' + '</span>';
+      insert += '<span class="h">' + addZero(hour) + ':'+'</span>';
+      insert +=  '<span class="m">' + addZero(minutes)  + '</span>';
+      document.getElementById('countdown').innerHTML = insert;
+      setTimeout(countdownTimer,10);
+      }
+      else{
+        var insert = "";
+        var number = 0;
+        insert += '<span class="h">' + number + number + '</span>';
+        insert +=  '<span class="m">' + number + number + '</span>';
+        insert += '<span class="s">' + number + number + '</span>';
+        document.getElementById('countdown').innerHTML = insert;
+      }
+    }
+    if ( document.getElementById('countdown') ) {
+      countdownTimer();
+    }
+
+
 
     // Schedule
     const scheduleItems = document.querySelector('.js-schedule-items');
@@ -91,9 +136,8 @@ function csv_array(data) {
     } else {
         stream.remove();
     }
-
-
 }
+
 
 csv_data('../sample.csv'); // csvのパス
 
