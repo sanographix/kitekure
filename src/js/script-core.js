@@ -9,6 +9,8 @@ function csv_data(dataPath) {
     request.open('GET', dataPath, true); // csvのパスを指定
     request.send();
 }
+csv_data('../sample.csv'); // csvのパス
+
 
 function csv_array(data) {
     const array = []; //配列を用意
@@ -100,7 +102,6 @@ function buildSite(array) {
     }
 
 
-
     // Schedule
     const scheduleItems = document.querySelector('.js-schedule-items');
     const schedule = document.querySelector('.js-schedule'); // コピー元を取得
@@ -138,8 +139,6 @@ function buildSite(array) {
     }
 }
 
-
-csv_data('../sample.csv'); // csvのパス
 
 // クエリパラメータが?preview=trueのときテンプレートをダウンロード
 const urlParam = location.search;
