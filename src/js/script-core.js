@@ -20,11 +20,6 @@ function csv_array(data) {
     }
     console.log(array);
 
-    // サイトの設定項目を組み立てる
-    buildSite(array);
-}
-
-function buildSite(array) {
     /////////////////////////////////////
     // サイトの設定項目を組み立てる
 
@@ -66,12 +61,17 @@ function buildSite(array) {
 
 
     // カウントダウンタイマー
-    var endDate = new Date('2021/10/01 00:00');
+    // UTC変換できるか確認
+    var endDate = new Date('2021/07/21 05:30');
+    console.log(endDate);
     var interval = 1000;
 
     function countdownTimer(){
-      var nowDate = new Date();
-      var period = endDate - nowDate ;
+      var nowDate = new Date(); // ローカルの時間
+      var jisa = nowDate.getTimezoneOffset(); // UTCとの時差(-540)
+      var periodUtc = endDate - nowDate; // UTC基準の日付 - ローカルタイムの日付
+      var period = periodUtc - (jisa * 60000); // 時差が分なのでミリ秒に変換
+
       var addZero = function(n){return('0'+n).slice(-2);}
       var addZeroDay = function(n){return('00'+n).slice(-3);}
       if(period >= 0) {
@@ -86,7 +86,7 @@ function buildSite(array) {
       insert += '<span class="h">' + addZero(hour) + ':'+'</span>';
       insert +=  '<span class="m">' + addZero(minutes)  + '</span>';
       document.getElementById('countdown').innerHTML = insert;
-      setTimeout(countdownTimer,10);
+      setTimeout(countdownTimer,interval);
       }
       else{
         var insert = "";
@@ -137,8 +137,11 @@ function buildSite(array) {
     } else {
         stream.remove();
     }
-}
 
+
+
+
+  }
 
 // クエリパラメータが?preview=trueのときテンプレートをダウンロード
 const urlParam = location.search;
