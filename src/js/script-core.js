@@ -9,7 +9,7 @@ function csv_data(dataPath) {
     request.open('GET', dataPath, true); // csvのパスを指定
     request.send();
 }
-csv_data('../sample.csv'); // csvのパス
+csv_data('../sample2.csv'); // csvのパス
 
 
 function csv_array(data) {
@@ -24,14 +24,23 @@ function csv_array(data) {
     // サイトの設定項目を組み立てる
 
     // title
-    const optionTitle = array.filter(value => value[0] === 'Title');
+    const optionTitle = array.filter(value => value[0] === 'Header Title');
     const varTitle = optionTitle[0][1];
     document.querySelector('.js-title').innerText = varTitle;
 
     // Introduction
+    const introductionItems = document.querySelector('.js-introduction-items');
     const optionIntroduction = array.filter(value => value[0] === 'Introduction');
     const varIntroduction = optionIntroduction[0][1];
-    document.querySelector('.js-introduction').innerText = varIntroduction;
+    const introduction = document.querySelector('.js-introduction'); // コピー元を取得
+    for (let i = 0; i < dataString.length; i++) {
+        if (array[i][0] == 'Introduction') {
+            const introduction_clone = introduction.cloneNode(true);
+            introduction_clone.innerText = array[i][1];
+            introductionItems.appendChild(introduction_clone);
+        }
+    }
+    introduction.remove(); // コピー元を削除
 
     // Header
     const optionHeader = array.filter(value => value[0] === 'Header');
