@@ -24,23 +24,22 @@ function csv_array(data) {
     // サイトの設定項目を組み立てる
 
     // title
-    const optionTitle = array.filter(value => value[0] === 'Header Title');
-    const varTitle = optionTitle[0][1];
-    document.querySelector('.js-title').innerText = varTitle;
+    const domTitle = document.querySelector('.js-title');
+    const optTitle = array.filter(value => value[0] === 'Header Title');
+    const valTitle = optTitle[0][1];
+    domTitle.innerText = valTitle;
 
     // Introduction
-    const introductionItems = document.querySelector('.js-introduction-items');
-    const optionIntroduction = array.filter(value => value[0] === 'Introduction');
-    const varIntroduction = optionIntroduction[0][1];
-    const introduction = document.querySelector('.js-introduction'); // コピー元を取得
+    const domIntroductionWrap = document.querySelector('.js-introduction-wrap');
+    const domIntroduction = document.querySelector('.js-introduction'); // コピー元を取得
     for (let i = 0; i < dataString.length; i++) {
         if (array[i][0] == 'Introduction') {
-            const introduction_clone = introduction.cloneNode(true);
-            introduction_clone.innerText = array[i][1];
-            introductionItems.appendChild(introduction_clone);
+            const domIntroductionClone = domIntroduction.cloneNode(true);
+            domIntroductionClone.innerText = array[i][1];
+            domIntroductionWrap.appendChild(domIntroductionClone);
         }
     }
-    introduction.remove(); // コピー元を削除
+    domIntroduction.remove(); // コピー元を削除
 
     // Header
     const optionHeader = array.filter(value => value[0] === 'Header');
