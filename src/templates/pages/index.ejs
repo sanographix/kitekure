@@ -19,7 +19,8 @@ pageDescription = "Awesome site";
     muted
     loop
     width="500"
-  ></video>
+  >
+  </video>
   <img
     class="js-header-image hero"
     src=""
@@ -47,12 +48,18 @@ pageDescription = "Awesome site";
   <div class="container">
     <h2>Livestream</h2>
 
-    <iframe class="js-stream-twitch" src="https://player.twitch.tv/?channel=example&parent=localhost" frameborder="0"
-      allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
+    <iframe
+      class="js-stream-player"
+      src="https://player.twitch.tv/?channel=example&parent=localhost"
+      frameborder="0"
+      allowfullscreen="true"
+      scrolling="no"
+      width="620"
+      height="378"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    >
+    </iframe>
 
-    <!--
-      <iframe class="js-stream-player" width="560" height="315" src="https://www.youtube.com/embed/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    -->
   </div>
 </section>
 

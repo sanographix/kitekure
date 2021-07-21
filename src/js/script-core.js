@@ -61,15 +61,26 @@ function csv_array(data) {
           domHeaderImage.remove();
     }
 
-    // Date
-    const optionDate = array.filter(value => value[0] === 'Date');
-    const varDate = optionDate[0][1];
-    document.querySelector('.js-date').innerText = varDate;
-
+    // Stream
+    const optStream = array.filter(value => value[0] === 'Stream');
+    const optStreamService = optStream[0][1];
+    const optStreamChannel = optStream[0][2];
+    const domStreamPlayer = document.querySelector('.js-stream-player');
+    switch (optStreamService){
+      case 'Twitch':
+        domStreamPlayer.setAttribute('src', 'https://player.twitch.tv/?channel=' + optStreamChannel + '&parent=localhost');
+        break;
+      case 'Youtube Live':
+        domStreamPlayer.setAttribute('src', 'https://www.youtube.com/embed/' + optStreamChannel);
+        break;
+      default:
+        domStreamPlayer.remove();
+    }
 
     // カウントダウンタイマー
     // UTC変換できるか確認
-    var endDate = new Date('2021/07/21 05:30');
+    const optDateUtc = array.filter(value => value[0] === 'Date (UTC)')[0][1];
+    var endDate = new Date( optDateUtc );
     console.log(endDate);
     var interval = 1000;
 
@@ -122,30 +133,6 @@ function csv_array(data) {
         }
     }
     schedule.remove(); // コピー元を削除
-
-    // Twitch
-    const optionTwitch = array.filter(value => value[0] === 'Twitch');
-    const varTwitch = optionTwitch[0][1];
-    const twitch = document.querySelector('.js-stream');
-    const twitchPlayer = document.querySelector('.js-stream-twitch');
-    if(varTwitch){
-        twitchPlayer.setAttribute('src', 'https://player.twitch.tv/?channel=' + varTwitch + '&parent=localhost');
-    } else {
-
-    }
-
-    // Stream
-    const optionStream = array.filter(value => value[0] === 'Stream');
-    const varStream = optionStream[0][1];
-    const stream = document.querySelector('.js-stream');
-    const streamPlayer = document.querySelector('.js-stream-player');
-    if(varStream){
-        streamPlayer.setAttribute('src', 'https://www.youtube.com/embed/' + varStream);
-    } else {
-        stream.remove();
-    }
-
-
 
 
   }
