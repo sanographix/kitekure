@@ -42,24 +42,23 @@ function csv_array(data) {
     domIntroduction.remove(); // コピー元を削除
 
     // Header
-    const optionHeader = array.filter(value => value[0] === 'Header');
-    const headerType = optionHeader[0][1];
-    const headerSrc = optionHeader[0][2];
-    const headerVideo = document.querySelector('.js-header-video');
-    const headerImage = document.querySelector('.js-header-image');
-
-    switch (headerType){
+    const domHeaderVideo = document.querySelector('.js-header-video');
+    const domHeaderImage = document.querySelector('.js-header-image');
+    const optHeader = array.filter(value => value[0] === 'Header');
+    const optHeaderType = optHeader[0][1];
+    const optHeaderSrc = optHeader[0][2];
+    switch (optHeaderType){
         case 'Video':
-          headerVideo.setAttribute('src', headerSrc);
-          headerImage.remove();
+          domHeaderVideo.setAttribute('src', optHeaderSrc);
+          domHeaderImage.remove();
           break;
         case 'Image':
-          headerImage.setAttribute('src', headerSrc);
-          headerVideo.remove();
+          domHeaderImage.setAttribute('src', optHeaderSrc);
+          domHeaderVideo.remove();
           break;
         default:
-          headerVideo.remove();
-          headerImage.remove();
+          domHeaderVideo.remove();
+          domHeaderImage.remove();
     }
 
     // Date
