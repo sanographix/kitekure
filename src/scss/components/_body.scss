@@ -1,29 +1,4 @@
 
-.hero {
-    width: 100%;
-    object-fit: cover;
-    height: 70vh;
-}
-
-.section-schedule, .section-stream, .section-about {
-    .container {
-        display: flex;
-        h2 {
-            margin: 0;
-            font-size: 64px;
-            width: 40%;
-        }
-    }
-}
-
-section {
-    margin: 40px 0;
-}
-
-.section-stream {
-    background: #772ce8;
-}
-
 .schedule-item + .schedule-item {
     margin-top: 32px;
 }

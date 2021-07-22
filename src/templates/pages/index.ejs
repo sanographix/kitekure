@@ -42,7 +42,7 @@
 
     <header class="header">
       <video
-        class="header-video js-header-video"
+        class="header-image header-image-type-video js-header-video"
         src=""
         autoplay
         playsinline
@@ -52,58 +52,68 @@
       >
       </video>
       <img
-        class="js-header-image hero"
+        class="header-image header-image-type-image js-header-image"
         src=""
       >
-      <div class="container">
-        <div class="js-header-introduce">Header Introduce</div>
-        <h1 class="js-title">Header Title</h1>
-        <div class="js-header-subtitle-wrap">
-          <p class="js-header-subtitle">Header Subtitle</p>
+      <div class="container header-content">
+        <div class="header-introduce js-header-introduce">Header Introduce</div>
+        <h1 class="header-title js-title">Header Title</h1>
+        <div class="header-subtitle-wrap js-header-subtitle-wrap">
+          <p class="header-subtitle js-header-subtitle">Header Subtitle</p>
         </div>
-        <div  class="js-countdown" id="countdown">
-          <div class="js-countdown-days">000</div>
-          <div class="js-countdown-hours">000</div>
-          <div class="js-countdown-mins">000</div>
+        <div  class="countdown js-countdown">
+          <div class="countdown-days">
+            <div class="countdown-value js-countdown-days">000</div>
+            <div class="countdown-label">Days</div>
+          </div>
+          <div class="countdown-hours">
+            <div class="countdown-value js-countdown-hours">00</div>
+            <div class="countdown-label">Hrs</div>
+          </div>
+          <div class="countdown-mins">
+            <div class="countdown-value js-countdown-mins">00</div>
+            <div class="countdown-label">Mins</div>
+          </div>
         </div>
         <div class="action-button">
           <a
             href=""
-            class="js-action-button action-button-button"
+            class="button button-primary button-large js-action-button action-button-button"
           >
             Action Button
           </a>
         </div>
-
-        <p class="js-date">2000-00-00</p>
       </div>
     </header>
 
-    <section class="section-about">
-      <div class="container">
-        <h2>About</h2>
-        <div class="js-introduction-wrap">
-          <p class="js-introduction">Introduction</p>
+    <section class="section-stream section js-stream">
+      <div class="stream-player-container">
+        <div class="stream-player">
+          <iframe
+            class="stream-player-player js-stream-player"
+            src="https://player.twitch.tv/?channel=example&parent=localhost"
+            frameborder="0"
+            allowfullscreen="true"
+            scrolling="no"
+            width="620"
+            height="378"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          >
+          </iframe>
         </div>
       </div>
+      <div class="stream-marquee">Livestream Livestream Livestream Livestream Livestream</div>
+      <div class="stream-marquee">Livestream Livestream Livestream Livestream Livestream</div>
     </section>
 
-    <section class="js-stream section-stream">
+    <section class="section section-about">
       <div class="container">
-        <h2>Livestream</h2>
-
-        <iframe
-          class="js-stream-player"
-          src="https://player.twitch.tv/?channel=example&parent=localhost"
-          frameborder="0"
-          allowfullscreen="true"
-          scrolling="no"
-          width="620"
-          height="378"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        >
-        </iframe>
-
+        <header class="section-header">
+          <h2 class="section-heading">About</h2>
+        </header>
+        <div class="introduction-wrap js-introduction-wrap">
+          <p class="introduction js-introduction">Introduction</p>
+        </div>
       </div>
     </section>
 

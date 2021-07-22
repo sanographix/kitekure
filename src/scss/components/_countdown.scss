@@ -1,0 +1,16 @@
+.countdown {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-6);
+    & > div {
+        margin: 0 var(--space-4);
+    }
+}
+.countdown-value {
+    font-size: var(--font-size-800);
+    line-height: var(--line-height-xs);
+}
+.countdown-label {
+    text-transform: uppercase;
+
+}

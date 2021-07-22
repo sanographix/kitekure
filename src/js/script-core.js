@@ -1,7 +1,7 @@
 // watchされているので保存したらビルドされる
 
 function csv_data(dataPath) {
-    const request = new XMLHttpRequest(); // HTTPでファイルを読み込む
+    const request = new XMLHttpRequest();
     request.addEventListener('load', (event) => { // ロードさせ実行
         const response = event.target.responseText; // 受け取ったテキストを返す
         csv_array(response); //csv_arrayの関数を実行
@@ -9,7 +9,7 @@ function csv_data(dataPath) {
     request.open('GET', dataPath, true); // csvのパスを指定
     request.send();
 }
-csv_data('../sample2.csv'); // csvのパス
+csv_data('../sample.csv'); // csvのパス
 
 
 function csv_array(data) {
@@ -20,10 +20,15 @@ function csv_array(data) {
     }
     console.log(array);
 
-    /////////////////////////////////////
-    // サイトの設定項目を組み立てる
+    // ここからサイトの設定項目を組み立てる
 
     /////////////////////////////////////
+    // -Basics-
+    // Site Title
+    const optSiteTitle = array.filter(value => value[0] === 'Site Title');
+    const valSiteTitle = optSiteTitle[0][1];
+    document.title = valSiteTitle;
+
     // -Header-
     // Header Introduce
     const domHeaderIntroduce = document.querySelector('.js-header-introduce');
@@ -93,22 +98,6 @@ function csv_array(data) {
           domHeaderImage.remove();
     }
 
-    // Stream
-    const optStream = array.filter(value => value[0] === 'Stream');
-    const optStreamService = optStream[0][1];
-    const optStreamChannel = optStream[0][2];
-    const domStreamPlayer = document.querySelector('.js-stream-player');
-    switch (optStreamService){
-      case 'Twitch':
-        domStreamPlayer.setAttribute('src', 'https://player.twitch.tv/?channel=' + optStreamChannel + '&parent=localhost');
-        break;
-      case 'Youtube Live':
-        domStreamPlayer.setAttribute('src', 'https://www.youtube.com/embed/' + optStreamChannel);
-        break;
-      default:
-        domStreamPlayer.remove();
-    }
-
     // カウントダウンタイマー
     // UTC変換できるか確認
     const optDateUtc = array.filter(value => value[0] === 'Date (UTC)')[0][1];
@@ -143,6 +132,21 @@ function csv_array(data) {
       countdownTimer();
     }
 
+    // Stream
+    const optStream = array.filter(value => value[0] === 'Stream');
+    const optStreamService = optStream[0][1];
+    const optStreamChannel = optStream[0][2];
+    const domStreamPlayer = document.querySelector('.js-stream-player');
+    switch (optStreamService){
+      case 'Twitch':
+        domStreamPlayer.setAttribute('src', 'https://player.twitch.tv/?channel=' + optStreamChannel + '&parent=localhost');
+        break;
+      case 'Youtube Live':
+        domStreamPlayer.setAttribute('src', 'https://www.youtube.com/embed/' + optStreamChannel);
+        break;
+      default:
+        domStreamPlayer.remove();
+    }
 
     // Schedule
     const scheduleItems = document.querySelector('.js-schedule-items');

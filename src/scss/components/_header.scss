@@ -1,11 +1,40 @@
 .header {
     text-align: center;
 }
-.header-video {
+.header-image {
     width: 100%;
     object-fit: cover;
     height: 500px;
+    position: relative;
+    z-index: var(--z-index-bg);
     @media #{$mq-lg} {
         height: 700px;
     }
+}
+.header-introduce {
+    color: var(--color-text-highlight);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-300);
+    font-size: var(--font-size-100);
+    font-weight: bold;
+}
+.header-title {
+    font-size: var(--font-size-title);
+    margin: 0;
+    line-height: var(--line-height-xs);
+    font-weight: normal;
+}
+.header-subtitle-wrap {
+    margin-top: var(--space-4);
+}
+.header-subtitle {
+    margin: 0;
+    font-size: var(--font-size-400);
+    line-height: var(--line-height-sm);
+}
+.header-content {
+    margin-top: calc(var(--space-9) * -1);
+}
+.action-button .button {
+    margin-top: var(--space-6);
 }

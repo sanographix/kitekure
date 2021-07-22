@@ -1,12 +1,5 @@
-/*!
-Theme: memographix-tumblr-v2
-Author: sanographix
-Do not copy this css
-*/
-
 @import "node_modules/normalize.css/normalize";
 @import "globals/_variable";
 @import "globals/_common";
-@import "globals/_layout";
 
 @import "components/**/*.scss";

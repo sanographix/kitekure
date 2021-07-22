@@ -40,10 +40,17 @@
     --font-size-400: 32px;
     --font-size-500: 40px;
     --font-size-600: 48px;
+    --font-size-700: 56px;
+    --font-size-800: 64px;
+    --font-size-900: 72px;
+    --font-size-title: 120px;
+    --line-height-xs: 1;
     --line-height-sm: 1.25;
     --line-height-base: 1.6;
     --line-height-lg: 1.75;
-    --letter-spacing-2: .025em;
+    --letter-spacing-200: .025em;
+    --letter-spacing-300: .1em;
+    --letter-spacing-400: .25em;
 
     // Spacing
     --space-1: 4px;
@@ -64,6 +71,9 @@
 
     --border-radius-base: 16px;
 
+    // z-index
+    --z-index-bg: -1;
+    --z-index-base: 1;
     --z-index-modal: 10;
 }
 

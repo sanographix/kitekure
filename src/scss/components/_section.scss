@@ -1,0 +1,12 @@
+.section {
+    margin: 40px auto;
+}
+.section-header {
+    margin-bottom: var(--space-8);
+}
+.section-heading {
+    font-size: var(--font-size-title);
+    margin: 0;
+    line-height: var(--line-height-xs);
+    font-weight: normal;
+}

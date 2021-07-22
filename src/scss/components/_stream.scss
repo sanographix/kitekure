@@ -1,0 +1,41 @@
+.section-stream {
+    overflow: hidden;
+}
+.stream-marquee {
+    position: relative;
+    z-index: var(--z-index-bg);
+    font-size: var(--font-size-title);
+    line-height: var(--line-height-xs);
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: .3;
+    transform: translate3d(-100%, 0, 0);
+}
+@keyframes stream-marquee {
+    0%{
+        transform: translate3d(-100%, 0, 0);
+    }
+    100%{
+        transform: translate3d(0%, 0, 0);
+    }
+}
+.stream-player-container:hover ~ .stream-marquee {
+    animation: stream-marquee 16s linear infinite;
+}
+
+.stream-player-container {
+    max-width: var(--col-width-md);
+    margin: 0 auto;
+}
+.stream-player {
+    position: relative;
+    padding-bottom: 56.25%; // プレイヤーを16:9比率にする
+    .stream-player-player {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: var(--border-radius-base);
+    }
+}

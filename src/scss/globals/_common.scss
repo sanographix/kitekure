@@ -7,18 +7,6 @@ body {
     font-family: var(--font);
     background: var(--color-bg);
     color: var(--color-text);
-    line-height: 1.75;
+    line-height: var(--line-height-base);
     word-wrap: break-word;
-}
-
-a {
-    color: var(--color-text);
-    &:hover {
-    }
-}
-p a,
-.link {
-    text-decoration: none;
-    color: var(--color-text);
-    border-bottom: 1px solid var(--color-border);
 }
