@@ -1,22 +1,27 @@
 .section-stream {
     overflow: hidden;
+    position: relative;
 }
 .stream-marquee {
-    position: relative;
+    position: absolute;
+    bottom: 0;
     z-index: var(--z-index-bg);
     font-size: var(--font-size-title);
     line-height: var(--line-height-xs);
     text-transform: uppercase;
     white-space: nowrap;
     opacity: .3;
-    transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+    &.stream-marquee-top {
+        top: 0;
+    }
 }
 @keyframes stream-marquee {
     0%{
-        transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-50%, 0, 0);
     }
     100%{
-        transform: translate3d(0%, 0, 0);
+        transform: translate3d(50%, 0, 0);
     }
 }
 .stream-player-container:hover ~ .stream-marquee {

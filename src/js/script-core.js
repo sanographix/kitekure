@@ -149,18 +149,18 @@ function csv_array(data) {
     }
 
     // Schedule
-    const scheduleItems = document.querySelector('.js-schedule-items');
-    const schedule = document.querySelector('.js-schedule'); // コピー元を取得
+    const domScheduleWrap = document.querySelector('.js-schedule-wrap');
+    const domSchedule = document.querySelector('.js-schedule'); // コピー元を取得
     for (let i = 0; i < dataString.length; i++) {
         if (array[i][0] == 'Schedule') {
-            const schedule_clone = schedule.cloneNode(true);
-            schedule_clone.querySelector('.js-schedule-time').innerText = array[i][1];
-            schedule_clone.querySelector('.js-schedule-name').innerText = array[i][2];
-
-            scheduleItems.appendChild(schedule_clone);
+            const domScheduleClone = domSchedule.cloneNode(true);
+            domScheduleClone.querySelector('.js-schedule-time').innerText = array[i][1];
+            domScheduleClone.querySelector('.js-schedule-name').innerText = array[i][2];
+            domScheduleClone.querySelector('.js-schedule-description').innerText = array[i][3];
+            domScheduleWrap.appendChild(domScheduleClone);
         }
     }
-    schedule.remove(); // コピー元を削除
+    domSchedule.remove(); // コピー元を削除
 
 
   }

@@ -1,0 +1,31 @@
+// タイムテーブル
+.schedule-table {
+    margin-top: 3em;
+    .schedule-tr {
+        @media #{$mq-sm} {
+            display: flex;
+            width: 100%;
+        }
+        &:not(:first-child) {
+            margin-top: 3rem;
+        }
+    }
+    .schedule-th {
+        @media #{$mq-sm} {
+            text-align: right;
+            width: 48%;
+            font-size: var(--font-size-400);
+            padding-right: 2rem;
+            padding-top: .75rem;
+            flex-shrink: 0;
+        }
+    }
+    .table-heading {
+        margin: .3rem 0;
+        font-size: var(--font-size-400);
+    }
+    .table-description {
+        line-height: 1.6;
+        margin-top: .25em;
+    }
+}
