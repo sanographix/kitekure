@@ -9,4 +9,7 @@
     margin: 0;
     line-height: var(--line-height-xs);
     font-weight: normal;
+    @media #{$mq-xxl} {
+        margin-left: calc(var(--space-9) * -1);
+    }
 }
