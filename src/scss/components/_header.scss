@@ -1,0 +1,11 @@
+.header {
+    text-align: center;
+}
+.header-video {
+    width: 100%;
+    object-fit: cover;
+    height: 500px;
+    @media #{$mq-lg} {
+        height: 700px;
+    }
+}

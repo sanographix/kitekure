@@ -1,26 +1,8 @@
 
-body {
-    img {
-        max-width: 100%;
-    }
-    color: white;
-    background: black;
-    font-family: 'Lexend', sans-serif;
-    font-size: 120%;
-  h1 {
-      font-size: 10vw;
-  }
-}
-
 .hero {
     width: 100%;
     object-fit: cover;
     height: 70vh;
-}
-
-.container {
-    margin: auto;
-    max-width: 1200px;
 }
 
 .section-schedule, .section-stream, .section-about {

@@ -23,12 +23,44 @@ function csv_array(data) {
     /////////////////////////////////////
     // サイトの設定項目を組み立てる
 
-    // title
+    /////////////////////////////////////
+    // -Header-
+    // Header Introduce
+    const domHeaderIntroduce = document.querySelector('.js-header-introduce');
+    const optHeaderIntroduce = array.filter(value => value[0] === 'Header Introduce');
+    const valHeaderIntroduce = optHeaderIntroduce[0][1];
+    domHeaderIntroduce.innerText = valHeaderIntroduce;
+
+    // Header title
     const domTitle = document.querySelector('.js-title');
     const optTitle = array.filter(value => value[0] === 'Header Title');
     const valTitle = optTitle[0][1];
     domTitle.innerText = valTitle;
 
+    // Header Subtitle
+    const domHeaderSubtitleWrap = document.querySelector('.js-header-subtitle-wrap');
+    const domHeaderSubtitle = document.querySelector('.js-header-subtitle'); // コピー元を取得
+    for (let i = 0; i < dataString.length; i++) {
+        if (array[i][0] == 'Header Subtitle') {
+            const domHeaderSubtitleClone = domHeaderSubtitle.cloneNode(true);
+            domHeaderSubtitleClone.innerText = array[i][1];
+            domHeaderSubtitleWrap.appendChild(domHeaderSubtitleClone);
+        }
+    }
+    domHeaderSubtitle.remove(); // コピー元を削除
+
+    // Action Button (option)
+    const domActionButton = document.querySelector('.js-action-button');
+    const optActionButton = array.filter(value => value[0] === 'Action Button');
+    const valActionButtonLabel = optActionButton[0][1];
+    const valActionButtonUrl = optActionButton[0][2];
+    if (valActionButtonLabel) {
+      domActionButton.innerText = valActionButtonLabel;
+      domActionButton.setAttribute('href', valActionButtonUrl);
+    }
+
+    /////////////////////////////////////
+    // -Introduction-
     // Introduction
     const domIntroductionWrap = document.querySelector('.js-introduction-wrap');
     const domIntroduction = document.querySelector('.js-introduction'); // コピー元を取得
@@ -80,42 +112,34 @@ function csv_array(data) {
     // カウントダウンタイマー
     // UTC変換できるか確認
     const optDateUtc = array.filter(value => value[0] === 'Date (UTC)')[0][1];
-    var endDate = new Date( optDateUtc );
-    console.log(endDate);
-    var interval = 1000;
-
+    const endDate = new Date( optDateUtc );
+    const interval = 1000;
     function countdownTimer(){
       var nowDate = new Date(); // ローカルの時間
       var jisa = nowDate.getTimezoneOffset(); // UTCとの時差(-540)
       var periodUtc = endDate - nowDate; // UTC基準の日付 - ローカルタイムの日付
       var period = periodUtc - (jisa * 60000); // 時差が分なのでミリ秒に変換
-
       var addZero = function(n){return('0'+n).slice(-2);}
       var addZeroDay = function(n){return('00'+n).slice(-3);}
       if(period >= 0) {
-      var day = Math.floor(period / (1000 * 60 * 60 * 24));
-      period -=  (day *(1000 * 60 * 60 * 24));
-      var hour = Math.floor(period / (1000 * 60 * 60));
-      period -= (hour *(1000 * 60 * 60));
-      var minutes =  Math.floor(period / (1000 * 60));
-      period -= (minutes * (1000 * 60));
-      var insert = "";
-      insert += '<span class="h">' + addZeroDay(day) +':' + '</span>';
-      insert += '<span class="h">' + addZero(hour) + ':'+'</span>';
-      insert +=  '<span class="m">' + addZero(minutes)  + '</span>';
-      document.getElementById('countdown').innerHTML = insert;
-      setTimeout(countdownTimer,interval);
+        var day = Math.floor(period / (1000 * 60 * 60 * 24));
+        period -=  (day *(1000 * 60 * 60 * 24));
+        var hour = Math.floor(period / (1000 * 60 * 60));
+        period -= (hour *(1000 * 60 * 60));
+        var minutes =  Math.floor(period / (1000 * 60));
+        period -= (minutes * (1000 * 60));
+        document.querySelector('.js-countdown-days').innerText = addZeroDay(day);
+        document.querySelector('.js-countdown-hours').innerText = addZero(hour);
+        document.querySelector('.js-countdown-mins').innerText = addZero(minutes);
+        setTimeout(countdownTimer,interval);
       }
       else{
-        var insert = "";
-        var number = 0;
-        insert += '<span class="h">' + number + number + '</span>';
-        insert +=  '<span class="m">' + number + number + '</span>';
-        insert += '<span class="s">' + number + number + '</span>';
-        document.getElementById('countdown').innerHTML = insert;
+        document.querySelector('.js-countdown-days').innerText = '000';
+        document.querySelector('.js-countdown-hours').innerText = '00';
+        document.querySelector('.js-countdown-mins').innerText = '00';
       }
     }
-    if ( document.getElementById('countdown') ) {
+    if ( document.querySelector('.js-countdown') ) {
       countdownTimer();
     }
 

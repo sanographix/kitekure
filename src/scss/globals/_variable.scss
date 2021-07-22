@@ -1,27 +1,73 @@
-$bg: #fff;
-$bg-light: #f3f2f0;
-$text-primary: #252525;
-$text: #444;
-$light: #6a6d7b;
-$link: #4445ab;
-$hover: darken($link,8%);
-$border: #e6e2dd;
-$border-strong:#9c9c9c;
+:root{
+    // Color
+    // Global tokens
+    --color-white: #fff;
+    --color-red: #F70138;
+    --color-red-darken: #d10e38;
+    --color-gray-100: #111111;
+    --color-gray-200: #222222;
+    --color-gray-300: #333333;
+    --color-gray-400: #444444;
+    --color-gray-800: #888888;
+    --color-gray-900: #dddddd;
+    // Alias tokens
+    --color-bg: var(--color-gray-100);
+    --color-bg-secondary: var(--color-gray-200);
+    --color-bg-white: var(--color-white);
+    --color-bg-white-secondary: var(--color-gray-900);
+    --color-text: var(--color-white);
+    --color-text-secondary: var(--color-gray-800);
+    --color-text-highlight: var(--color-red);
 
-$btn-bg: #f3f2f0; // button
-$btn-bg-primary: #252525;
+    --color-btn-primary-bg: var(--color-red);
+    --color-btn-primary-hover-bg: var(--color-red-darken);
+    --color-btn-primary-text: var(--color-gray-100);
+    --color-btn-secondary-bg: var(--color-gray-300);
+    --color-btn-secondary-hover-bg: var(--color-gray-400);
+    --color-btn-secondary-text: var(--color-white);
 
-$border-radius-base: 4px;
-$border-radius-box: $border-radius-base * 1.5;
+    --color-form-bg: var(--color-gray-300);
+    --color-border: rgba(255,255,255,.16);
+    --color-border-highlight: var(--color-red);
 
-$font: 'TTHoves', -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
-$font-heading: 'TTHoves', -apple-system, BlinkMacSystemFont, 'Avenir Next', 'Segoe UI', Arial, '游ゴシック体', YuGothic, '游ゴシック', 'Yu Gothic', sans-serif;
+    // Typography
+    --font: 'DM Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+    --font-size-50: 12px;
+    --font-size-75: 14px;
+    --font-size-100: 16px;
+    --font-size-200: 20px;
+    --font-size-300: 24px;
+    --font-size-400: 32px;
+    --font-size-500: 40px;
+    --font-size-600: 48px;
+    --line-height-sm: 1.25;
+    --line-height-base: 1.6;
+    --line-height-lg: 1.75;
+    --letter-spacing-2: .025em;
 
-// column
-$col-width-lg: 1200px;
-$col-width-md: 800px; // entry-contentの最大サイズ
-$col-width-sm: 728px;
+    // Spacing
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 16px;
+    --space-4: 24px;
+    --space-5: 32px;
+    --space-6: 40px;
+    --space-7: 48px;
+    --space-8: 64px;
+    --space-9: 80px;
 
+    // Column width
+    --col-width-sm: 720px;
+    --col-width-md: 940px;
+    --col-width-lg: 1200px;
+    --col-width-xl: 1400px;
+
+    --border-radius-base: 16px;
+
+    --z-index-modal: 10;
+}
+
+// media queries
 $mq-sm: "(min-width: 576px)";
 $mq-md: "(min-width: 768px)";
 $mq-lg: "(min-width: 992px)";

@@ -1,79 +1,124 @@
-<% var
-pageTitle = "Toppage";
-pageId = "index";
-pageUrl = "";
-pageDescription = "Awesome site";
-%>
-<% include ../_partial/_header %>
+<!DOCTYPE html>
+<html>
+  <head>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title></title>
 
-<header>
-  <video
-    class="js-header-video"
-    src=""
-    autoplay
-    playsinline
-    muted
-    loop
-    width="500"
-  >
-  </video>
-  <img
-    class="js-header-image hero"
-    src=""
-  >
-  <div class="container">
-    <h1 class="js-title">Title</h1>
-    <p class="js-date">2000-00-00</p>
-    <div id="countdown"></div>
+    <meta name="viewport" content="width=device-width">
 
-    http://www.google.com/calendar/event?action=TEMPLATE&text=title&dates=20210722T103000Z/20210722T120000Z&details=test
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:site_name" content="" />
 
-  </div>
-</header>
+    <meta property="fb:app_id" content="" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="">
 
-<section class="section-about">
-  <div class="container">
-    <h2>About</h2>
-    <div class="js-introduction-wrap">
-      <p class="js-introduction">Introduction</p>
-    </div>
-  </div>
-</section>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="favicon.png" />
+    <link rel="canonical" href="" />
 
-<section class="js-stream section-stream">
-  <div class="container">
-    <h2>Livestream</h2>
+    <%# Google Analytics %>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', '<%= googleAnalyticsId %>', 'auto');
+      ga('require', 'displayfeatures');
+      ga('send', 'pageview');
+    </script>
 
-    <iframe
-      class="js-stream-player"
-      src="https://player.twitch.tv/?channel=example&parent=localhost"
-      frameborder="0"
-      allowfullscreen="true"
-      scrolling="no"
-      width="620"
-      height="378"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    >
-    </iframe>
+  </head>
+  <body class="page-index">
 
-  </div>
-</section>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
 
-<section class="section-schedule">
-  <div class="container">
-    <h2>Schedule</h2>
-    <div class="js-schedule-items">
-      <div class="js-schedule schedule-item">
-        <div class="js-schedule-time schedule-time">00:00</div>
-        <div class="js-schedule-name schedule-name">演者</div>
+    <header class="header">
+      <video
+        class="header-video js-header-video"
+        src=""
+        autoplay
+        playsinline
+        muted
+        loop
+        width="500"
+      >
+      </video>
+      <img
+        class="js-header-image hero"
+        src=""
+      >
+      <div class="container">
+        <div class="js-header-introduce">Header Introduce</div>
+        <h1 class="js-title">Header Title</h1>
+        <div class="js-header-subtitle-wrap">
+          <p class="js-header-subtitle">Header Subtitle</p>
+        </div>
+        <div  class="js-countdown" id="countdown">
+          <div class="js-countdown-days">000</div>
+          <div class="js-countdown-hours">000</div>
+          <div class="js-countdown-mins">000</div>
+        </div>
+        <div class="action-button">
+          <a
+            href=""
+            class="js-action-button action-button-button"
+          >
+            Action Button
+          </a>
+        </div>
+
+        <p class="js-date">2000-00-00</p>
       </div>
-    </div>
-  </div>
-</section>
+    </header>
 
+    <section class="section-about">
+      <div class="container">
+        <h2>About</h2>
+        <div class="js-introduction-wrap">
+          <p class="js-introduction">Introduction</p>
+        </div>
+      </div>
+    </section>
 
-<% include ../_partial/_footer %>
+    <section class="js-stream section-stream">
+      <div class="container">
+        <h2>Livestream</h2>
+
+        <iframe
+          class="js-stream-player"
+          src="https://player.twitch.tv/?channel=example&parent=localhost"
+          frameborder="0"
+          allowfullscreen="true"
+          scrolling="no"
+          width="620"
+          height="378"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        >
+        </iframe>
+
+      </div>
+    </section>
+
+    <section class="section-schedule">
+      <div class="container">
+        <h2>Schedule</h2>
+        <div class="js-schedule-items">
+          <div class="js-schedule schedule-item">
+            <div class="js-schedule-time schedule-time">00:00</div>
+            <div class="js-schedule-name schedule-name">演者</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
