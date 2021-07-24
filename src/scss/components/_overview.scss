@@ -1,0 +1,16 @@
+.overview {
+}
+.overview-label {
+  color: var(--color-text-highlight);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-300);
+  font-size: var(--font-size-75);
+  font-weight: bold;
+}
+.overview-label:not(:first-child) {
+  margin-top: var(--space-4);
+}
+.overview-content {
+  margin: 0;
+  font-size: var(--font-size-200);
+}

@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title></title>
 
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width" />
 
     <meta property="og:title" content="" />
     <meta property="og:description" content="" />
@@ -15,30 +14,20 @@
     <meta property="og:site_name" content="" />
 
     <meta property="fb:app_id" content="" />
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="" />
 
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="icon" href="favicon.png" />
+    <link rel="icon" href="favicon.png" id="favicon" />
     <link rel="canonical" href="" />
-
-    <%# Google Analytics %>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', '<%= googleAnalyticsId %>', 'auto');
-      ga('require', 'displayfeatures');
-      ga('send', 'pageview');
-    </script>
-
   </head>
   <body class="page-index">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
     <header class="header">
       <video
@@ -49,19 +38,18 @@
         muted
         loop
         width="500"
-      >
-      </video>
+      ></video>
       <img
         class="header-image header-image-type-image js-header-image"
         src=""
-      >
+      />
       <div class="container header-content">
         <div class="header-introduce js-header-introduce">Header Introduce</div>
         <h1 class="header-title js-title">Header Title</h1>
         <div class="header-subtitle-wrap js-header-subtitle-wrap">
           <p class="header-subtitle js-header-subtitle">Header Subtitle</p>
         </div>
-        <div  class="countdown js-countdown">
+        <div class="countdown js-countdown">
           <div class="countdown-days">
             <div class="countdown-value js-countdown-days">000</div>
             <div class="countdown-label">Days</div>
@@ -78,7 +66,11 @@
         <div class="action-button">
           <a
             href=""
-            class="button button-primary button-large js-action-button action-button-button"
+            class="
+              button button-primary button-large
+              js-action-button
+              action-button-button
+            "
           >
             Action Button
           </a>
@@ -102,8 +94,12 @@
           </iframe>
         </div>
       </div>
-      <div class="stream-marquee stream-marquee-top">Livestream Livestream Livestream Livestream Livestream</div>
-      <div class="stream-marquee">Livestream Livestream Livestream Livestream Livestream</div>
+      <div class="stream-marquee stream-marquee-top">
+        Livestream Livestream Livestream Livestream Livestream
+      </div>
+      <div class="stream-marquee">
+        Livestream Livestream Livestream Livestream Livestream
+      </div>
     </section>
 
     <section class="section section-about">
@@ -116,7 +112,36 @@
         </div>
       </div>
     </section>
-
+    <section class="section section-overview">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="section-heading">Overview</h2>
+        </header>
+        <dl class="overview js-overview">
+          <dt class="overview-label">Event</dt>
+          <dd class="overview-content js-event-title">Event Title</dd>
+          <dt class="overview-label">Date</dt>
+          <dd class="overview-content js-event-date">2000/01/01 00:00</dd>
+          <dt class="overview-label js-event-venue-label">Venue Label</dt>
+          <dd class="overview-content js-event-venue-content">Venue Content</dd>
+          <dd class="overview-content js-event-venue-address">Address</dd>
+          <dd class="overview-content">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3268.069633434567!2d135.76813731610468!3d35.00496198035739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x600108952481ed91%3A0xb51271ac60d66e66!2sCafe+La+Siesta!5e0!3m2!1sja!2sjp!4v1493484340370"
+              width="100%"
+              height="400"
+              frameborder="0"
+              style="border: 0"
+              class="map-iframe js-event-venue-map"
+              title="Map"
+              allowfullscreen
+            ></iframe>
+          </dd>
+          <dt class="overview-label js-overview-label">Overview</dt>
+          <dd class="overview-content js-overview-content">Overview content</dd>
+        </dl>
+      </div>
+    </section>
     <section class="section section-schedule">
       <div class="container">
         <header class="section-header">
@@ -124,9 +149,7 @@
         </header>
         <div class="schedule-table js-schedule-wrap">
           <div class="schedule-tr js-schedule">
-            <div class="schedule-th js-schedule-time">
-                20:30
-            </div>
+            <div class="schedule-th js-schedule-time">20:30</div>
             <div class="schedule-td">
               <h4 class="table-heading js-schedule-name"></h4>
               <div class="table-description js-schedule-description"></div>
@@ -135,18 +158,30 @@
         </div>
       </div>
     </section>
+    <section class="section section-member">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="section-heading">DJ/VJ</h2>
+        </header>
 
-
-
-
-
-
-
-
-
-
-
-
+        <div class="member">
+          <img src="icon-kyokotoshino_256.png" alt="sanographix" />
+          <h3 class="member-name">sanographix</h3>
+          <div class="member-role">DJ</div>
+          <div class="member-profile">
+            <p>久々ですが平常心でやっていこうと思います</p>
+          </div>
+          <nav class="member-link">
+            <a
+              href="https://twitter.com/sanographix"
+              class="button button-secondary"
+            >
+              Website
+            </a>
+          </nav>
+        </div>
+      </div>
+    </section>
 
     <script src="js/scripts.js"></script>
   </body>
