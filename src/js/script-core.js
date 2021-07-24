@@ -27,10 +27,8 @@ function csv_array(data) {
   // -Basics-
   // Site Title
   const optSiteTitle = array.filter((value) => value[0] === "Site Title");
-  if (optSiteTitle) {
-    const valSiteTitle = optSiteTitle[0][1];
-    document.title = valSiteTitle;
-  }
+  const valSiteTitle = optSiteTitle[0][1];
+  document.title = valSiteTitle;
 
   // host
   const hostname = location.hostname;
@@ -39,11 +37,9 @@ function csv_array(data) {
   const optFavicon = array.filter(
     (value) => value[0] === "Site Icon (favicon)"
   );
-  if (optFavicon) {
-    const valFavicon = optFavicon[0][1];
-    const domFavicon = document.getElementById("favicon");
-    domFavicon.href = valFavicon;
-  }
+  const valFavicon = optFavicon[0][1];
+  const domFavicon = document.getElementById("favicon");
+  domFavicon.href = valFavicon;
 
   /////////////////////////////////////
   // -Header-
@@ -52,22 +48,20 @@ function csv_array(data) {
   const domHeaderVideo = document.querySelector(".js-header-video");
   const domHeaderImage = document.querySelector(".js-header-image");
   const optHeader = array.filter((value) => value[0] === "Header");
-  if ((domHeaderImage || domHeaderVideo) && optHeader) {
-    const optHeaderType = optHeader[0][1];
-    const optHeaderSrc = optHeader[0][2];
-    switch (optHeaderType) {
-      case "Video":
-        domHeaderVideo.setAttribute("src", optHeaderSrc);
-        domHeaderImage.remove();
-        break;
-      case "Image":
-        domHeaderImage.setAttribute("src", optHeaderSrc);
-        domHeaderVideo.remove();
-        break;
-      default:
-        domHeaderVideo.remove();
-        domHeaderImage.remove();
-    }
+  const optHeaderType = optHeader[0][1];
+  const optHeaderSrc = optHeader[0][2];
+  switch (optHeaderType) {
+    case "Video":
+      domHeaderVideo.setAttribute("src", optHeaderSrc);
+      domHeaderImage.remove();
+      break;
+    case "Image":
+      domHeaderImage.setAttribute("src", optHeaderSrc);
+      domHeaderVideo.remove();
+      break;
+    default:
+      domHeaderVideo.remove();
+      domHeaderImage.remove();
   }
 
   // Header Introduce
@@ -75,10 +69,8 @@ function csv_array(data) {
   const optHeaderIntroduce = array.filter(
     (value) => value[0] === "Header Introduce"
   );
-  if (domHeaderIntroduce && optHeaderIntroduce) {
-    const valHeaderIntroduce = optHeaderIntroduce[0][1];
-    domHeaderIntroduce.innerText = valHeaderIntroduce;
-  }
+  const valHeaderIntroduce = optHeaderIntroduce[0][1];
+  domHeaderIntroduce.innerText = valHeaderIntroduce;
 
   // Header title
   const domTitle = document.querySelector(".js-title");
