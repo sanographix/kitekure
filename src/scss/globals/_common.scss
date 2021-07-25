@@ -1,8 +1,12 @@
 // Common
 * {
     box-sizing: border-box;
+    word-wrap: break-word;
+    word-break: break-word;
 }
-
+html{
+    scroll-behavior: smooth;
+}
 body {
     font-family: var(--font);
     background: var(--color-bg);

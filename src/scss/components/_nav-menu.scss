@@ -1,0 +1,28 @@
+.nav-menu {
+    background: var(--color-bg);
+    padding: var(--space-3);
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+    position: sticky;
+    top: 0;
+    filter:invert(100%); // 白背景にする
+}
+.nav-menu-link {
+    font-size: var(--font-size-200);
+    color: var(--color-text);
+    text-decoration: none;
+    border-bottom: 1px solid transparent; // ガタガタしないように
+    &:hover {
+        border-color: var(--color-text-secondary);
+    }
+}
+
+// ページ内リンクがメニューにかぶるのを調整
+@keyframes anchor-modify {
+    0% { padding-top: 70px; margin-top: -70px; } // 決め打ち
+  100% { padding-top: 0; margin-top: 0; }
+}
+.section:target {
+  animation: anchor-modify 0.1s;
+}

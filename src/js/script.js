@@ -247,7 +247,7 @@ function csv_array(data) {
   domOverviewContent.remove();
 
   /////////////////////////////////////
-  // Schedule
+  // -Schedule-
   const domScheduleWrap = document.querySelector(".js-schedule-wrap");
   const domSchedule = document.querySelector(".js-schedule"); // コピー元を取得
   for (let i = 0; i < dataString.length; i++) {
@@ -263,6 +263,48 @@ function csv_array(data) {
     }
   }
   domSchedule.remove(); // コピー元を削除
+
+  /////////////////////////////////////
+  // -members-
+  const domMemberWrap = document.querySelector('.js-member-wrap');
+  const domMember = document.querySelector('.js-member'); // コピー元を取得
+  for (let i = 0; i < dataString.length; i++) {
+    if (array[i][0] == 'Member') {
+      const domMemberClone = domMember.cloneNode(true);
+      domMemberClone.querySelector('.js-member-name').innerText = array[i][1];
+      domMemberClone.querySelector('.js-member-image').setAttribute('alt', array[i][1]);
+      domMemberClone.querySelector('.js-member-image').setAttribute('src', array[i][2]);
+      domMemberClone.querySelector('.js-member-profile').innerText = array[i][4];
+      // option
+      if (array[i][3] != '') {
+        domMemberClone.querySelector('.js-member-role').innerText = array[i][3];
+      } else {
+        domMemberClone.querySelector('.js-member-role').remove();
+      }
+      if (array[i][5] != '') {
+      } else {
+        domMemberClone.querySelector('.js-member-url').setAttribute('href', array[i][5]);
+        domMemberClone.querySelector('.js-member-link').remove();
+      }
+      domMemberWrap.appendChild(domMemberClone);
+    }
+  }
+  domMember.remove(); // コピー元を削除
+
+  /////////////////////////////////////
+  // -Notice-
+  const domNoticeWrap = document.querySelector(".js-notice-wrap");
+  const domNotice = document.querySelector(".js-notice"); // コピー元を取得
+  for (let i = 0; i < dataString.length; i++) {
+    if (array[i][0] == "Notice") {
+      const domNoticeClone = domNotice.cloneNode(true);
+      domNoticeClone.innerText =
+        array[i][1];
+      domNoticeWrap.appendChild(domNoticeClone);
+    }
+  }
+  domNotice.remove(); // コピー元を削除
+
 }
 
 // クエリパラメータが?preview=trueのときテンプレートをダウンロード

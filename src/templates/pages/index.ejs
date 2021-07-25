@@ -33,6 +33,7 @@
       <video
         class="header-image header-image-type-video js-header-video"
         src=""
+        alt=""
         autoplay
         playsinline
         muted
@@ -42,6 +43,7 @@
       <img
         class="header-image header-image-type-image js-header-image"
         src=""
+        alt=""
       />
       <div class="container header-content">
         <div class="header-introduce js-header-introduce">Header Introduce</div>
@@ -101,8 +103,13 @@
         Livestream Livestream Livestream Livestream Livestream
       </div>
     </section>
-
-    <section class="section section-about">
+    <nav class="nav-menu">
+      <a href="#about" class="nav-menu-link js-nav-link-about">About</a>
+      <a href="#schedule" class="nav-menu-link js-nav-link-schedule">Schedule</a>
+      <a href="#member" class="nav-menu-link js-nav-link-member">DJ/VJ</a>
+      <a href="#overview" class="nav-menu-link js-nav-link-overview">Overview</a>
+    </nav>
+    <section class="section section-about" id="about">
       <div class="container">
         <header class="section-header">
           <h2 class="section-heading">About</h2>
@@ -112,7 +119,53 @@
         </div>
       </div>
     </section>
-    <section class="section section-overview">
+    <section class="section section-schedule" id="schedule">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="section-heading">Schedule</h2>
+        </header>
+        <div class="schedule-table js-schedule-wrap">
+          <div class="schedule-tr js-schedule">
+            <div class="schedule-th js-schedule-time">20:30</div>
+            <div class="schedule-td">
+              <h4 class="table-heading js-schedule-name"></h4>
+              <div class="table-description js-schedule-description"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section section-member" id="member">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="section-heading">DJ/VJ</h2>
+        </header>
+
+        <div class="member-wrap js-member-wrap">
+          <div class="member js-member">
+            <div class="member-fig">
+              <img src="" alt="" class="js-member-image" />
+            </div>
+            <div class="member-content">
+              <div class="member-role js-member-role">Role</div>
+              <h3 class="member-name js-member-name">Name</h3>
+              <p class="member-profile js-member-profile">
+                Profile
+              </p>
+              <nav class="member-link js-member-link">
+                <a
+                  href=""
+                  class="button button-primary-ghost js-member-url"
+                >
+                  Website
+                </a>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section section-overview" id="overview">
       <div class="container">
         <header class="section-header">
           <h2 class="section-heading">Overview</h2>
@@ -142,47 +195,10 @@
               <dt class="overview-label js-overview-label">Overview</dt>
               <dd class="overview-content js-overview-content">Overview content</dd>
             </dl>
+            <ul class="notice-wrap js-notice-wrap">
+              <li class="notice js-notice">Notice</li>
+            </ul>
           </div>
-        </div>
-      </div>
-    </section>
-    <section class="section section-schedule">
-      <div class="container">
-        <header class="section-header">
-          <h2 class="section-heading">Schedule</h2>
-        </header>
-        <div class="schedule-table js-schedule-wrap">
-          <div class="schedule-tr js-schedule">
-            <div class="schedule-th js-schedule-time">20:30</div>
-            <div class="schedule-td">
-              <h4 class="table-heading js-schedule-name"></h4>
-              <div class="table-description js-schedule-description"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section section-member">
-      <div class="container">
-        <header class="section-header">
-          <h2 class="section-heading">DJ/VJ</h2>
-        </header>
-
-        <div class="member">
-          <img src="icon-kyokotoshino_256.png" alt="sanographix" />
-          <h3 class="member-name">sanographix</h3>
-          <div class="member-role">DJ</div>
-          <div class="member-profile">
-            <p>久々ですが平常心でやっていこうと思います</p>
-          </div>
-          <nav class="member-link">
-            <a
-              href="https://twitter.com/sanographix"
-              class="button button-secondary"
-            >
-              Website
-            </a>
-          </nav>
         </div>
       </div>
     </section>

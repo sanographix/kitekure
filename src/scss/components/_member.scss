@@ -1,0 +1,43 @@
+.member {
+    display: flex;
+    // 奇数・偶数でレイアウトが違う
+    gap: var(--space-7);
+    align-items: center;
+    &:nth-child(odd) {
+    }
+    &:nth-child(even) {
+        flex-direction: row-reverse;
+        text-align: right;
+    }
+    & + .member {
+        margin-top: var(--space-6);
+    }
+}
+.member-fig {
+    img {
+        display: block;
+        border-radius: 50%;
+        width: 180px;
+        height: 180px;
+    }
+}
+.member-content {
+    width: var(--col-width-sm);
+}
+.member-role {
+    color: var(--color-text-highlight);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-300);
+    font-size: var(--font-size-75);
+    font-weight: bold;
+    margin-bottom: var(--space-2);
+}
+.member-name {
+    font-size: var(--font-size-600);
+    margin: 0 0 var(--space-3);
+    line-height: var(--line-height-xs);
+}
+.member-profile {
+    font-size: var(--font-size-200);
+    margin: 0 0 var(--space-3);
+}
