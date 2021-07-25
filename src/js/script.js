@@ -227,7 +227,13 @@ function csv_array(data) {
     domEventVenueAddress.remove();
   }
 
-  // map
+  // map (Option)
+  const domMap = document.querySelector(".js-event-venue-map");
+  if (optEventVenueAddress[0][2] != '') {
+    domMap.setAttribute('src', 'https://www.google.com/maps/embed?pb=' + optEventVenueAddress[0][2]);
+  } else {
+    domMap.remove();
+  }
 
   // Additional Overview (option)
   const domOverview = document.querySelector(".js-overview");
