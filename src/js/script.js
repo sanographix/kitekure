@@ -1,10 +1,10 @@
 // watchされているので保存したらビルドされる
-
 function csv_data(dataPath) {
   const request = new XMLHttpRequest();
   request.addEventListener("load", (event) => {
     // ロードさせ実行
     const response = event.target.responseText; // 受け取ったテキストを返す
+    console.log(response);
     csv_array(response); //csv_arrayの関数を実行
   });
   request.open("GET", dataPath, true); // csvのパスを指定
@@ -12,13 +12,13 @@ function csv_data(dataPath) {
 }
 csv_data("../config.csv"); // csvのパス
 
+
 function csv_array(data) {
-  const array = []; //配列を用意
-  const dataString = data.split("\n"); //改行で分割
-  for (let i = 0; i < dataString.length; i++) {
-    //あるだけループ
-    array[i] = dataString[i].split(",");
-  }
+  const array = new CSV(data, {
+    header: true,
+    cast: false,
+  }).parse(); //配列を用意
+
   console.log(array);
 
   // ここからサイトの設定項目を組み立てる
