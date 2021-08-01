@@ -20,7 +20,7 @@
     "watch": "npm-run-all -p watch:*",
     "watch:css": "onchange 'src/scss/' -- npm run build:css",
     "watch:ejs": "onchange 'src/templates/' -- npm run ejs",
-    "watch:js": "onchange 'src/js/' -- npm run build:js_parse & npm run build:js_script"
+    "watch:js": "onchange 'src/js/' -- npm-run-all build:js_parse build:js_script"
   },
   "devDependencies": {
     "autoprefixer": "^9.1.3",
