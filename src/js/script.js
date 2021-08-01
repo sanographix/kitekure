@@ -11,7 +11,6 @@ function csv_data(dataPath) {
 }
 csv_data("../config.csv"); // csvのパス
 
-
 function csv_array(data) {
   const array = new CSV(data, {
     header: ['option', 'value1', 'value2', 'value3', 'value4', 'value5', 'required', 'description'],
@@ -25,18 +24,16 @@ function csv_array(data) {
   /////////////////////////////////////
   // -Basics-
   // Site Title
-  const optSiteTitle = array.filter((value) => value[0] === "Site Title");
-  const valSiteTitle = optSiteTitle[0][1];
+  const optSiteTitle = array.filter((value) => value.option === 'Site Title');
+  const valSiteTitle = optSiteTitle[0].value1;
   document.title = valSiteTitle;
 
   // host
   const hostname = location.hostname;
 
   // Favicon
-  const optFavicon = array.filter(
-    (value) => value[0] === "Site Icon (favicon)"
-  );
-  const valFavicon = optFavicon[0][1];
+  const optFavicon = array.filter((value) => value.option === 'Site Icon (favicon)');
+  const valFavicon = optFavicon[0].value1;
   const domFavicon = document.getElementById("favicon");
   domFavicon.href = valFavicon;
 
@@ -46,9 +43,9 @@ function csv_array(data) {
   // Header
   const domHeaderVideo = document.querySelector(".js-header-video");
   const domHeaderImage = document.querySelector(".js-header-image");
-  const optHeader = array.filter((value) => value[0] === "Header");
-  const optHeaderType = optHeader[0][1];
-  const optHeaderSrc = optHeader[0][2];
+  const optHeader = array.filter((value) => value.option === "Header");
+  const optHeaderType = optHeader[0].value1;
+  const optHeaderSrc = optHeader[0].value2;
   switch (optHeaderType) {
     case "Video":
       domHeaderVideo.setAttribute("src", optHeaderSrc);
@@ -66,16 +63,16 @@ function csv_array(data) {
   // Header Introduce
   const domHeaderIntroduce = document.querySelector(".js-header-introduce");
   const optHeaderIntroduce = array.filter(
-    (value) => value[0] === "Header Introduce"
+    (value) => value.option === "Header Introduce"
   );
-  const valHeaderIntroduce = optHeaderIntroduce[0][1];
+  const valHeaderIntroduce = optHeaderIntroduce[0].value1;
   domHeaderIntroduce.innerText = valHeaderIntroduce;
 
   // Header title
   const domTitle = document.querySelector(".js-title");
-  const optTitle = array.filter((value) => value[0] === "Header Title");
+  const optTitle = array.filter((value) => value.option === "Header Title");
   if (domTitle && optTitle) {
-    const valTitle = optTitle[0][1];
+    const valTitle = optTitle[0].value1;
     domTitle.innerText = valTitle;
   }
 
