@@ -231,6 +231,7 @@ function csv_array(data) {
   const domMemberWrap = document.querySelector('.js-member-wrap');
   const domMember = document.querySelector('.js-member'); // コピー元を取得
   const optMember = array.filter((value) => value.option === 'Member');
+  console.log(optMember);
   for (let i = 0; i < optMember.length; i++) {
     const domMemberClone = domMember.cloneNode(true);
     domMemberClone.querySelector('.js-member-name').textContent = optMember[i].value1;
@@ -244,8 +245,8 @@ function csv_array(data) {
       domMemberClone.querySelector('.js-member-role').remove();
     }
     if (optMember[i].value5 != '') {
-    } else {
       domMemberClone.querySelector('.js-member-url').setAttribute('href', optMember[i].value5);
+    } else {
       domMemberClone.querySelector('.js-member-link').remove();
     }
     domMemberWrap.appendChild(domMemberClone);
@@ -254,20 +255,18 @@ function csv_array(data) {
 
   /////////////////////////////////////
   // -Notice-
-  const domNoticeWrap = document.querySelector(".js-notice-wrap");
-  const domNotice = document.querySelector(".js-notice"); // コピー元を取得
-  for (let i = 0; i < dataString.length; i++) {
-    if (array[i][0] == "Notice") {
-      const domNoticeClone = domNotice.cloneNode(true);
-      domNoticeClone.textContent =
-        array[i][1];
-      domNoticeWrap.appendChild(domNoticeClone);
-    }
+  const domNoticeWrap = document.querySelector('.js-notice-wrap');
+  const domNotice = document.querySelector('.js-notice'); // コピー元を取得
+  const optNotice = array.filter((value) => value.option === 'Notice');
+  for (let i = 0; i < optNotice.length; i++) {
+    const domNoticeClone = domNotice.cloneNode(true);
+    domNoticeClone.textContent = optNotice[i].value1;
+    domNoticeWrap.appendChild(domNoticeClone);
   }
   domNotice.remove(); // コピー元を削除
 
 
-  // カウントダウンタイマー
+  // WIP: カウントダウンタイマー
   // UTC変換できるか確認
   const optDateUtc = array.filter((value) => value[0] === "Date (UTC)")[0][1];
   const endDate = new Date(optDateUtc);
