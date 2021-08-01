@@ -230,26 +230,25 @@ function csv_array(data) {
   // -members-
   const domMemberWrap = document.querySelector('.js-member-wrap');
   const domMember = document.querySelector('.js-member'); // コピー元を取得
-  for (let i = 0; i < dataString.length; i++) {
-    if (array[i][0] == 'Member') {
-      const domMemberClone = domMember.cloneNode(true);
-      domMemberClone.querySelector('.js-member-name').textContent = array[i][1];
-      domMemberClone.querySelector('.js-member-image').setAttribute('alt', array[i][1]);
-      domMemberClone.querySelector('.js-member-image').setAttribute('src', array[i][2]);
-      domMemberClone.querySelector('.js-member-profile').textContent = array[i][4];
-      // option
-      if (array[i][3] != '') {
-        domMemberClone.querySelector('.js-member-role').textContent = array[i][3];
-      } else {
-        domMemberClone.querySelector('.js-member-role').remove();
-      }
-      if (array[i][5] != '') {
-      } else {
-        domMemberClone.querySelector('.js-member-url').setAttribute('href', array[i][5]);
-        domMemberClone.querySelector('.js-member-link').remove();
-      }
-      domMemberWrap.appendChild(domMemberClone);
+  const optMember = array.filter((value) => value.option === 'Member');
+  for (let i = 0; i < optMember.length; i++) {
+    const domMemberClone = domMember.cloneNode(true);
+    domMemberClone.querySelector('.js-member-name').textContent = optMember[i].value1;
+    domMemberClone.querySelector('.js-member-image').setAttribute('alt', optMember[i].value1);
+    domMemberClone.querySelector('.js-member-image').setAttribute('src', optMember[i].value2);
+    domMemberClone.querySelector('.js-member-profile').textContent = optMember[i].value4;
+    // option
+    if (optMember[i].value3 != '') {
+      domMemberClone.querySelector('.js-member-role').textContent = optMember[i].value3;
+    } else {
+      domMemberClone.querySelector('.js-member-role').remove();
     }
+    if (optMember[i].value5 != '') {
+    } else {
+      domMemberClone.querySelector('.js-member-url').setAttribute('href', optMember[i].value5);
+      domMemberClone.querySelector('.js-member-link').remove();
+    }
+    domMemberWrap.appendChild(domMemberClone);
   }
   domMember.remove(); // コピー元を削除
 
