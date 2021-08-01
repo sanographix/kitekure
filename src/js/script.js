@@ -4,7 +4,6 @@ function csv_data(dataPath) {
   request.addEventListener("load", (event) => {
     // ロードさせ実行
     const response = event.target.responseText; // 受け取ったテキストを返す
-    console.log(response);
     csv_array(response); //csv_arrayの関数を実行
   });
   request.open("GET", dataPath, true); // csvのパスを指定
@@ -15,7 +14,7 @@ csv_data("../config.csv"); // csvのパス
 
 function csv_array(data) {
   const array = new CSV(data, {
-    header: true,
+    header: ['option', 'value1', 'value2', 'value3', 'value4', 'value5', 'required', 'description'],
     cast: false,
   }).parse(); //配列を用意
 
