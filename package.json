@@ -10,16 +10,17 @@
     "start": "npm-run-all -p watch server",
     "scss": "node-sass src/scss/style.scss build/css/style.css --output-style compressed --indent-width 4 --source-map build/css/ --importer node_modules/node-sass-globbing/index.js",
     "autoprefixer": "postcss --use autoprefixer -r build/css/style.css",
-    "ejs": "ejs-cli --base-dir src/templates/pages/ --file '**/**.ejs' --out build/ --options site.json",
+    "ejs": "ejs-cli --base-dir src/templates/ --file '**/**.ejs' --out build/",
     "server": "browser-sync start -c bs-config.js",
     "clean": "rimraf build/{css/*,js/*}",
     "build": "npm run clean & npm-run-all -p build:* & npm run ejs",
     "build:css": "npm-run-all scss autoprefixer",
-    "build:js": "uglifyjs src/js/* --compress -o build/js/scripts.js",
+    "build:js_parse": "uglifyjs src/js/parse/* --compress -o build/js/parse.js",
+    "build:js_script": "uglifyjs src/js/script/* --compress -o build/js/script.js",
     "watch": "npm-run-all -p watch:*",
     "watch:css": "onchange 'src/scss/' -- npm run build:css",
     "watch:ejs": "onchange 'src/templates/' -- npm run ejs",
-    "watch:js": "onchange 'src/js/' -- npm run build:js"
+    "watch:js": "onchange 'src/js/' -- npm run build:js_parse & npm run build:js_script"
   },
   "devDependencies": {
     "autoprefixer": "^9.1.3",

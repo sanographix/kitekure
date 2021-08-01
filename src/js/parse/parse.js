@@ -303,7 +303,6 @@ function csv_array(data) {
     countdownTimer();
   }
 
-
 }
 
 // クエリパラメータが?preview=trueのときテンプレートをダウンロード
@@ -315,7 +314,7 @@ if (urlParam === "?preview=true") {
     const snapshot = new XMLSerializer().serializeToString(document);
     // このjs（プレビュー用のjs）をhtml文字列から抜き取る
     const snapshotRemoveJs = snapshot.replace(
-      '<script src="js/scripts.js"></script>',
+      '<script src="js/parse.js"></script>',
       ""
     );
     // ダウンロード
