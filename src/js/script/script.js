@@ -1,6 +1,4 @@
-console.log('script desu');
-
-// WIP: カウントダウンタイマー
+// カウントダウンタイマー
 // UTCで指定された日付から残り時間を算出したのち、タイムゾーンとの時差を解消
 (function() {
   window.addEventListener("load", function () {
@@ -40,4 +38,3 @@ console.log('script desu');
     }
   });
 }());
-
