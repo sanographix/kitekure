@@ -48,6 +48,10 @@ function csv_array(data) {
 
   // Accent Color
   const valAccentColor = array.filter((value) => value.option === 'Accent Color (Hex)')[0].value1;
+  if (valAccentColor) {
+    document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-primary:' + valAccentColor + '}</style>')
+  }
+
 
   /////////////////////////////////////
   // -Header-
