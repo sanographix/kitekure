@@ -1,13 +1,13 @@
 .member {
-    display: flex;
-    // 奇数・偶数でレイアウトが違う
-    gap: var(--space-7);
-    align-items: center;
-    &:nth-child(odd) {
-    }
-    &:nth-child(even) {
-        flex-direction: row-reverse;
-        text-align: right;
+    @media #{$mq-md} {
+        display: flex;
+        // 奇数・偶数でレイアウトが違う
+        gap: var(--space-7);
+        align-items: center;
+        &:nth-child(even) {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
     }
     & + .member {
         margin-top: var(--space-6);
@@ -22,7 +22,9 @@
     }
 }
 .member-content {
-    width: var(--col-width-sm);
+    @media #{$mq-md} {
+        width: var(--col-width-sm);
+    }
 }
 .member-role {
     color: var(--color-text-highlight);

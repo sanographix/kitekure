@@ -19,18 +19,24 @@
     font-weight: bold;
 }
 .header-title {
-    font-size: var(--font-size-title);
+    font-size: var(--font-size-800);
     margin: 0;
     line-height: var(--line-height-xs);
     font-weight: normal;
+    @media #{$mq-md} {
+        font-size: var(--font-size-title);
+    }
 }
 .header-subtitle-wrap {
     margin-top: var(--space-4);
 }
 .header-subtitle {
     margin: 0;
-    font-size: var(--font-size-400);
+    font-size: var(--font-size-200);
     line-height: var(--line-height-sm);
+    @media #{$mq-md} {
+        font-size: var(--font-size-400);
+    }
 }
 .header-content {
     margin-top: calc(var(--space-9) * -1);
