@@ -2,7 +2,7 @@
 // UTCで指定された日付から残り時間を算出したのち、タイムゾーンとの時差を解消
 (function() {
   window.addEventListener("load", function () {
-    const optDateUtc = document.body.getAttribute('data-target-date-utc');
+    const optDateUtc = document.documentElement.getAttribute('data-target-date-utc');
     const endDate = new Date(optDateUtc);
     const interval = 1000;
     function countdownTimer() {

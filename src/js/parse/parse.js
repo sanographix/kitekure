@@ -40,7 +40,11 @@ function csv_array(data) {
   // Date (UTC)
   // カウントダウンタイマー
   const valDateUtc = array.filter((value) => value.option === 'Date (UTC)')[0].value1;
-  document.body.setAttribute('data-target-date-utc', valDateUtc);
+  document.documentElement.setAttribute('data-target-date-utc', valDateUtc);
+
+  // Theme
+  const valTheme = array.filter((value) => value.option === 'Theme')[0].value1;
+  document.documentElement.setAttribute('data-theme', valTheme);
 
   /////////////////////////////////////
   // -Header-
