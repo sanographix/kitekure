@@ -1,34 +1,4 @@
 :root{
-    // Color
-    // Global tokens
-    --color-white: #fff;
-    --color-red: #F70138;
-    --color-gray-100: #111111;
-    --color-gray-200: #222222;
-    --color-gray-300: #333333;
-    --color-gray-400: #444444;
-    --color-gray-800: #888888;
-    --color-gray-900: #dddddd;
-    --color-primary: var(--color-red);
-
-    // Alias tokens
-    --color-bg: var(--color-gray-100);
-    --color-bg-secondary: var(--color-gray-200);
-    --color-bg-white: var(--color-white);
-    --color-bg-white-secondary: var(--color-gray-900);
-    --color-text: var(--color-white);
-    --color-text-secondary: var(--color-gray-800);
-    --color-text-highlight: var(--color-primary);
-
-    --color-btn-primary-bg: var(--color-primary);
-    --color-btn-primary-text: var(--color-text);
-    --color-btn-primary-ghost-border: var(--color-primary);
-    --color-btn-primary-ghost-text: var(--color-primary);
-
-    --color-form-bg: var(--color-gray-300);
-    --color-border: rgba(255,255,255,.16);
-    --color-border-highlight: var(--color-red);
-
     // Typography
     --font: 'DM Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
     --font-size-50: 12px;
@@ -74,6 +44,43 @@
     --z-index-bg: -1;
     --z-index-base: 1;
     --z-index-modal: 10;
+
+    // Color
+    // Global tokens
+    --color-white: #fff;
+    --color-red: #F70138;
+    --color-gray-100: #111111;
+    --color-gray-200: #222222;
+    --color-gray-300: #333333;
+    --color-gray-400: #444444;
+    --color-gray-800: #888888;
+    --color-gray-900: #dddddd;
+    --color-primary: var(--color-red);
+
+    // Alias tokens
+    --color-bg: var(--color-gray-100);
+    --color-bg-secondary: var(--color-gray-200);
+    --color-bg-white: var(--color-white);
+    --color-bg-white-secondary: var(--color-gray-900);
+    --color-text: var(--color-white);
+    --color-text-secondary: var(--color-gray-800);
+    --color-text-highlight: var(--color-primary);
+
+    --color-btn-primary-bg: var(--color-primary);
+    --color-btn-primary-text: var(--color-text);
+    --color-btn-primary-ghost-border: var(--color-primary);
+    --color-btn-primary-ghost-text: var(--color-primary);
+
+    --color-border: rgba(255,255,255,.16);
+}
+
+:root[data-theme='Light'] {
+    --color-bg: var(--color-white);
+    --color-bg-secondary: var(--color-gray-900);
+    --color-text: var(--color-gray-200);
+    --color-text-secondary: var(--color-gray-800);
+
+    --color-border: var(--color-gray-900);
 }
 
 // media queries
