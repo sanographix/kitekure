@@ -46,6 +46,9 @@ function csv_array(data) {
   const valTheme = array.filter((value) => value.option === 'Theme')[0].value1;
   document.documentElement.setAttribute('data-theme', valTheme);
 
+  // Accent Color
+  const valAccentColor = array.filter((value) => value.option === 'Accent Color (Hex)')[0].value1;
+
   /////////////////////////////////////
   // -Header-
 
