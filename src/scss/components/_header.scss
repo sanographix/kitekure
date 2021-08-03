@@ -4,11 +4,16 @@
 .header-image {
     width: 100%;
     object-fit: cover;
-    height: 500px;
+    height: 100vw; // スマホでは正方形にする
     position: relative;
     z-index: var(--z-index-bg);
-    @media #{$mq-lg} {
-        height: 700px;
+    @media #{$mq-md} {
+        height: 55vw;
+        max-height: 780px;
+        max-width: 1920px;
+    }
+    @media #{$mq-xl} {
+        height: 40vw;
     }
 }
 .header-introduce {
