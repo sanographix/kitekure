@@ -37,10 +37,15 @@ function csv_array(data) {
   const domFavicon = document.getElementById('favicon');
   domFavicon.href = valFavicon;
 
-  // Date (UTC)
+  // Date (UTC) (Option)
   // カウントダウンタイマー
   const valDateUtc = array.filter((value) => value.option === 'Date (UTC)')[0].value1;
   document.documentElement.setAttribute('data-target-date-utc', valDateUtc);
+  console.log(valDateUtc);
+  // 空欄ならカウントダウンタイマーを消す
+  if (valDateUtc == '') {
+    document.querySelector('.js-countdown').remove();
+  }
 
   // Theme
   const valTheme = array.filter((value) => value.option === 'Theme')[0].value1;
@@ -87,12 +92,10 @@ function csv_array(data) {
   // Header title
   const domTitle = document.querySelector('.js-title');
   const optTitle = array.filter((value) => value.option === 'Header Title');
-  if (domTitle && optTitle) {
-    const valTitle = optTitle[0].value1;
-    domTitle.textContent = valTitle;
-  }
+  const valTitle = optTitle[0].value1;
+  domTitle.textContent = valTitle;
 
-  // Header Subtitle
+  // Header Subtitle (Option)
   const domHeaderSubtitleWrap = document.querySelector(
     '.js-header-subtitle-wrap'
   );
@@ -104,43 +107,50 @@ function csv_array(data) {
     domHeaderSubtitleWrap.appendChild(domHeaderSubtitleClone);
   }
   domHeaderSubtitle.remove(); // コピー元を削除
-
+  // 空欄ならHTMLから非表示
+  if (optHeaderSubtitle[0].value1 == '') {
+    domHeaderSubtitleWrap.remove();
+  }
 
   // Action Button (option)
   const domActionButton = document.querySelector('.js-action-button');
   const optActionButton = array.filter((value) => value.option === 'Action Button');
-  if (domActionButton && optActionButton) {
-    const valActionButtonLabel = optActionButton[0].value1;
-    const valActionButtonUrl = optActionButton[0].value2;
-    domActionButton.textContent = valActionButtonLabel;
-    domActionButton.setAttribute('href', valActionButtonUrl);
+  const valActionButtonLabel = optActionButton[0].value1;
+  const valActionButtonUrl = optActionButton[0].value2;
+  domActionButton.textContent = valActionButtonLabel;
+  domActionButton.setAttribute('href', valActionButtonUrl);
+  // 空欄ならHTMLから非表示
+  if (valActionButtonLabel == '') {
+    domActionButton.remove();
   }
 
   // Stream
   const domStreamPlayer = document.querySelector('.js-stream-player');
   const optStream = array.filter((value) => value.option === 'Stream');
-  if (domStreamPlayer && optStream) {
-    const optStreamService = optStream[0].value1;
-    const optStreamChannel = optStream[0].value2;
-    switch (optStreamService) {
-      case 'Twitch':
-        domStreamPlayer.setAttribute(
-          'src',
-          'https://player.twitch.tv/?channel=' +
-            optStreamChannel +
-            '&parent=' +
-            hostname
-        );
-        break;
-      case 'Youtube Live':
-        domStreamPlayer.setAttribute(
-          'src',
-          'https://www.youtube.com/embed/' + optStreamChannel
-        );
-        break;
-      default:
-        domStreamPlayer.remove();
-    }
+  const valStreamService = optStream[0].value1;
+  const valStreamChannel = optStream[0].value2;
+  switch (valStreamService) {
+    case 'Twitch':
+      domStreamPlayer.setAttribute(
+        'src',
+        'https://player.twitch.tv/?channel=' +
+          valStreamChannel +
+          '&parent=' +
+          hostname
+      );
+      break;
+    case 'Youtube Live':
+      domStreamPlayer.setAttribute(
+        'src',
+        'https://www.youtube.com/embed/' + valStreamChannel
+      );
+      break;
+    default:
+      domStreamPlayer.remove();
+  }
+  // 空欄ならHTMLから非表示
+  if (valStreamChannel == '') {
+    document.querySelector('.js-stream').remove();
   }
 
   /////////////////////////////////////
