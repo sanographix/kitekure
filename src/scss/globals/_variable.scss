@@ -57,6 +57,8 @@
     --color-gray-800: #888888;
     --color-gray-900: #dddddd;
     --color-primary: var(--color-red);
+    --color-service: rgb(97, 7, 170);
+
 
     // Alias tokens
     --color-bg: var(--color-gray-100);
@@ -66,6 +68,7 @@
     --color-text: var(--color-white);
     --color-text-secondary: var(--color-gray-800);
     --color-text-highlight: var(--color-primary);
+    --color-text-white: var(--color-white);
 
     --color-btn-primary-bg: var(--color-primary);
     --color-btn-primary-text: var(--color-text);

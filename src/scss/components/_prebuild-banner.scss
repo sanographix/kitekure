@@ -1,0 +1,52 @@
+.prebuild-banner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    position: fixed;
+    align-items: center;
+    bottom: 0;
+    color: var(--color-text-white);
+    background: var(--color-service);
+    width: 100%;
+    padding: var(--space-6);
+    border-radius: var(--border-radius-base) var(--border-radius-base) 0 0;
+    box-shadow: 0 var(--space-3) var(--space-5) 0 rgba(0,0,0,0.08);
+    animation: show-banner 1s both;
+    @media #{$mq-md} {
+        flex-direction: row;
+    }
+    h1 {
+        margin: 0;
+        line-height: var(--line-height-xs);
+    }
+    p {
+        margin: var(--space-3) 0 0;
+    }
+    .prebuild-action {
+        margin-left: auto;
+    }
+    .prebuild-download {
+        background-color: var(--color-bg-white);
+        color: var(--color-service);
+        display: inline-block;
+        border-radius: var(--border-radius-base);
+        padding: var(--space-3) var(--space-4);
+        text-decoration: none;
+        min-width: 8em;
+        text-align: center;
+    }
+    @keyframes show-banner {
+        0% {
+            transform:translate(0,2em);
+            opacity:0;
+        }
+        50% {
+            transform:translate(0,2em);
+            opacity:0;
+        }
+        100% {
+            transform:translate(0,0);
+            opacity:1;
+        }
+    }
+}

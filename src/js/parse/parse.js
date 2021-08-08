@@ -293,10 +293,12 @@ function csv_array(data) {
 
 }
 
-// クエリパラメータが?preview=trueのときテンプレートをダウンロード
+// クエリパラメータが?prebuild=trueのときテンプレートをダウンロード
 const urlParam = location.search;
 console.log(urlParam);
-if (urlParam === "?preview=true") {
+if (urlParam === "?prebuild=true") {
+  // プレビュー用バナーを消す
+  document.querySelector('.js-prebuild').remove();
   // jsでの書き換えがロードしきってからDOMを取得する
   window.addEventListener("load", function () {
     const snapshot = new XMLSerializer().serializeToString(document);
