@@ -1,7 +1,9 @@
-kokuchi
+Kitekure
 ===========
 
-## Run npm
+### The club event website builder with no coding
+
+## Set up
 
 ```
 $ npm install
