@@ -50,6 +50,7 @@
     --color-white: #fff;
     --color-ivory: #F0EDEA;
     --color-red: #F70138;
+    --color-black: #000;
     --color-gray-100: #111111;
     --color-gray-200: #222222;
     --color-gray-300: #333333;
@@ -66,6 +67,7 @@
     --color-bg-white: var(--color-white);
     --color-bg-white-secondary: var(--color-gray-900);
     --color-text: var(--color-white);
+    --color-text-invert: var(--color-black);
     --color-text-secondary: var(--color-gray-800);
     --color-text-highlight: var(--color-primary);
     --color-text-white: var(--color-white);
@@ -83,7 +85,7 @@
     --color-bg-secondary: var(--color-gray-900);
     --color-text: var(--color-gray-200);
     --color-text-secondary: var(--color-gray-800);
-
+    --color-text-invert: var(--color-white);
     --color-border: var(--color-gray-900);
 }
 

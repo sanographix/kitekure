@@ -1,4 +1,4 @@
-Kitekure
+Kitekure (来てくれ)
 ===========
 
 ### The club event website builder with no coding
