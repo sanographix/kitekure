@@ -81,14 +81,6 @@ function csv_array(data) {
       domHeaderImage.remove();
   }
 
-  // Header Introduce
-  const domHeaderIntroduce = document.querySelector('.js-header-introduce');
-  const optHeaderIntroduce = array.filter(
-    (value) => value.option === 'Header Introduce'
-  );
-  const valHeaderIntroduce = optHeaderIntroduce[0].value1;
-  domHeaderIntroduce.textContent = valHeaderIntroduce;
-
   // Header title
   const domTitle = document.querySelector('.js-title');
   const optTitle = array.filter((value) => value.option === 'Header Title');

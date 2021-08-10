@@ -1,12 +1,41 @@
+.header-wrapper {
+    margin: auto;
+    margin-left: var(--col-space);
+    margin-right: var(--col-space);
+    @media #{$mq-md} {
+        margin-right: auto;
+    }
+    @media #{$mq-xl} {
+        margin-left: auto;
+        max-width: var(--col-width-lg);
+    }
+    @media #{$mq-xxl} {
+    }
+}
 .header {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: var(--space-3);
+    @media #{$mq-md} {
+        flex-direction: row;
+        align-items: center;
+        gap: 3%;
+    }
 }
 .header-content {
     flex: 1;
+    @media #{$mq-md} {
+        order: 1;
+    }
 }
 .header-image-layout {
-    width: 60%;
+    margin-left: calc(var(--col-space) * -1);
+    margin-right: calc(var(--col-space) * -1);
+    @media #{$mq-md} {
+        order: 2;
+        width: 60%;
+        margin: 0;
+    }
 }
 .header-image-wrap {
     width: 100%;
@@ -21,28 +50,39 @@
     height: 100%;
     object-fit: cover;
 }
-.header-introduce {
-    margin: 0 0 var(--space-2);
-}
+
 .header-title {
     margin-top: 0;
-    margin-bottom: var(--space-4);
-    margin-right: calc(-150% + 28%); // 右に余白入れる
+    margin-bottom: var(--space-3);
     color: var(--color-text);
-    font-size: var(--font-size-title);
-    background: linear-gradient(90deg, var(--color-text) 45%, var(--color-text-invert) 45%);
     line-height: var(--line-height-xs);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: var(--font-size-500);
+    @media #{$mq-md} {
+        margin-bottom: var(--space-4);
+        background: linear-gradient(90deg, var(--color-text) 45%, var(--color-text-invert) 45%); // 中頃で色反転する。45%は計算したわけではなく目視でたまたま境界にピタリだった値
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-right: -140%; // 右に表示領域を伸ばす。140%は決め打ち
+        font-size: var(--font-size-900);
+    }
+    @media #{$mq-lg} {
+        font-size: var(--font-size-title);
+    }
 }
 .header-subtitle {
     margin: var(--space-2) 0 0;
-    font-size: var(--font-size-200);
     line-height: var(--line-height-sm);
-    @media #{$mq-md} {
+    @media #{$mq-lg} {
+        font-size: var(--font-size-200);
+    }
+    @media #{$mq-xl} {
         font-size: var(--font-size-300);
     }
 }
 .action-button {
     margin-top: var(--space-4);
+    text-align: center;
+    @media #{$mq-md} {
+        text-align: initial;
+    }
 }

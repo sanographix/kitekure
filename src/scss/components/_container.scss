@@ -1,10 +1,10 @@
 @mixin container() {
-    margin-left: 5vw;
-    margin-right: 5vw;
+    margin-left: var(--col-space);
+    margin-right: var(--col-space);
     @media #{$mq-md} {
-        width: 90%;
         margin-left: auto;
         margin-right: auto;
+        width: var(--col-width);
         max-width: var(--col-width-lg);
     }
 }

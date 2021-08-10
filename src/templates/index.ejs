@@ -28,10 +28,28 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <div class="container">
+    <div class="header-wrapper">
       <header class="header">
+        <div class="header-image-layout">
+          <div class="header-image-wrap">
+            <video
+              class="header-image header-image-type-video js-header-video"
+              src=""
+              alt=""
+              autoplay
+              playsinline
+              muted
+              loop
+              width="500"
+            ></video>
+            <img
+              class="header-image header-image-type-image js-header-image"
+              src=""
+              alt=""
+            />
+          </div>
+        </div>
         <div class="header-content">
-          <div class="header-introduce js-header-introduce">Header Introduce</div>
           <h1 class="header-title js-title">Header Title</h1>
           <div class="header-subtitle-wrap js-header-subtitle-wrap">
             <p class="header-subtitle js-header-subtitle">Header Subtitle</p>
@@ -61,25 +79,6 @@
             >
               Action Button
             </a>
-          </div>
-        </div>
-        <div class="header-image-layout">
-          <div class="header-image-wrap">
-            <video
-              class="header-image header-image-type-video js-header-video"
-              src=""
-              alt=""
-              autoplay
-              playsinline
-              muted
-              loop
-              width="500"
-            ></video>
-            <img
-              class="header-image header-image-type-image js-header-image"
-              src=""
-              alt=""
-            />
           </div>
         </div>
       </header>
@@ -225,7 +224,10 @@
       <div class="prebuild-container">
         <div class="prebuild-content">
           <h1>Almost Done...!</h1>
-          <p>あと一息で公開できます！ 右のボタンで公開用ファイルをダウンロードして、次のステップに進んでください。</p>
+          <p>
+            <strong>プレビューを表示しています。</strong><br>
+            あと一息で公開できます！ ページをよく確認して、内容に間違いなければ公開用ファイルをダウンロードしてください。次のステップに進みましょう！
+          </p>
         </div>
         <div class="prebuild-action">
           <a href="/?prebuild=true" class="prebuild-download">👉 Download</a>
