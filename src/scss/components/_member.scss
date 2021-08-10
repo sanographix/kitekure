@@ -1,30 +1,33 @@
 .member {
+    display: flex;
+    gap: var(--space-3);
+    flex-direction: column;
+    // 奇数・偶数でレイアウトが違う
     @media #{$mq-md} {
-        display: flex;
-        // 奇数・偶数でレイアウトが違う
-        gap: var(--space-7);
-        align-items: center;
         &:nth-child(even) {
             flex-direction: row-reverse;
             text-align: right;
         }
     }
+    @media #{$mq-lg} {
+        gap: var(--space-5);
+        flex-direction: row;
+        align-items: center;
+    }
     & + .member {
-        margin-top: var(--space-6);
+        margin-top: var(--space-7);
     }
 }
 .member-fig {
     img {
         display: block;
-        border-radius: 50%;
         width: 180px;
         height: 180px;
+        margin: auto;
     }
 }
 .member-content {
-    @media #{$mq-md} {
-        width: var(--col-width-sm);
-    }
+
 }
 .member-role {
     color: var(--color-text-highlight);
@@ -35,11 +38,13 @@
     margin-bottom: var(--space-2);
 }
 .member-name {
-    font-size: var(--font-size-600);
     margin: 0 0 var(--space-3);
     line-height: var(--line-height-xs);
+    font-size: var(--font-size-300);
+    @media #{$mq-lg} {
+        font-size: var(--font-size-400);
+    }
 }
 .member-profile {
-    font-size: var(--font-size-200);
     margin: 0 0 var(--space-3);
 }
