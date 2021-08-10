@@ -1,5 +1,5 @@
 .nav-menu {
-    margin: var(--space-6);
+    margin: 0 var(--col-space);
     background: var(--color-bg);
     position: sticky;
     top: var(--space-3);
@@ -9,6 +9,9 @@
     border-radius: 100px; // 決め打ち
     overflow: auto;
     white-space: nowrap;
+    @media #{$mq-md} {
+        margin: var(--space-6);
+    }
     &::-webkit-scrollbar {
         display: none;
     }
@@ -21,10 +24,12 @@
     gap: var(--space-4);
 }
 .nav-menu-link {
-    font-size: var(--font-size-200);
     color: var(--color-text);
     text-decoration: none;
     transition: all .25s;
+    @media #{$mq-md} {
+        font-size: var(--font-size-200);
+    }
     &:hover {
         color: var(--color-text-highlight);
         box-shadow: inset 0 -3px 0 0 var(--color-text-highlight);

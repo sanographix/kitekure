@@ -13,16 +13,3 @@
 .container {
     @include container();
 }
-.container-compact {
-    @media #{$mq-lg} {
-        display: flex;
-        &::before {
-            content: "";
-            display: block;
-            flex: 1;
-        }
-        .container-compact-content {
-            width: var(--col-width-sm);
-        }
-    }
-}

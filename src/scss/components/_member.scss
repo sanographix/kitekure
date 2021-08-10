@@ -2,17 +2,15 @@
     display: flex;
     gap: var(--space-3);
     flex-direction: column;
-    // 奇数・偶数でレイアウトが違う
-    @media #{$mq-md} {
-        &:nth-child(even) {
-            flex-direction: row-reverse;
-            text-align: right;
-        }
-    }
     @media #{$mq-lg} {
         gap: var(--space-5);
         flex-direction: row;
         align-items: center;
+        // 奇数・偶数でレイアウトが違う
+        &:nth-child(even) {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
     }
     & + .member {
         margin-top: var(--space-7);
@@ -25,9 +23,6 @@
         height: 180px;
         margin: auto;
     }
-}
-.member-content {
-
 }
 .member-role {
     color: var(--color-text-highlight);

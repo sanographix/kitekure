@@ -41,7 +41,6 @@ function csv_array(data) {
   // カウントダウンタイマー
   const valDateUtc = array.filter((value) => value.option === 'Date (UTC)')[0].value1;
   document.documentElement.setAttribute('data-target-date-utc', valDateUtc);
-  console.log(valDateUtc);
   // 空欄ならカウントダウンタイマーを消す
   if (valDateUtc == '') {
     document.querySelector('.js-countdown').remove();
@@ -273,7 +272,6 @@ function csv_array(data) {
   const domMemberWrap = document.querySelector('.js-member-wrap');
   const domMember = document.querySelector('.js-member'); // コピー元を取得
   const optMember = array.filter((value) => value.option === 'Member');
-  console.log(optMember);
   for (let i = 0; i < optMember.length; i++) {
     const domMemberClone = domMember.cloneNode(true);
     domMemberClone.querySelector('.js-member-name').textContent = optMember[i].value1;
@@ -311,7 +309,6 @@ function csv_array(data) {
 
 // クエリパラメータが?prebuild=trueのときテンプレートをダウンロード
 const urlParam = location.search;
-console.log(urlParam);
 if (urlParam === "?prebuild=true") {
   // プレビュー用バナーを消す
   document.querySelector('.js-prebuild').remove();
