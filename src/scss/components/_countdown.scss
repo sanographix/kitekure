@@ -1,9 +1,7 @@
 .countdown {
     display: flex;
+    gap: var(--space-4);
     margin-top: var(--space-4);
-    & > div {
-        margin: 0 var(--space-4);
-    }
 }
 .countdown-value {
     font-size: var(--font-size-400);
