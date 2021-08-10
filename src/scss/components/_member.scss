@@ -6,11 +6,6 @@
         gap: var(--space-5);
         flex-direction: row;
         align-items: center;
-        // 奇数・偶数でレイアウトが違う
-        &:nth-child(even) {
-            flex-direction: row-reverse;
-            text-align: right;
-        }
     }
     & + .member {
         margin-top: var(--space-7);
@@ -21,7 +16,6 @@
         display: block;
         width: 180px;
         height: 180px;
-        margin: auto;
     }
 }
 .member-role {
@@ -42,4 +36,5 @@
 }
 .member-profile {
     margin: 0 0 var(--space-3);
+    font-size: var(--font-size-75);
 }
