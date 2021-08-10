@@ -1,19 +1,42 @@
 .prebuild-banner {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
     position: fixed;
     align-items: center;
     bottom: 0;
     color: var(--color-text-white);
     background: var(--color-service);
     width: 100%;
-    padding: var(--space-6);
     border-radius: var(--border-radius-base) var(--border-radius-base) 0 0;
     box-shadow: 0 var(--space-3) var(--space-5) 0 rgba(0,0,0,0.08);
     animation: show-banner 1s both;
+    overflow: hidden;
+}
+.prebuild-toggle {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    color: var(--color-text-white);
+    padding: var(--space-2) var(--space-6);
+    transition: background .25s;
+    &:hover {
+        background: rgba(0,0,0,.16);
+    }
+}
+.prebuild-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-2) var(--space-6) var(--space-6);
+    transition: all .25s;
     @media #{$mq-md} {
         flex-direction: row;
+    }
+    // 最小化
+    .is-minimize & {
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        overflow: hidden;
     }
     h1 {
         margin: 0;

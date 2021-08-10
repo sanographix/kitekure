@@ -38,3 +38,17 @@
     }
   });
 }());
+
+// prebuildバナー
+(function() {
+  window.addEventListener("load", function () {
+    const banner = document.querySelector('.js-prebuild');
+    const toggleBtn = document.querySelector('.js-prebuild-toggle');
+    // バナーが存在するときはトグルで最小化できる
+    if (banner) {
+      toggleBtn.addEventListener('click', function(){
+        banner.classList.toggle('is-minimize');
+      });
+    }
+  });
+}());
