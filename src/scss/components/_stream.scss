@@ -1,31 +1,51 @@
 .section-stream {
-    overflow: hidden;
     position: relative;
 }
 .stream-marquee {
+    overflow: hidden;
+    width: 100%;
     position: absolute;
-    bottom: 0;
+    bottom: -15%;
     z-index: var(--z-index-bg);
     font-size: var(--font-size-title);
-    line-height: var(--line-height-xs);
     text-transform: uppercase;
     white-space: nowrap;
-    opacity: .3;
-    transform: translate3d(-50%, 0, 0);
+    -webkit-text-stroke: 1px var(--color-text);
+    text-stroke: 1px var(--color-text);
+    color: transparent;
+    font-weight: bold;
+    font-style: italic;
     &.stream-marquee-top {
-        top: 0;
+        top: -15%;
+        bottom: unset;
     }
 }
 @keyframes stream-marquee {
     0%{
-        transform: translate3d(-50%, 0, 0);
+        transform: translateX(0);
     }
     100%{
-        transform: translate3d(50%, 0, 0);
+        transform: translateX(-100%);
     }
 }
-.stream-player-container:hover ~ .stream-marquee {
+@keyframes stream-marquee-reverse {
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+.marquee-text {
+    display: inline-block;
+}
+
+.stream-player-container:hover ~ .stream-marquee .marquee-text {
     animation: stream-marquee 16s linear infinite;
+}
+.stream-player-container:hover ~ .stream-marquee-top .marquee-text {
+    animation: stream-marquee-reverse 16s linear infinite;
 }
 
 .stream-player-container {
