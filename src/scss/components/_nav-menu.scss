@@ -1,13 +1,24 @@
 .nav-menu {
-    margin-top: var(--space-6);
+    margin: var(--space-6);
     background: var(--color-bg);
-    padding: var(--space-3);
-    display: flex;
-    justify-content: center;
-    gap: var(--space-4);
     position: sticky;
-    top: 0;
-    filter:invert(100%); // 白背景にする
+    top: var(--space-3);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    background-color: var(--color-blur);
+    border-radius: 100px; // 決め打ち
+    overflow: auto;
+    white-space: nowrap;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+.nav-menu-inner {
+    width: fit-content; // 画面がでかければ中央寄せ、狭ければ左寄せ
+    margin: auto;
+    padding: var(--space-2) var(--space-3);
+    display: flex;
+    gap: var(--space-4);
 }
 .nav-menu-link {
     font-size: var(--font-size-200);

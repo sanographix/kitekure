@@ -59,7 +59,8 @@
     --color-gray-900: #dddddd;
     --color-primary: var(--color-red);
     --color-service: rgb(97, 7, 170);
-
+    --color-white-transparent: rgba(255,255,255,.16);  // 背景の上に薄い色を重ねたいとき
+    --color-black-transparent: rgba(0,0,0,.08);  // 背景の上に薄い色を重ねたいとき
 
     // Alias tokens
     --color-bg: var(--color-gray-100);
@@ -77,7 +78,8 @@
     --color-btn-primary-ghost-border: var(--color-primary);
     --color-btn-primary-ghost-text: var(--color-primary);
 
-    --color-border: rgba(255,255,255,.16);
+    --color-border: var(--color-white-transparent);
+    --color-blur: var(--color-white-transparent);
 }
 
 :root[data-theme='Light'] {
@@ -86,7 +88,8 @@
     --color-text: var(--color-gray-200);
     --color-text-secondary: var(--color-gray-800);
     --color-text-invert: var(--color-white);
-    --color-border: var(--color-gray-900);
+    --color-border: var(--color-black-transparent);
+    --color-blur: var(--color-black-transparent);
 }
 
 // media queries
