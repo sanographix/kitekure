@@ -59,14 +59,19 @@
     font-size: var(--font-size-500);
     @media #{$mq-md} {
         margin-bottom: var(--space-4);
-        background: linear-gradient(90deg, var(--color-text) 45%, var(--color-text-invert) 45%); // 中頃で色反転する。45%は計算したわけではなく目視でたまたま境界にピタリだった値
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
         margin-right: -140%; // 右に表示領域を伸ばす。140%は決め打ち
         font-size: var(--font-size-900);
     }
     @media #{$mq-lg} {
         font-size: var(--font-size-title);
+    }
+    // 途中で色反転するオプション
+    &.is-reverse-color {
+        @media #{$mq-md} {
+            background: linear-gradient(90deg, var(--color-text) 45%, var(--color-text-invert) 45%); // 中頃で色反転する。45%は計算したわけではなく目視でたまたま境界にピタリだった値
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     }
 }
 .header-subtitle {

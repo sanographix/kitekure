@@ -86,6 +86,14 @@ function csv_array(data) {
   const valTitle = optTitle[0].value1;
   domTitle.textContent = valTitle;
 
+  // Reverse Title Color
+  const optReverseTitleColor = array.filter((value) => value.option === 'Reverse Title Color on Image');
+  const valReverseTitleColor = optReverseTitleColor[0].value1;
+  // 有効時
+  if (valReverseTitleColor == '✅') {
+    domTitle.classList.toggle('is-reverse-color');
+  }
+
   // Header Subtitle (Option)
   const domHeaderSubtitleWrap = document.querySelector(
     '.js-header-subtitle-wrap'
