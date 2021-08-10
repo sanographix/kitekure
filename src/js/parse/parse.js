@@ -147,6 +147,13 @@ function csv_array(data) {
 
   /////////////////////////////////////
   // -Introduction-
+  // Introduction　Heading
+  const domIntroductionHeading = document.querySelector('.js-introduction-heading');
+  const optIntroductionHeading = array.filter((value) => value.option === 'Introduction Heading');
+  const valIntroductionHeading = optIntroductionHeading[0].value1;
+  domIntroductionHeading.textContent = valIntroductionHeading;
+  document.querySelector('.js-nav-link-about').textContent = valIntroductionHeading;
+
   // Introduction
   const domIntroductionWrap = document.querySelector('.js-introduction-wrap');
   const domIntroduction = document.querySelector('.js-introduction'); // コピー元を取得
@@ -229,6 +236,15 @@ function csv_array(data) {
 
   /////////////////////////////////////
   // -Schedule-
+
+  // Schedule Heading
+  const domScheduleHeading = document.querySelector('.js-schedule-heading');
+  const optScheduleHeading = array.filter((value) => value.option === 'Schedule Heading');
+  const valScheduleHeading = optScheduleHeading[0].value1;
+  domScheduleHeading.textContent = valScheduleHeading;
+  document.querySelector('.js-nav-link-schedule').textContent = valScheduleHeading;
+
+  // Schedule
   const domScheduleWrap = document.querySelector('.js-schedule-wrap');
   const domSchedule = document.querySelector('.js-schedule'); // コピー元を取得
   const optSchedule = array.filter((value) => value.option === 'Schedule');
@@ -245,7 +261,15 @@ function csv_array(data) {
   domSchedule.remove(); // コピー元を削除
 
   /////////////////////////////////////
-  // -members-
+  // -member-
+  // Member heading
+  const domMemberHeading = document.querySelector('.js-member-heading');
+  const optMemberHeading = array.filter((value) => value.option === 'Member Heading');
+  const valMemberHeading = optMemberHeading[0].value1;
+  domMemberHeading.textContent = valMemberHeading;
+  document.querySelector('.js-nav-link-member').textContent = valMemberHeading;
+
+  // Member
   const domMemberWrap = document.querySelector('.js-member-wrap');
   const domMember = document.querySelector('.js-member'); // コピー元を取得
   const optMember = array.filter((value) => value.option === 'Member');
