@@ -35,6 +35,7 @@ function csv_array(data) {
 
   // host
   const hostname = location.hostname;
+  const hostHref = location.href.replace(/\?.*$/,"");
 
   // Favicon
   const optFavicon = array.filter((value) => value.option === 'Site Icon (favicon)');
@@ -56,10 +57,10 @@ function csv_array(data) {
       'content': siteTitle
     }, {
       'property': 'og:url',
-      'content': location.protocol + location.hostname
+      'content': hostHref
     }, {
       'name': 'og:image',
-      'content': location.protocol + location.hostname + valOgImage
+      'content': hostHref + valOgImage
     }, {
       'name': 'twitter:title',
       'content': siteTitle
@@ -68,7 +69,7 @@ function csv_array(data) {
       'content': ''
     }, {
       'name': 'twitter:image',
-      'content': location.href + valOgImage
+      'content': hostHref + valOgImage
     }
   ]
   for (let i = 0; i < OGP.length; i++) {
