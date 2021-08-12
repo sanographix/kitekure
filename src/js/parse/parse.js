@@ -24,9 +24,13 @@ function csv_array(data) {
   /////////////////////////////////////
   // -Basics-
   // Site Title
-  const optSiteTitle = array.filter((value) => value.option === 'Site Title');
-  const valSiteTitle = optSiteTitle[0].value1;
-  document.title = valSiteTitle;
+  const optEventTitle = array.filter((value) => value.option === 'Event Title');
+  const optEventDate = array.filter((value) => value.option === 'Date (Local Time)');
+
+  const valEventTitle = optEventTitle[0].value1;
+  const valEventDate = optEventDate[0].value1;
+  const siteTitle = new String(valEventTitle + ' | ' + valEventDate);
+  document.title = siteTitle;
 
   // host
   const hostname = location.hostname;
@@ -184,11 +188,7 @@ function csv_array(data) {
 
   // Date
   const domEventDate = document.querySelector('.js-event-date');
-  const optEventDate = array.filter(
-    (value) => value.option === 'Date (Local Time)'
-  );
   if (domEventDate && optEventDate) {
-    const valEventDate = optEventDate[0].value1;
     domEventDate.textContent = valEventDate;
   }
 
