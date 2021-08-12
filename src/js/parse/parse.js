@@ -23,6 +23,7 @@ function csv_array(data) {
 
   /////////////////////////////////////
   // -Basics-
+
   // Site Title
   const optEventTitle = array.filter((value) => value.option === 'Event Title');
   const optEventDate = array.filter((value) => value.option === 'Date (Local Time)');
@@ -40,6 +41,43 @@ function csv_array(data) {
   const valFavicon = optFavicon[0].value1;
   const domFavicon = document.getElementById('favicon');
   domFavicon.href = valFavicon;
+
+  // og-image
+  const optOgImage = array.filter((value) => value.option === 'Share Image');
+  const valOgImage = optOgImage[0].value1;
+
+  // OGP
+  const OGP = [
+    {
+      'property': 'og:description',
+      'content': ''
+    }, {
+      'property': 'og:title',
+      'content': siteTitle
+    }, {
+      'property': 'og:url',
+      'content': location.protocol + location.hostname
+    }, {
+      'name': 'og:image',
+      'content': location.protocol + location.hostname + valOgImage
+    }, {
+      'name': 'twitter:title',
+      'content': siteTitle
+    }, {
+      'name': 'twitter:description',
+      'content': ''
+    }, {
+      'name': 'twitter:image',
+      'content': location.href + valOgImage
+    }
+  ]
+  for (let i = 0; i < OGP.length; i++) {
+    const metaTag = document.createElement('meta');
+    for (let prop in OGP[i]) {
+        metaTag.setAttribute(prop, OGP[i][prop]);
+    }
+    document.head.appendChild(metaTag);
+  }
 
   // Date (UTC) (Option)
   // カウントダウンタイマー
