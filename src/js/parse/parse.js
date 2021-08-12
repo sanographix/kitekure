@@ -35,7 +35,7 @@ function csv_array(data) {
 
   // host
   const hostname = location.hostname;
-  const hostHref = location.href.replace(/\?.*$/,"");
+  const hostHref = location.href.replace(/\?.*$/,""); // クエリパラメータを削除
 
   // Favicon
   const optFavicon = array.filter((value) => value.option === 'Site Icon (favicon)');
