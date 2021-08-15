@@ -125,9 +125,7 @@ function csv_array(data) {
 
   // Header title
   const domTitle = document.querySelector('.js-title');
-  const optTitle = array.filter((value) => value.option === 'Header Title');
-  const valTitle = optTitle[0].value1;
-  domTitle.textContent = valTitle;
+  domTitle.textContent = valEventTitle;
 
   // Reverse Title Color
   const optReverseTitleColor = array.filter((value) => value.option === 'Reverse Title Color on Image');
@@ -215,70 +213,7 @@ function csv_array(data) {
   }
   domIntroduction.remove(); // コピー元を削除
 
-  /////////////////////////////////////
-  // -Overview-
 
-  // Title
-  const domEventTitle = document.querySelector('.js-event-title');
-  if (domEventTitle && optTitle) {
-    const valTitle = optTitle[0].value1;
-    domEventTitle.textContent = valTitle;
-  }
-
-  // Date
-  const domEventDate = document.querySelector('.js-event-date');
-  if (domEventDate && optEventDate) {
-    domEventDate.textContent = valEventDate;
-  }
-
-  // Venue
-  const domEventVenueLabel = document.querySelector('.js-event-venue-label');
-  const domEventVenueContent = document.querySelector(
-    '.js-event-venue-content'
-  );
-  const optEventVenue = array.filter((value) => value.option === 'Venue');
-  if (domEventVenueLabel && optEventVenue) {
-    const valEventVenueHeading = optEventVenue[0].value1;
-    const valEventVenueTitle = optEventVenue[0].value2;
-    domEventVenueLabel.textContent = valEventVenueHeading;
-    domEventVenueContent.textContent = valEventVenueTitle;
-  }
-
-  // Address (option)
-  const domEventVenueAddress = document.querySelector(
-    '.js-event-venue-address'
-  );
-  const optEventVenueAddress = array.filter((value) => value.option === 'Address');
-  if (domEventVenueAddress && optEventVenueAddress) {
-    const valEventVenueAddress = optEventVenueAddress[0].value1;
-    domEventVenueAddress.textContent = valEventVenueAddress;
-  } else {
-    domEventVenueAddress.remove();
-  }
-
-  // map (Option)
-  const domMap = document.querySelector('.js-event-venue-map');
-  if (optEventVenueAddress[0].value2 != '') {
-    domMap.setAttribute('src', 'https://www.google.com/maps/embed?pb=' + optEventVenueAddress[0].value2);
-  } else {
-    domMap.remove();
-  }
-
-  // Additional Overview (option)
-  const domOverview = document.querySelector('.js-overview');
-  const domOverviewLabel = document.querySelector('.js-overview-label');
-  const domOverviewContent = document.querySelector('.js-overview-content');
-  const optOverview = array.filter((value) => value.option === 'Overview');
-  for (let i = 0; i < optOverview.length; i++) {
-    const domOverviewLabelClone = domOverviewLabel.cloneNode(true);
-    const domOverviewContentClone = domOverviewContent.cloneNode(true);
-    domOverviewLabelClone.textContent = optOverview[i].value1;
-    domOverview.appendChild(domOverviewLabelClone);
-    domOverviewContentClone.textContent = optOverview[i].value2;
-    domOverview.appendChild(domOverviewContentClone);
-  }
-  domOverviewLabel.remove();
-  domOverviewContent.remove();
 
   /////////////////////////////////////
   // -Schedule-
@@ -339,6 +274,65 @@ function csv_array(data) {
     domMemberWrap.appendChild(domMemberClone);
   }
   domMember.remove(); // コピー元を削除
+
+
+  /////////////////////////////////////
+  // -Overview-
+
+  // Date
+  const domEventDate = document.querySelector('.js-event-date');
+  if (domEventDate && optEventDate) {
+    domEventDate.textContent = valEventDate;
+  }
+
+  // Venue
+  const domEventVenueLabel = document.querySelector('.js-event-venue-label');
+  const domEventVenueContent = document.querySelector(
+    '.js-event-venue-content'
+  );
+  const optEventVenue = array.filter((value) => value.option === 'Venue');
+  if (domEventVenueLabel && optEventVenue) {
+    const valEventVenueHeading = optEventVenue[0].value1;
+    const valEventVenueTitle = optEventVenue[0].value2;
+    domEventVenueLabel.textContent = valEventVenueHeading;
+    domEventVenueContent.textContent = valEventVenueTitle;
+  }
+
+  // Address (option)
+  const domEventVenueAddress = document.querySelector(
+    '.js-event-venue-address'
+  );
+  const optEventVenueAddress = array.filter((value) => value.option === 'Address');
+  if (domEventVenueAddress && optEventVenueAddress) {
+    const valEventVenueAddress = optEventVenueAddress[0].value1;
+    domEventVenueAddress.textContent = valEventVenueAddress;
+  } else {
+    domEventVenueAddress.remove();
+  }
+
+  // map (Option)
+  const domMap = document.querySelector('.js-event-venue-map');
+  if (optEventVenueAddress[0].value2 != '') {
+    domMap.setAttribute('src', 'https://www.google.com/maps/embed?pb=' + optEventVenueAddress[0].value2);
+  } else {
+    domMap.remove();
+  }
+
+  // Additional Overview (option)
+  const domOverview = document.querySelector('.js-overview');
+  const domOverviewLabel = document.querySelector('.js-overview-label');
+  const domOverviewContent = document.querySelector('.js-overview-content');
+  const optOverview = array.filter((value) => value.option === 'Overview');
+  for (let i = 0; i < optOverview.length; i++) {
+    const domOverviewLabelClone = domOverviewLabel.cloneNode(true);
+    const domOverviewContentClone = domOverviewContent.cloneNode(true);
+    domOverviewLabelClone.textContent = optOverview[i].value1;
+    domOverview.appendChild(domOverviewLabelClone);
+    domOverviewContentClone.textContent = optOverview[i].value2;
+    domOverview.appendChild(domOverviewContentClone);
+  }
+  domOverviewLabel.remove();
+  domOverviewContent.remove();
 
   /////////////////////////////////////
   // -Notice-
