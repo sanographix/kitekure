@@ -56,6 +56,10 @@
     margin-bottom: var(--space-3);
     color: var(--color-text);
     line-height: var(--line-height-xs);
+    display: -webkit-box;
+    -webkit-line-clamp: 5; // 5行以降は切れる
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     font-size: var(--font-size-500);
     @media #{$mq-md} {
         margin-bottom: var(--space-4);
