@@ -47,11 +47,16 @@ function csv_array(data) {
   const optOgImage = array.filter((value) => value.option === 'Share Image');
   const valOgImage = optOgImage[0].value1;
 
+  // og-description
+  // Introduction の1行目の値を利用する
+  const optIntroduction = array.filter((value) => value.option === 'Introduction');
+  const valIntroduction = optIntroduction[0].value1;
+
   // OGP
   const OGP = [
     {
       'property': 'og:description',
-      'content': ''
+      'content': valIntroduction
     }, {
       'property': 'og:title',
       'content': siteTitle
@@ -66,7 +71,7 @@ function csv_array(data) {
       'content': siteTitle
     }, {
       'name': 'twitter:description',
-      'content': ''
+      'content': valIntroduction
     }, {
       'name': 'twitter:image',
       'content': hostHref + valOgImage
@@ -205,7 +210,6 @@ function csv_array(data) {
   // Introduction
   const domIntroductionWrap = document.querySelector('.js-introduction-wrap');
   const domIntroduction = document.querySelector('.js-introduction'); // コピー元を取得
-  const optIntroduction = array.filter((value) => value.option === 'Introduction');
   for (let i = 0; i < optIntroduction.length; i++) {
     const domIntroductionClone = domIntroduction.cloneNode(true);
     domIntroductionClone.textContent = optIntroduction[i].value1;
