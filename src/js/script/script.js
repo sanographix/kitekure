@@ -39,26 +39,6 @@
   });
 }());
 
-// googleカレンダーに追加
-(function() {
-  window.addEventListener("load", function () {
-    const optDateUtc = document.documentElement.getAttribute('data-target-date-utc');
-    const utcDate = new Date(optDateUtc);
-    const googleCalendar = 'https://www.google.com/calendar/event?action=TEMPLATE';
-    // カレンダーで登録するタイトル
-    const calText = document.title;
-    // カレンダーで登録する日付
-    const calDate = utcDate.getFullYear() + "" +  ("0" + (utcDate.getMonth() + 1)).slice(-2) + ("0" + utcDate.getDate()).slice(-2) + "T" + ("0" + utcDate.getHours()).slice(-2) + ("0" + utcDate.getMinutes()).slice(-2) + ("0" + utcDate.getSeconds()).slice(-2) + "Z";
-
-    // リンクを組み立てる
-    // 終了時刻はわからないのでとりあえず同じ時間としておく
-    const link = googleCalendar + "&text=" + calText + "&dates=" + calDate + "/" + calDate;
-
-    const addCalendarBtn = document.querySelector('.js-add-google-calendar');
-    addCalendarBtn.setAttribute('href', link);
-  });
-}());
-
 // prebuildバナー
 (function() {
   window.addEventListener("load", function () {

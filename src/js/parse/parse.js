@@ -94,6 +94,24 @@ function csv_array(data) {
     document.querySelector('.js-countdown').remove();
   }
 
+  // googleカレンダーに追加
+  const addCalendarBtn = document.querySelector('.js-add-google-calendar');
+  if (valDateUtc == '') {
+    // 空欄ならボタンを消す
+    addCalendarBtn.remove();
+  } else {
+    // 値が入っていればカレンダー追加ボタンのhref属性を組み立てる
+    const utcDate = new Date(valDateUtc);
+    const googleCalendarUrl = 'https://www.google.com/calendar/event?action=TEMPLATE';
+    // カレンダーで登録する日付
+    const calDate = utcDate.getFullYear() + '' + ('0' + (utcDate.getMonth() + 1)).slice(-2) + ('0' + utcDate.getDate()).slice(-2) + 'T' + ('0' + utcDate.getHours()).slice(-2) + ('0' + utcDate.getMinutes()).slice(-2) + ('0' + utcDate.getSeconds()).slice(-2) + 'Z';
+    // リンクを組み立てる
+    // 終了時刻はわからないのでとりあえず同じ時間としておく
+    const calLink = googleCalendarUrl + '&text=' + valEventTitle + '&details=' + hostHref + '&dates=' + calDate + '/' + calDate;
+
+    addCalendarBtn.setAttribute('href', calLink);
+  }
+
   // Theme
   const valTheme = array.filter((value) => value.option === 'Theme')[0].value1;
   document.documentElement.setAttribute('data-theme', valTheme);
@@ -350,6 +368,9 @@ function csv_array(data) {
   }
   domNotice.remove(); // コピー元を削除
 
+  /////////////////////////////////////
+  // footer
+  document.querySelector('.js-copyright').textContent = valEventTitle;
 }
 
 // クエリパラメータが?prebuild=trueのときテンプレートをダウンロード
