@@ -1,0 +1,63 @@
+.footer {
+    margin: var(--space-6) auto;
+}
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+    color: var(--color-text-secondary);
+    flex-direction: column;
+    @media #{$mq-md} {
+        flex-direction: row;
+        align-items: flex-end;
+    }
+}
+.copyright-heading {
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--color-text-secondary);
+}
+.footer-text {
+    margin: 0;
+    font-size: var(--font-size-50);
+}
+.theme-info {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: var(--space-3);
+    justify-content: space-between;
+}
+.theme-info-label {
+    font-size: var(--font-size-50);
+    @media #{$mq-md} {
+        text-align: right;
+    }
+    p {
+        margin: 0;
+    }
+    a {
+        font-weight: bold;
+        text-decoration: none;
+        color: var(--color-text-secondary);
+    }
+}
+.install-btn {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    line-height: var(--line-height-sm);
+    font-family: inherit;
+    font-size: var(--font-size-50);
+    letter-spacing: var(--letter-spacing-2);
+    text-decoration: none;
+    text-align: center;
+    transition: all .25s;
+    border: 0;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 1px var(--color-text-secondary);
+    color: var(--color-text-secondary);
+    &:hover {
+        color: var(--color-text-invert);
+        background-color: var(--color-text-secondary);
+    }
+}
