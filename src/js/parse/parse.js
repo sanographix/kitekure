@@ -30,7 +30,13 @@ function csv_array(data) {
 
   const valEventTitle = optEventTitle[0].value1;
   const valEventDate = optEventDate[0].value1;
+  // エンコードされたイベントタイトル（Googleカレンダー追加ボタンに使う）
+  const encodedEventTitle = encodeURIComponent(valEventTitle);
+
   const siteTitle = new String(valEventTitle + ' | ' + valEventDate);
+  // エンコードされたタイトル（シェアボタンに使う）
+  const encodedSiteTitle = encodeURIComponent(siteTitle);
+
   document.title = siteTitle;
 
   // host
@@ -92,24 +98,6 @@ function csv_array(data) {
   // 空欄ならカウントダウンタイマーを消す
   if (valDateUtc == '') {
     document.querySelector('.js-countdown').remove();
-  }
-
-  // googleカレンダーに追加
-  const addCalendarBtn = document.querySelector('.js-add-google-calendar');
-  if (valDateUtc == '') {
-    // 空欄ならボタンを消す
-    addCalendarBtn.remove();
-  } else {
-    // 値が入っていればカレンダー追加ボタンのhref属性を組み立てる
-    const utcDate = new Date(valDateUtc);
-    const googleCalendarUrl = 'https://www.google.com/calendar/event?action=TEMPLATE';
-    // カレンダーで登録する日付
-    const calDate = utcDate.getFullYear() + '' + ('0' + (utcDate.getMonth() + 1)).slice(-2) + ('0' + utcDate.getDate()).slice(-2) + 'T' + ('0' + utcDate.getHours()).slice(-2) + ('0' + utcDate.getMinutes()).slice(-2) + ('0' + utcDate.getSeconds()).slice(-2) + 'Z';
-    // リンクを組み立てる
-    // 終了時刻はわからないのでとりあえず同じ時間としておく
-    const calLink = googleCalendarUrl + '&text=' + valEventTitle + '&details=' + hostHref + '&dates=' + calDate + '/' + calDate;
-
-    addCalendarBtn.setAttribute('href', calLink);
   }
 
   // Theme
@@ -216,9 +204,35 @@ function csv_array(data) {
     document.querySelector('.js-stream').remove();
   }
 
+  // Share buttons
+  const domShareTwitter = document.querySelector('.js-share-tw');
+  const domShareFacebook = document.querySelector('.js-share-fb');
+  const twitterLink = 'https://twitter.com/share?text=' + encodedSiteTitle + '&url=' + hostHref;
+  domShareTwitter.setAttribute('href', twitterLink);
+  const facebookLink = 'http://www.facebook.com/sharer.php?u=' + hostHref;
+  domShareFacebook.setAttribute('href', facebookLink);
+
+  // googleカレンダーに追加
+  const addCalendarBtn = document.querySelector('.js-add-google-calendar');
+  if (valDateUtc == '') {
+    // 空欄ならボタンを消す
+    addCalendarBtn.remove();
+  } else {
+    // 値が入っていればカレンダー追加ボタンのhref属性を組み立てる
+    const utcDate = new Date(valDateUtc);
+    const googleCalendarUrl = 'https://www.google.com/calendar/event?action=TEMPLATE';
+    // カレンダーで登録する日付
+    const calDate = utcDate.getFullYear() + '' + ('0' + (utcDate.getMonth() + 1)).slice(-2) + ('0' + utcDate.getDate()).slice(-2) + 'T' + ('0' + utcDate.getHours()).slice(-2) + ('0' + utcDate.getMinutes()).slice(-2) + ('0' + utcDate.getSeconds()).slice(-2) + 'Z';
+    // リンクを組み立てる
+    // 終了時刻はわからないのでとりあえず同じ時間としておく
+    const calLink = googleCalendarUrl + '&text=' + encodedEventTitle + '&details=' + hostHref + '&dates=' + calDate + '/' + calDate;
+
+    addCalendarBtn.setAttribute('href', calLink);
+  }
+
   /////////////////////////////////////
   // -Introduction-
-  // Introduction　Heading
+  // Introduction Heading
   const domIntroductionHeading = document.querySelector('.js-introduction-heading');
   const optIntroductionHeading = array.filter((value) => value.option === 'Introduction Heading');
   const valIntroductionHeading = optIntroductionHeading[0].value1;
