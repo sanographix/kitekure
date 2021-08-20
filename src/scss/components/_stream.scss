@@ -1,11 +1,11 @@
 .section-stream {
     position: relative;
+    margin: var(--space-9) auto;
 }
 .stream-marquee {
     overflow: hidden;
     width: 100%;
     position: absolute;
-    bottom: -.5em;
     z-index: var(--z-index-bg);
     font-size: var(--font-size-900);
     text-transform: uppercase;
@@ -16,12 +16,17 @@
     font-weight: bold;
     font-style: italic;
     line-height: var(--line-height-xs);
+    bottom: -.65em;
     @media #{$mq-md} {
         font-size: var(--font-size-title);
+        bottom: -.5em;
     }
     &.stream-marquee-top {
-        top: -.5em;
+        top: -.65em;
         bottom: unset;
+        @media #{$mq-md} {
+            top: -.5em;
+        }
     }
 }
 @keyframes stream-marquee {

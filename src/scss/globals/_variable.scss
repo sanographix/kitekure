@@ -64,6 +64,8 @@
     --color-service: rgb(97, 7, 170);
     --color-white-transparent: rgba(255,255,255,.16);  // 背景の上に薄い色を重ねたいとき
     --color-black-transparent: rgba(0,0,0,.06);  // 背景の上に薄い色を重ねたいとき
+    --color-tw: #55acee;
+    --color-fb: #4e69a2;
 
     // Alias tokens
     --color-bg: var(--color-gray-100);
@@ -80,6 +82,9 @@
     --color-btn-primary-text: var(--color-text);
     --color-btn-primary-ghost-border: var(--color-primary);
     --color-btn-primary-ghost-text: var(--color-primary);
+    --color-btn-secondary: var(--color-white-transparent);
+    --color-btn-tw: var(--color-tw);
+    --color-btn-fb: var(--color-fb);
 
     --color-border: var(--color-white-transparent);
     --color-blur: var(--color-white-transparent);
@@ -92,6 +97,7 @@
     --color-text-secondary: var(--color-gray-800);
     --color-text-invert: var(--color-white);
     --color-border: var(--color-black-transparent);
+    --color-btn-secondary: var(--color-black-transparent);
     --color-blur: var(--color-black-transparent);
 }
 

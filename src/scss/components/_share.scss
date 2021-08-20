@@ -1,0 +1,43 @@
+.nav-share {
+    margin: 0 var(--col-space);
+    display: flex;
+    gap: var(--space-2);
+    justify-content: center;
+}
+.share-btn {
+    display: flex;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+}
+.share-tw {
+    background-color: var(--color-btn-tw);
+}
+.share-fb {
+    background-color: var(--color-btn-fb);
+}
+.add-to-calendar {
+    display: flex;
+    gap: var(--space-1);
+    border-radius: 48px;
+    height: 48px;
+    padding: 0 var(--space-3);
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-btn-secondary);
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: var(--font-size-75);
+    line-height: var(--line-height-xs);
+}
+.add-to-calendar-icon {
+    svg {
+        display: block;
+        fill: currentColor;
+    }
+}
+.add-to-calendar-label {
+}

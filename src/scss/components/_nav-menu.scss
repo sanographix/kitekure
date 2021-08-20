@@ -1,5 +1,5 @@
 .nav-menu {
-    margin: 0 var(--col-space);
+    margin: var(--space-6) var(--col-space);
     background: var(--color-bg);
     position: sticky;
     top: var(--space-3);
@@ -9,9 +9,6 @@
     border-radius: 100px; // 決め打ち
     overflow: auto;
     white-space: nowrap;
-    @media #{$mq-md} {
-        margin: var(--space-6);
-    }
     &::-webkit-scrollbar {
         display: none;
     }
