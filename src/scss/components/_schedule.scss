@@ -11,20 +11,25 @@
         }
     }
     .schedule-th {
+        color: var(--color-text-highlight);
+        line-height: var(--line-height-sm);
+        font-weight: bold;
+        margin-bottom: var(--space-1);
         @media #{$mq-sm} {
+            margin-top: var(--space-1); // ちょっとずれて見えるので補正
+            width: 180px;
             text-align: right;
-            width: 48%;
-            font-size: var(--font-size-400);
-            line-height: var(--line-height-sm);
             flex-shrink: 0;
         }
     }
     .table-heading {
         margin: 0;
-        font-size: var(--font-size-400);
+        font-size: var(--font-size-300);
         line-height: var(--line-height-sm);
     }
     .table-description {
         margin-top: var(--space-2);
+        color: var(--color-text-secondary);
+        font-size: var(--font-size-75);
     }
 }
