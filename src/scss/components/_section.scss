@@ -1,13 +1,17 @@
 .section {
-    margin: var(--space-9) auto;
+    margin: var(--space-8) auto;
 }
-.setion-wrapper {
+.section-wrapper {
     display: flex;
     gap: var(--space-4);
     flex-direction: column;
     @media #{$mq-md} {
         flex-direction: row;
     }
+}
+.section:not(:first-child) .section-wrapper {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-4);
 }
 .setion-content {
     @media #{$mq-md} {
