@@ -196,19 +196,18 @@ function csv_array(data) {
   const valStreamChannel = optStream[0].value2;
   switch (valStreamService) {
     case 'Twitch':
-      domStreamPlayer.setAttribute(
-        'src',
-        'https://player.twitch.tv/?channel=' +
-          valStreamChannel +
-          '&parent=' +
-          valSiteUrl
-      );
+      new Twitch.Player("twitch-embed", {
+        channel: valStreamChannel
+      });
+      document.getElementById('youtube-embed').remove();
       break;
     case 'Youtube Live':
       domStreamPlayer.setAttribute(
         'src',
         'https://www.youtube.com/embed/' + valStreamChannel
       );
+      document.getElementById('twitch-embed').remove();
+      document.getElementById('twitch-embed-script').remove();
       break;
     default:
       domStreamPlayer.remove();

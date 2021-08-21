@@ -75,10 +75,14 @@
     </div>
     <section class="section-stream js-stream">
       <div class="stream-player-container">
-        <div class="stream-player">
+        <%# Twitch %>
+        <div id="twitch-embed" class="stream-player"></div>
+        <script src="https://player.twitch.tv/js/embed/v1.js" id="twitch-embed-script"></script>
+        <%# YouTube Live %>
+        <div class="stream-player" id="youtube-embed">
           <iframe
             class="stream-player-player js-stream-player"
-            src="https://player.twitch.tv/?channel=example&parent=example.com"
+            src="https://www.youtube.com/embed/"
             frameborder="0"
             allowfullscreen="true"
             scrolling="no"
