@@ -385,26 +385,29 @@ function csv_array(data) {
   /////////////////////////////////////
   // footer
   document.querySelector('.js-copyright').textContent = valEventTitle;
-}
 
-// クエリパラメータが?prebuild=trueのときテンプレートをダウンロード
-const urlParam = location.search;
-if (urlParam === "?prebuild=true") {
-  // プレビュー用バナーを消す
-  document.querySelector('.js-prebuild').remove();
-  // jsでの書き換えがロードしきってからDOMを取得する
-  window.addEventListener("load", function () {
-    const snapshot = new XMLSerializer().serializeToString(document);
-    // このjs（プレビュー用のjs）をhtml文字列から抜き取る
-    const snapshotRemoveJs = snapshot.replace(
-      '<script src="js/parse.js"></script>',
-      ""
-    );
-    // ダウンロード
-    let blob = new Blob([snapshotRemoveJs], { type: "text/plan" });
-    let link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "result.html";
-    link.click();
-  });
+
+  // クエリパラメータが?prebuild=trueのときテンプレートをダウンロード
+  const urlParam = location.search;
+
+  if (urlParam === "?prebuild=true") {
+    // プレビュー用バナーを消す
+    document.querySelector('.js-prebuild').remove();
+    // jsでの書き換えがロードしきってからDOMを取得する
+    window.addEventListener("load", function () {
+      const snapshot = new XMLSerializer().serializeToString(document);
+      // このjs（プレビュー用のjs）をhtml文字列から抜き取る
+      const snapshotRemoveJs = snapshot.replace(
+        '<script src="js/parse.js"></script>',
+        ""
+      );
+      // ダウンロード
+      let blob = new Blob([snapshotRemoveJs], { type: "text/plan" });
+      let link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "result.html";
+      link.click();
+    });
+  }
+
 }
