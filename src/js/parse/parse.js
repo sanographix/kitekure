@@ -39,9 +39,13 @@ function csv_array(data) {
 
   document.title = siteTitle;
 
-  // host
+  // Site URL
   const hostname = location.hostname;
-  const hostHref = location.href.replace(/\?.*$/,""); // クエリパラメータを削除
+  let valSiteUrl = array.filter((value) => value.option === 'Site URL')[0].value1;
+  // トレイリングスラッシュついてなければアリで統一
+  if (valSiteUrl.substr(-1) !== '/') {
+    valSiteUrl = valSiteUrl.concat('/');
+  }
 
   // Favicon
   const optFavicon = array.filter((value) => value.option === 'Site Icon (favicon)');
@@ -68,10 +72,10 @@ function csv_array(data) {
       'content': siteTitle
     }, {
       'property': 'og:url',
-      'content': hostHref
+      'content': valSiteUrl
     }, {
       'name': 'og:image',
-      'content': hostHref + valOgImage
+      'content': valSiteUrl + valOgImage
     }, {
       'name': 'twitter:title',
       'content': siteTitle
@@ -80,7 +84,7 @@ function csv_array(data) {
       'content': valIntroduction
     }, {
       'name': 'twitter:image',
-      'content': hostHref + valOgImage
+      'content': valSiteUrl + valOgImage
     }
   ]
   for (let i = 0; i < OGP.length; i++) {
@@ -197,7 +201,7 @@ function csv_array(data) {
         'https://player.twitch.tv/?channel=' +
           valStreamChannel +
           '&parent=' +
-          hostname
+          valSiteUrl
       );
       break;
     case 'Youtube Live':
@@ -217,9 +221,9 @@ function csv_array(data) {
   // Share buttons
   const domShareTwitter = document.querySelector('.js-share-tw');
   const domShareFacebook = document.querySelector('.js-share-fb');
-  const twitterLink = 'https://twitter.com/share?text=' + encodedSiteTitle + '&url=' + hostHref;
+  const twitterLink = 'https://twitter.com/share?text=' + encodedSiteTitle + '&url=' + valSiteUrl;
   domShareTwitter.setAttribute('href', twitterLink);
-  const facebookLink = 'http://www.facebook.com/sharer.php?u=' + hostHref;
+  const facebookLink = 'http://www.facebook.com/sharer.php?u=' + valSiteUrl;
   domShareFacebook.setAttribute('href', facebookLink);
 
   // googleカレンダーに追加
@@ -235,7 +239,7 @@ function csv_array(data) {
     const calDate = utcDate.getFullYear() + '' + ('0' + (utcDate.getMonth() + 1)).slice(-2) + ('0' + utcDate.getDate()).slice(-2) + 'T' + ('0' + utcDate.getHours()).slice(-2) + ('0' + utcDate.getMinutes()).slice(-2) + ('0' + utcDate.getSeconds()).slice(-2) + 'Z';
     // リンクを組み立てる
     // 終了時刻はわからないのでとりあえず同じ時間としておく
-    const calLink = googleCalendarUrl + '&text=' + encodedEventTitle + '&details=' + hostHref + '&dates=' + calDate + '/' + calDate;
+    const calLink = googleCalendarUrl + '&text=' + encodedEventTitle + '&details=' + valSiteUrl + '&dates=' + calDate + '/' + calDate;
 
     addCalendarBtn.setAttribute('href', calLink);
   }
