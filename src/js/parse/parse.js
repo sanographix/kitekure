@@ -91,6 +91,16 @@ function csv_array(data) {
     document.head.appendChild(metaTag);
   }
 
+  // 検索避け
+  const valRobots = array.filter((value) => value.option === 'Hide on Search Results')[0].value1;
+  // 検索に出す設定ならrobots書き換え
+  if (valRobots == '✅') {
+    const metaRobots = document.createElement('meta');
+    metaRobots.setAttribute('name', 'robots')
+    metaRobots.setAttribute('content', 'noindex');
+    document.head.appendChild(metaRobots);
+  }
+
   // Date (UTC) (Option)
   // カウントダウンタイマー
   const valDateUtc = array.filter((value) => value.option === 'Date (UTC)')[0].value1;
