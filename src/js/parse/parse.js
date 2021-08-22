@@ -120,10 +120,22 @@ function csv_array(data) {
 
   // Accent Color
   const valAccentColor = array.filter((value) => value.option === 'Accent Color (Hex)')[0].value1;
-  if (valAccentColor) {
-    document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-primary:' + valAccentColor + '}</style>')
+  if (valAccentColor != '') {
+    // アクセントカラーを適用
+    document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-primary:' + valAccentColor + '}</style>');
+    document.documentElement.setAttribute('data-accent-color', valAccentColor);
+    // アクセントカラーのボタン文字色を白黒から判定
+    function blackOrWhite ( hexcolor ) {
+      var r = parseInt( hexcolor.substr( 1, 2 ), 16 ) ;
+      var g = parseInt( hexcolor.substr( 3, 2 ), 16 ) ;
+      var b = parseInt( hexcolor.substr( 5, 2 ), 16 ) ;
+      return ( ( ( (r * 299) + (g * 587) + (b * 114) ) / 1000 ) < 128 ) ? 'white' : 'black' ;
+    }
+    const AccentColorText = blackOrWhite( valAccentColor ) ;
+    if (AccentColorText === 'black') {
+      document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-btn-primary-text: var(--color-black)}</style>');
+    }
   }
-
 
   /////////////////////////////////////
   // -Header-
