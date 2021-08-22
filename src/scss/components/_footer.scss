@@ -9,11 +9,15 @@
     flex-direction: column;
     @media #{$mq-md} {
         flex-direction: row;
-        align-items: flex-end;
+        align-items: center;
     }
+}
+.copyright {
+    line-height: var(--line-height-xs);
 }
 .copyright-heading {
     font-weight: bold;
+    font-size: var(--font-size-75);
     text-decoration: none;
     color: var(--color-text-secondary);
 }
@@ -41,6 +45,9 @@
         text-decoration: none;
         color: var(--color-text-secondary);
     }
+}
+.theme-info-install {
+    flex-shrink: 0;
 }
 .install-btn {
     display: inline-block;
