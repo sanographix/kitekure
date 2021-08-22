@@ -151,6 +151,11 @@ function csv_array(data) {
   // Header title
   const domTitle = document.querySelector('.js-title');
   domTitle.textContent = valEventTitle;
+  // 文字数が長いときフォントサイズを変える
+  const eventTitleStringCount = valEventTitle.length;
+  if (eventTitleStringCount > 20) {
+    domTitle.classList.add('is-string-count-long');
+  }
 
   // Reverse Title Color
   const optReverseTitleColor = array.filter((value) => value.option === 'Reverse Title Color on Image');

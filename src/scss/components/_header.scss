@@ -69,6 +69,15 @@
     @media #{$mq-lg} {
         font-size: var(--font-size-title);
     }
+    // タイトル文字数が長い
+    &.is-string-count-long {
+        @media #{$mq-md} {
+            font-size: var(--font-size-500);
+        }
+        @media #{$mq-lg} {
+            font-size: var(--font-size-900);
+        }
+    }
     // 途中で色反転するオプション
     &.is-reverse-color {
         @media #{$mq-md} {
