@@ -418,7 +418,7 @@ function csv_array(data) {
       let blob = new Blob([snapshotRemoveJs], { type: "text/plan" });
       let link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
-      link.download = "result.html";
+      link.download = "index.html";
       link.click();
     });
   }
