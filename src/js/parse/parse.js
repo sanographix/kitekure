@@ -428,7 +428,7 @@ function csv_array(data) {
       const snapshot = new XMLSerializer().serializeToString(document);
       // このjs（プレビュー用のjs）をhtml文字列から抜き取る
       const snapshotRemoveJs = snapshot.replace(
-        '<script src="js/parse.js"></script>',
+        '<script src="_src/parse.js"></script>',
         ""
       );
       // ダウンロード
