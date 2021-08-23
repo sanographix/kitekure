@@ -1,7 +1,7 @@
 .footer {
     margin: var(--space-6) auto;
 }
-.footer-content {
+.footer-wrapper {
     display: flex;
     justify-content: space-between;
     gap: var(--space-4);
@@ -12,10 +12,10 @@
         align-items: center;
     }
 }
-.copyright {
+.footer-content {
     line-height: var(--line-height-xs);
 }
-.copyright-heading {
+.footer-eventTitle {
     font-weight: bold;
     font-size: var(--font-size-75);
     text-decoration: none;

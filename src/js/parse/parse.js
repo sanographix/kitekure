@@ -422,8 +422,16 @@ function csv_array(data) {
 
   /////////////////////////////////////
   // footer
-  document.querySelector('.js-copyright').textContent = valEventTitle;
-
+  document.querySelector('.js-footer-eventTitle').textContent = valEventTitle;
+  // footer-text (option)
+  const domFooterText = document.querySelector('.js-footer-text');
+  const optFooterText = array.filter((value) => value.option === 'Footer Text');
+  const valFooterText = optFooterText[0].value1;
+  if (valFooterText != '') {
+    domFooterText.textContent = valFooterText
+  } else {
+    domFooterText.remove();
+  }
 
   // クエリパラメータが?prebuild=trueのときテンプレートをダウンロード
   const urlParam = location.search;
