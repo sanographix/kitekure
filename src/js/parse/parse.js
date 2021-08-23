@@ -132,8 +132,15 @@ function csv_array(data) {
       return ( ( ( (r * 299) + (g * 587) + (b * 114) ) / 1000 ) < 128 ) ? 'white' : 'black' ;
     }
     const AccentColorText = blackOrWhite( valAccentColor ) ;
-    if (AccentColorText === 'black') {
-      document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-btn-primary-text: var(--color-black)}</style>');
+    switch (AccentColorText) {
+      case 'black':
+        document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-btn-primary-text: var(--color-black)}</style>');
+        break;
+      case 'white':
+        document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-btn-primary-text: var(--color-white)}</style>');
+        break;
+      default:
+        break;
     }
   }
 
@@ -158,6 +165,7 @@ function csv_array(data) {
     default:
       domHeaderVideo.remove();
       domHeaderImage.remove();
+      break;
   }
 
   // Header title
