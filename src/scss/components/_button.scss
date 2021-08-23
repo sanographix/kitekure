@@ -10,6 +10,7 @@
     text-align: center;
     transition: all .25s;
     border: 0;
+    border-radius: var(--border-radius-rounded);
     cursor: pointer;
     @media #{$mq-sm} {
         padding: calc(var(--space-2) + var(--space-1)) var(--space-4);
