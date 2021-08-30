@@ -40,7 +40,6 @@ function csv_array(data) {
   document.title = siteTitle;
 
   // Site URL
-  const hostname = location.hostname;
   let valSiteUrl = array.filter((value) => value.option === 'Site URL')[0].value1;
   // トレイリングスラッシュついてなければアリで統一
   if (valSiteUrl.substr(-1) !== '/') {
@@ -243,9 +242,14 @@ function csv_array(data) {
   const valStreamChannel = optStream[0].value2;
   switch (valStreamService) {
     case 'Twitch':
-      new Twitch.Player("twitch-embed", {
-        channel: valStreamChannel
-      });
+      domStreamPlayer.setAttribute(
+        'src',
+        'https://player.twitch.tv/?channel=' +
+          valStreamChannel +
+          '&parent=' +
+          valSiteUrl
+      );
+      document.documentElement.setAttribute('data-twitch-channel', valStreamChannel);
       document.getElementById('youtube-embed').remove();
       break;
     case 'Youtube Live':
@@ -254,7 +258,6 @@ function csv_array(data) {
         'https://www.youtube.com/embed/' + valStreamChannel
       );
       document.getElementById('twitch-embed').remove();
-      document.getElementById('twitch-embed-script').remove();
       break;
     default:
       domStreamPlayer.remove();

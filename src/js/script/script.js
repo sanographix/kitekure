@@ -39,6 +39,21 @@
   });
 }());
 
+// twitch
+(function() {
+  window.addEventListener("load", function () {
+    const hostname = location.hostname;
+    const twitchChannel = document.documentElement.getAttribute('data-twitch-channel');
+    document.querySelector('.js-stream-player').setAttribute(
+      'src',
+      'https://player.twitch.tv/?channel=' +
+        twitchChannel +
+        '&parent=' +
+        hostname
+    );
+  });
+}());
+
 // prebuildバナー
 (function() {
   window.addEventListener("load", function () {
