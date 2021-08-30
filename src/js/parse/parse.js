@@ -124,6 +124,10 @@ function csv_array(data) {
     // アクセントカラーを適用
     document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-primary:' + valAccentColor + '}</style>');
     document.documentElement.setAttribute('data-accent-color', valAccentColor);
+    // metaタグに指定
+    const domThemeColor = document.getElementById('meta-theme-color');
+    domThemeColor.content = valAccentColor;
+
     // アクセントカラーのボタン文字色を白黒から判定
     function blackOrWhite ( hexcolor ) {
       var r = parseInt( hexcolor.substr( 1, 2 ), 16 ) ;
