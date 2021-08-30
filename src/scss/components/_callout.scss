@@ -1,0 +1,9 @@
+.section-callout {
+    margin-top: var(--space-6);
+}
+.callout {
+    background: var(--color-bg-secondary);
+    padding: var(--space-4);
+    border-radius: 4px 4px var(--border-radius-base) var(--border-radius-base);
+    border-top: 4px solid var(--color-primary);
+}

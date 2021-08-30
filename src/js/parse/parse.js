@@ -218,6 +218,24 @@ function csv_array(data) {
     domActionButton.remove();
   }
 
+  // Callout (Option)
+  const domCalloutWrap = document.querySelector(
+    '.js-callout-wrap'
+  );
+  const domCallout = document.querySelector('.js-callout'); // コピー元を取得
+  const optCallout = array.filter((value) => value.option === 'Callout');
+  for (let i = 0; i < optCallout.length; i++) {
+    const domCalloutClone = domCallout.cloneNode(true);
+    domCalloutClone.textContent = optCallout[i].value1;
+    domCalloutWrap.appendChild(domCalloutClone);
+  }
+  domCallout.remove(); // コピー元を削除
+  // 空欄ならHTMLから非表示
+  if (optCallout[0].value1 == '') {
+    domCalloutWrap.remove();
+  }
+
+
   // Stream
   const domStreamPlayer = document.querySelector('.js-stream-player');
   const optStream = array.filter((value) => value.option === 'Stream');
