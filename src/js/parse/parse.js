@@ -357,11 +357,13 @@ function csv_array(data) {
   /////////////////////////////////////
   // -Overview-
 
+  //Event Title
+  const domEventTitle = document.querySelector('.js-event-title');
+  domEventTitle.textContent = valEventTitle;
+
   // Date
   const domEventDate = document.querySelector('.js-event-date');
-  if (domEventDate && optEventDate) {
-    domEventDate.textContent = valEventDate;
-  }
+  domEventDate.textContent = valEventDate;
 
   // Venue
   const domEventVenueLabel = document.querySelector('.js-event-venue-label');
