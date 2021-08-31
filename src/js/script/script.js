@@ -44,13 +44,16 @@
   window.addEventListener("load", function () {
     const hostname = location.hostname;
     const twitchChannel = document.documentElement.getAttribute('data-twitch-channel');
-    document.querySelector('.js-stream-player').setAttribute(
-      'src',
-      'https://player.twitch.tv/?channel=' +
-        twitchChannel +
-        '&parent=' +
-        hostname
-    );
+    // twitchが設定されていればhostnameを上書き
+    if (twitchChannel) {
+      document.querySelector('.js-stream-player').setAttribute(
+        'src',
+        'https://player.twitch.tv/?channel=' +
+          twitchChannel +
+          '&parent=' +
+          hostname
+      );
+    }
   });
 }());
 
