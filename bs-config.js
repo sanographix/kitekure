@@ -8,4 +8,5 @@ module.exports = {
         domain: 'localhost:3000'
     },
     https: true,
+    notify: false,
 };
