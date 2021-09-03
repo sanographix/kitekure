@@ -1,0 +1,17 @@
+.setup {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.setup-inner {
+    text-align: center;
+    header {
+        margin-bottom: var(--space-5);
+    }
+    h1 {
+        font-size: var(--font-size-600);
+        margin: 0 0 var(--space-3);
+        line-height: var(--line-height-sm);
+    }
+}
