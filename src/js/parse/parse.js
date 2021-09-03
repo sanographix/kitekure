@@ -468,14 +468,12 @@ function csv_array(data) {
     document.querySelector('.js-prebuild').remove();
     // jsでの書き換えがロードしきってからDOMを取得する
     window.addEventListener("load", function () {
-      const snapshot = new XMLSerializer().serializeToString(document);
-      // このjs（プレビュー用のjs）をhtml文字列から抜き取る
-      const snapshotRemoveJs = snapshot.replace(
-        '<script src="_src/parse.js"></script>',
-        ""
-      );
+      let snapshot = new XMLSerializer().serializeToString(document);
+      // 不要な要素をhtml文字列から抜き取る
+      snapshot = snapshot.replace('<script src="_src/parse.js"></script>', '');
+      snapshot = snapshot.replace('<meta name="robots" content="noindex" id="meta-robots-for-setup" />', '');
       // ダウンロード
-      let blob = new Blob([snapshotRemoveJs], { type: "text/plan" });
+      let blob = new Blob([snapshot], { type: "text/plan" });
       let link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
       link.download = "index.html";
