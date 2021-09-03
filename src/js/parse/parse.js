@@ -39,10 +39,8 @@ function csv_array(data) {
 
   document.title = siteTitle;
 
-  // Site URL
-  let siteUrl = location.protocol + location.hostname;
-  // トレイリングスラッシュつける
-  siteUrl = siteUrl.concat('/');
+  // Site URL (トレイリングスラッシュありに統一してる)
+  const siteUrl = `${location.protocol}//${location.hostname}/`;
 
   // Favicon
   const optFavicon = array.filter((value) => value.option === 'Site Icon (favicon)');
