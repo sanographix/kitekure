@@ -39,24 +39,6 @@
   });
 }());
 
-// twitch
-(function() {
-  window.addEventListener("load", function () {
-    const hostname = location.hostname;
-    const twitchChannel = document.documentElement.getAttribute('data-twitch-channel');
-    // twitchが設定されていればhostnameを上書き
-    if (twitchChannel) {
-      document.querySelector('.js-stream-player').setAttribute(
-        'src',
-        'https://player.twitch.tv/?channel=' +
-          twitchChannel +
-          '&parent=' +
-          hostname
-      );
-    }
-  });
-}());
-
 // prebuildバナー
 (function() {
   window.addEventListener("load", function () {
