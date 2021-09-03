@@ -4,6 +4,11 @@
     align-items: center;
     justify-content: center;
 }
+.setup-icon {
+    svg {
+        fill: var(--color-primary);
+    }
+}
 .setup-inner {
     text-align: center;
     header {
