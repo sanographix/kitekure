@@ -39,12 +39,8 @@ function csv_array(data) {
 
   document.title = siteTitle;
 
-  // Site URL
-  let valSiteUrl = array.filter((value) => value.option === 'Site URL')[0].value1;
-  // トレイリングスラッシュついてなければアリで統一
-  if (valSiteUrl.substr(-1) !== '/') {
-    valSiteUrl = valSiteUrl.concat('/');
-  }
+  // Site URL (トレイリングスラッシュありに統一してる)
+  const siteUrl = `${location.protocol}//${location.hostname}/`;
 
   // Favicon
   const optFavicon = array.filter((value) => value.option === 'Site Icon (favicon)');
@@ -71,10 +67,10 @@ function csv_array(data) {
       'content': siteTitle
     }, {
       'property': 'og:url',
-      'content': valSiteUrl
+      'content': siteUrl
     }, {
       'name': 'og:image',
-      'content': valSiteUrl + valOgImage
+      'content': siteUrl + valOgImage
     }, {
       'name': 'twitter:title',
       'content': siteTitle
@@ -83,7 +79,7 @@ function csv_array(data) {
       'content': valIntroduction
     }, {
       'name': 'twitter:image',
-      'content': valSiteUrl + valOgImage
+      'content': siteUrl + valOgImage
     }
   ]
   for (let i = 0; i < OGP.length; i++) {
@@ -247,9 +243,8 @@ function csv_array(data) {
         'https://player.twitch.tv/?channel=' +
           valStreamChannel +
           '&parent=' +
-          valSiteUrl
+          location.hostname
       );
-      document.documentElement.setAttribute('data-twitch-channel', valStreamChannel);
       document.getElementById('youtube-embed').remove();
       break;
     case 'Youtube Live':
@@ -270,9 +265,9 @@ function csv_array(data) {
   // Share buttons
   const domShareTwitter = document.querySelector('.js-share-tw');
   const domShareFacebook = document.querySelector('.js-share-fb');
-  const twitterLink = 'https://twitter.com/share?text=' + encodedSiteTitle + '&url=' + valSiteUrl;
+  const twitterLink = 'https://twitter.com/share?text=' + encodedSiteTitle + '&url=' + siteUrl;
   domShareTwitter.setAttribute('href', twitterLink);
-  const facebookLink = 'http://www.facebook.com/sharer.php?u=' + valSiteUrl;
+  const facebookLink = 'http://www.facebook.com/sharer.php?u=' + siteUrl;
   domShareFacebook.setAttribute('href', facebookLink);
 
   // googleカレンダーに追加
@@ -288,7 +283,7 @@ function csv_array(data) {
     const calDate = utcDate.getFullYear() + '' + ('0' + (utcDate.getMonth() + 1)).slice(-2) + ('0' + utcDate.getDate()).slice(-2) + 'T' + ('0' + utcDate.getHours()).slice(-2) + ('0' + utcDate.getMinutes()).slice(-2) + ('0' + utcDate.getSeconds()).slice(-2) + 'Z';
     // リンクを組み立てる
     // 終了時刻はわからないのでとりあえず同じ時間としておく
-    const calLink = googleCalendarUrl + '&text=' + encodedEventTitle + '&details=' + valSiteUrl + '&dates=' + calDate + '/' + calDate;
+    const calLink = googleCalendarUrl + '&text=' + encodedEventTitle + '&details=' + siteUrl + '&dates=' + calDate + '/' + calDate;
 
     addCalendarBtn.setAttribute('href', calLink);
   }
@@ -468,14 +463,11 @@ function csv_array(data) {
     document.querySelector('.js-prebuild').remove();
     // jsでの書き換えがロードしきってからDOMを取得する
     window.addEventListener("load", function () {
-      const snapshot = new XMLSerializer().serializeToString(document);
-      // このjs（プレビュー用のjs）をhtml文字列から抜き取る
-      const snapshotRemoveJs = snapshot.replace(
-        '<script src="_src/parse.js"></script>',
-        ""
-      );
+      let snapshot = new XMLSerializer().serializeToString(document);
+      // 不要な要素をhtml文字列から抜き取る
+      snapshot = snapshot.replace('<script src="_src/preview.js"></script>', '');
       // ダウンロード
-      let blob = new Blob([snapshotRemoveJs], { type: "text/plan" });
+      let blob = new Blob([snapshot], { type: "text/plan" });
       let link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
       link.download = "index.html";
