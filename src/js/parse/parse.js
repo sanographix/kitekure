@@ -466,7 +466,6 @@ function csv_array(data) {
       let snapshot = new XMLSerializer().serializeToString(document);
       // 不要な要素をhtml文字列から抜き取る
       snapshot = snapshot.replace('<script src="_src/parse.js"></script>', '');
-      snapshot = snapshot.replace('<meta name="robots" content="noindex" id="meta-robots-for-setup" />', '');
       // ダウンロード
       let blob = new Blob([snapshot], { type: "text/plan" });
       let link = document.createElement("a");
