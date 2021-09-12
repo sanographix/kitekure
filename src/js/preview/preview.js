@@ -43,10 +43,14 @@ function csv_array(data) {
   const siteUrl = `${location.protocol}//${location.hostname}/`;
 
   // Favicon
-  const optFavicon = array.filter((value) => value.option === 'Site Icon (favicon)');
-  const valFavicon = optFavicon[0].value1;
-  const domFavicon = document.getElementById('favicon');
-  domFavicon.href = valFavicon;
+  try {
+    const optFavicon = array.filter((value) => value.option === 'Site Icon (favicon)');
+    const valFavicon = optFavicon[0].value1;
+    const domFavicon = document.getElementById('favicon');
+    domFavicon.href = valFavicon;
+  } catch(error) {
+    console.error('Error: favicon');
+  }
 
   // og-image
   const optOgImage = array.filter((value) => value.option === 'Share Image');
@@ -58,46 +62,54 @@ function csv_array(data) {
   const valIntroduction = optIntroduction[0].value1;
 
   // OGP
-  const OGP = [
-    {
-      'property': 'og:description',
-      'content': valIntroduction
-    }, {
-      'property': 'og:title',
-      'content': siteTitle
-    }, {
-      'property': 'og:url',
-      'content': siteUrl
-    }, {
-      'name': 'og:image',
-      'content': siteUrl + valOgImage
-    }, {
-      'name': 'twitter:title',
-      'content': siteTitle
-    }, {
-      'name': 'twitter:description',
-      'content': valIntroduction
-    }, {
-      'name': 'twitter:image',
-      'content': siteUrl + valOgImage
+  try {
+    const OGP = [
+      {
+        'property': 'og:description',
+        'content': valIntroduction
+      }, {
+        'property': 'og:title',
+        'content': siteTitle
+      }, {
+        'property': 'og:url',
+        'content': siteUrl
+      }, {
+        'name': 'og:image',
+        'content': siteUrl + valOgImage
+      }, {
+        'name': 'twitter:title',
+        'content': siteTitle
+      }, {
+        'name': 'twitter:description',
+        'content': valIntroduction
+      }, {
+        'name': 'twitter:image',
+        'content': siteUrl + valOgImage
+      }
+    ]
+    for (let i = 0; i < OGP.length; i++) {
+      const metaTag = document.createElement('meta');
+      for (let prop in OGP[i]) {
+          metaTag.setAttribute(prop, OGP[i][prop]);
+      }
+      document.head.appendChild(metaTag);
     }
-  ]
-  for (let i = 0; i < OGP.length; i++) {
-    const metaTag = document.createElement('meta');
-    for (let prop in OGP[i]) {
-        metaTag.setAttribute(prop, OGP[i][prop]);
-    }
-    document.head.appendChild(metaTag);
+  } catch(error) {
+    console.error('Error: OGP');
   }
 
   // 検索避け
-  const valRobots = array.filter((value) => value.option === 'Hide on Search Results')[0].value1;
-  // 検索に出す設定ならrobots書き換え
-  if (valRobots == '✅') {
-    const metaRobots = document.createElement('meta');
-    metaRobots.setAttribute('name', 'robots')
-    metaRobots.setAttribute('content', 'noindex');
-    document.head.appendChild(metaRobots);
+  try {
+    const valRobots = array.filter((value) => value.option === 'Hide on Search Results')[0].value1;
+    // 検索に出す設定ならrobots書き換え
+    if (valRobots == '✅') {
+      const metaRobots = document.createElement('meta');
+      metaRobots.setAttribute('name', 'robots')
+      metaRobots.setAttribute('content', 'noindex');
+      document.head.appendChild(metaRobots);
+    }
+  } catch(error) {
+    console.error('Error: meta-noindex');
   }
 
   // Date (UTC) (Option)
@@ -110,354 +122,452 @@ function csv_array(data) {
   }
 
   // Theme
-  const valTheme = array.filter((value) => value.option === 'Theme')[0].value1;
-  document.documentElement.setAttribute('data-theme', valTheme);
+  try {
+    const valTheme = array.filter((value) => value.option === 'Theme')[0].value1;
+    document.documentElement.setAttribute('data-theme', valTheme);
+  } catch(error) {
+    console.error('Error: theme');
+  }
 
   // Accent Color
-  const valAccentColor = array.filter((value) => value.option === 'Accent Color (Hex)')[0].value1;
-  if (valAccentColor != '') {
-    // アクセントカラーを適用
-    document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-primary:' + valAccentColor + '}</style>');
-    document.documentElement.setAttribute('data-accent-color', valAccentColor);
-    // metaタグに指定
-    const domThemeColor = document.getElementById('meta-theme-color');
-    domThemeColor.content = valAccentColor;
+  try {
+    const valAccentColor = array.filter((value) => value.option === 'Accent Color (Hex)')[0].value1;
+    if (valAccentColor != '') {
+      // アクセントカラーを適用
+      document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-primary:' + valAccentColor + '}</style>');
+      document.documentElement.setAttribute('data-accent-color', valAccentColor);
+      // metaタグに指定
+      const domThemeColor = document.getElementById('meta-theme-color');
+      domThemeColor.content = valAccentColor;
 
-    // アクセントカラーのボタン文字色を白黒から判定
-    function blackOrWhite ( hexcolor ) {
-      var r = parseInt( hexcolor.substr( 1, 2 ), 16 ) ;
-      var g = parseInt( hexcolor.substr( 3, 2 ), 16 ) ;
-      var b = parseInt( hexcolor.substr( 5, 2 ), 16 ) ;
-      return ( ( ( (r * 299) + (g * 587) + (b * 114) ) / 1000 ) < 128 ) ? 'white' : 'black' ;
+      // アクセントカラーのボタン文字色を白黒から判定
+      function blackOrWhite ( hexcolor ) {
+        var r = parseInt( hexcolor.substr( 1, 2 ), 16 ) ;
+        var g = parseInt( hexcolor.substr( 3, 2 ), 16 ) ;
+        var b = parseInt( hexcolor.substr( 5, 2 ), 16 ) ;
+        return ( ( ( (r * 299) + (g * 587) + (b * 114) ) / 1000 ) < 128 ) ? 'white' : 'black' ;
+      }
+      const AccentColorText = blackOrWhite( valAccentColor ) ;
+      switch (AccentColorText) {
+        case 'black':
+          document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-btn-primary-text: var(--color-black)}</style>');
+          break;
+        case 'white':
+          document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-btn-primary-text: var(--color-white)}</style>');
+          break;
+        default:
+          break;
+      }
     }
-    const AccentColorText = blackOrWhite( valAccentColor ) ;
-    switch (AccentColorText) {
-      case 'black':
-        document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-btn-primary-text: var(--color-black)}</style>');
-        break;
-      case 'white':
-        document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-btn-primary-text: var(--color-white)}</style>');
-        break;
-      default:
-        break;
-    }
+  } catch(error) {
+    console.error('Error: accent-color');
   }
 
   /////////////////////////////////////
   // -Header-
 
   // Header
-  const domHeaderVideo = document.querySelector('.js-header-video');
-  const domHeaderImage = document.querySelector('.js-header-image');
-  const optHeader = array.filter((value) => value.option === 'Header');
-  const optHeaderType = optHeader[0].value1;
-  const optHeaderSrc = optHeader[0].value2;
-  switch (optHeaderType) {
-    case 'Video':
-      domHeaderVideo.setAttribute('src', optHeaderSrc);
-      domHeaderImage.remove();
-      break;
-    case 'Image':
-      domHeaderImage.setAttribute('src', optHeaderSrc);
-      domHeaderVideo.remove();
-      break;
-    default:
-      domHeaderVideo.remove();
-      domHeaderImage.remove();
-      break;
+  try {
+    const domHeaderVideo = document.querySelector('.js-header-video');
+    const domHeaderImage = document.querySelector('.js-header-image');
+    const optHeader = array.filter((value) => value.option === 'Header');
+    const optHeaderType = optHeader[0].value1;
+    const optHeaderSrc = optHeader[0].value2;
+    switch (optHeaderType) {
+      case 'Video':
+        domHeaderVideo.setAttribute('src', optHeaderSrc);
+        domHeaderImage.remove();
+        break;
+      case 'Image':
+        domHeaderImage.setAttribute('src', optHeaderSrc);
+        domHeaderVideo.remove();
+        break;
+      default:
+        domHeaderVideo.remove();
+        domHeaderImage.remove();
+        break;
+    }
+  } catch(error) {
+    console.error('Error: header');
   }
 
   // Header title
-  const domTitle = document.querySelector('.js-title');
-  domTitle.textContent = valEventTitle;
-  // 文字数が長いときフォントサイズを変える
-  const eventTitleStringCount = valEventTitle.length;
-  if (eventTitleStringCount > 20) {
-    domTitle.classList.add('is-string-count-long');
+  try {
+    const domTitle = document.querySelector('.js-title');
+    domTitle.textContent = valEventTitle;
+    // 文字数が長いときフォントサイズを変える
+    const eventTitleStringCount = valEventTitle.length;
+    if (eventTitleStringCount > 20) {
+      domTitle.classList.add('is-string-count-long');
+    }
+  } catch(error) {
+    console.error('Error: header title');
   }
 
   // Reverse Title Color
-  const optReverseTitleColor = array.filter((value) => value.option === 'Reverse Title Color on Image');
-  const valReverseTitleColor = optReverseTitleColor[0].value1;
-  // 有効時
-  if (valReverseTitleColor == '✅') {
-    domTitle.classList.toggle('is-reverse-color');
+  try {
+    const optReverseTitleColor = array.filter((value) => value.option === 'Reverse Title Color on Image');
+    const valReverseTitleColor = optReverseTitleColor[0].value1;
+    // 有効時
+    if (valReverseTitleColor == '✅') {
+      domTitle.classList.toggle('is-reverse-color');
+    }
+  } catch(error) {
+    console.error('Error: Reverse title tolor');
   }
 
   // Header Subtitle (Option)
-  const domHeaderSubtitleWrap = document.querySelector(
-    '.js-header-subtitle-wrap'
-  );
-  const domHeaderSubtitle = document.querySelector('.js-header-subtitle'); // コピー元を取得
-  const optHeaderSubtitle = array.filter((value) => value.option === 'Header Subtitle');
-  for (let i = 0; i < optHeaderSubtitle.length; i++) {
-    const domHeaderSubtitleClone = domHeaderSubtitle.cloneNode(true);
-    domHeaderSubtitleClone.textContent = optHeaderSubtitle[i].value1;
-    domHeaderSubtitleWrap.appendChild(domHeaderSubtitleClone);
-  }
-  domHeaderSubtitle.remove(); // コピー元を削除
-  // 空欄ならHTMLから非表示
-  if (optHeaderSubtitle[0].value1 == '') {
-    domHeaderSubtitleWrap.remove();
+  try {
+    const domHeaderSubtitleWrap = document.querySelector(
+      '.js-header-subtitle-wrap'
+    );
+    const domHeaderSubtitle = document.querySelector('.js-header-subtitle'); // コピー元を取得
+    const optHeaderSubtitle = array.filter((value) => value.option === 'Header Subtitle');
+    for (let i = 0; i < optHeaderSubtitle.length; i++) {
+      const domHeaderSubtitleClone = domHeaderSubtitle.cloneNode(true);
+      domHeaderSubtitleClone.textContent = optHeaderSubtitle[i].value1;
+      domHeaderSubtitleWrap.appendChild(domHeaderSubtitleClone);
+    }
+    domHeaderSubtitle.remove(); // コピー元を削除
+    // 空欄ならHTMLから非表示
+    if (optHeaderSubtitle[0].value1 == '') {
+      domHeaderSubtitleWrap.remove();
+    }
+  } catch(error) {
+    console.error('Error: Header subtitle');
   }
 
   // Action Button (option)
-  const domActionButton = document.querySelector('.js-action-button');
-  const optActionButton = array.filter((value) => value.option === 'Action Button');
-  const valActionButtonLabel = optActionButton[0].value1;
-  const valActionButtonUrl = optActionButton[0].value2;
-  domActionButton.textContent = valActionButtonLabel;
-  domActionButton.setAttribute('href', valActionButtonUrl);
-  // 空欄ならHTMLから非表示
-  if (valActionButtonLabel == '') {
-    domActionButton.remove();
+  try {
+    const domActionButton = document.querySelector('.js-action-button');
+    const optActionButton = array.filter((value) => value.option === 'Action Button');
+    const valActionButtonLabel = optActionButton[0].value1;
+    const valActionButtonUrl = optActionButton[0].value2;
+    domActionButton.textContent = valActionButtonLabel;
+    domActionButton.setAttribute('href', valActionButtonUrl);
+    // 空欄ならHTMLから非表示
+    if (valActionButtonLabel == '') {
+      domActionButton.remove();
+    }
+  } catch(error) {
+    console.error('Error: Action button');
   }
 
   // Callout (Option)
-  const domCalloutWrap = document.querySelector(
-    '.js-callout-wrap'
-  );
-  const domCallout = document.querySelector('.js-callout'); // コピー元を取得
-  const optCallout = array.filter((value) => value.option === 'Callout');
-  for (let i = 0; i < optCallout.length; i++) {
-    const domCalloutClone = domCallout.cloneNode(true);
-    domCalloutClone.textContent = optCallout[i].value1;
-    domCalloutWrap.appendChild(domCalloutClone);
+  try {
+    const domCalloutWrap = document.querySelector(
+      '.js-callout-wrap'
+    );
+    const domCallout = document.querySelector('.js-callout'); // コピー元を取得
+    const optCallout = array.filter((value) => value.option === 'Callout');
+    for (let i = 0; i < optCallout.length; i++) {
+      const domCalloutClone = domCallout.cloneNode(true);
+      domCalloutClone.textContent = optCallout[i].value1;
+      domCalloutWrap.appendChild(domCalloutClone);
+    }
+    domCallout.remove(); // コピー元を削除
+    // 空欄ならHTMLから非表示
+    if (optCallout[0].value1 == '') {
+      domCalloutWrap.remove();
+    }
+  } catch(error) {
+    console.error('Error: callout');
   }
-  domCallout.remove(); // コピー元を削除
-  // 空欄ならHTMLから非表示
-  if (optCallout[0].value1 == '') {
-    domCalloutWrap.remove();
-  }
-
 
   // Stream
-  const domStreamPlayer = document.querySelector('.js-stream-player');
-  const optStream = array.filter((value) => value.option === 'Stream');
-  const valStreamService = optStream[0].value1;
-  const valStreamChannel = optStream[0].value2;
-  switch (valStreamService) {
-    case 'Twitch':
-      domStreamPlayer.setAttribute(
-        'src',
-        'https://player.twitch.tv/?channel=' +
-          valStreamChannel +
-          '&parent=' +
-          location.hostname
-      );
-      document.getElementById('youtube-embed').remove();
-      break;
-    case 'Youtube Live':
-      domStreamPlayer.setAttribute(
-        'src',
-        'https://www.youtube.com/embed/' + valStreamChannel
-      );
-      document.getElementById('twitch-embed').remove();
-      break;
-    default:
-      domStreamPlayer.remove();
-  }
-  // 空欄ならHTMLから非表示
-  if (valStreamChannel == '') {
-    document.querySelector('.js-stream').remove();
+  try {
+    const domStreamPlayer = document.querySelector('.js-stream-player');
+    const optStream = array.filter((value) => value.option === 'Stream');
+    const valStreamService = optStream[0].value1;
+    const valStreamChannel = optStream[0].value2;
+    switch (valStreamService) {
+      case 'Twitch':
+        domStreamPlayer.setAttribute(
+          'src',
+          'https://player.twitch.tv/?channel=' +
+            valStreamChannel +
+            '&parent=' +
+            location.hostname
+        );
+        document.getElementById('youtube-embed').remove();
+        break;
+      case 'Youtube Live':
+        domStreamPlayer.setAttribute(
+          'src',
+          'https://www.youtube.com/embed/' + valStreamChannel
+        );
+        document.getElementById('twitch-embed').remove();
+        break;
+      default:
+        domStreamPlayer.remove();
+    }
+    // 空欄ならHTMLから非表示
+    if (valStreamChannel == '') {
+      document.querySelector('.js-stream').remove();
+    }
+  } catch(error) {
+    console.error('Error: Stream');
   }
 
   // Share buttons
-  const domShareTwitter = document.querySelector('.js-share-tw');
-  const domShareFacebook = document.querySelector('.js-share-fb');
-  const twitterLink = 'https://twitter.com/share?text=' + encodedSiteTitle + '&url=' + siteUrl;
-  domShareTwitter.setAttribute('href', twitterLink);
-  const facebookLink = 'http://www.facebook.com/sharer.php?u=' + siteUrl;
-  domShareFacebook.setAttribute('href', facebookLink);
+  try {
+    const domShareTwitter = document.querySelector('.js-share-tw');
+    const domShareFacebook = document.querySelector('.js-share-fb');
+    const twitterLink = 'https://twitter.com/share?text=' + encodedSiteTitle + '&url=' + siteUrl;
+    domShareTwitter.setAttribute('href', twitterLink);
+    const facebookLink = 'http://www.facebook.com/sharer.php?u=' + siteUrl;
+    domShareFacebook.setAttribute('href', facebookLink);
+  } catch(error) {
+    console.error('Error: Share buttons');
+  }
+
 
   // googleカレンダーに追加
-  const addCalendarBtn = document.querySelector('.js-add-google-calendar');
-  if (valDateUtc == '') {
-    // 空欄ならボタンを消す
-    addCalendarBtn.remove();
-  } else {
-    // 値が入っていればカレンダー追加ボタンのhref属性を組み立てる
-    const utcDate = new Date(valDateUtc);
-    const googleCalendarUrl = 'https://www.google.com/calendar/event?action=TEMPLATE';
-    // カレンダーで登録する日付
-    const calDate = utcDate.getFullYear() + '' + ('0' + (utcDate.getMonth() + 1)).slice(-2) + ('0' + utcDate.getDate()).slice(-2) + 'T' + ('0' + utcDate.getHours()).slice(-2) + ('0' + utcDate.getMinutes()).slice(-2) + ('0' + utcDate.getSeconds()).slice(-2) + 'Z';
-    // リンクを組み立てる
-    // 終了時刻はわからないのでとりあえず同じ時間としておく
-    const calLink = googleCalendarUrl + '&text=' + encodedEventTitle + '&details=' + siteUrl + '&dates=' + calDate + '/' + calDate;
+  try {
+    const addCalendarBtn = document.querySelector('.js-add-google-calendar');
+    if (valDateUtc == '') {
+      // 空欄ならボタンを消す
+      addCalendarBtn.remove();
+    } else {
+      // 値が入っていればカレンダー追加ボタンのhref属性を組み立てる
+      const utcDate = new Date(valDateUtc);
+      const googleCalendarUrl = 'https://www.google.com/calendar/event?action=TEMPLATE';
+      // カレンダーで登録する日付
+      const calDate = utcDate.getFullYear() + '' + ('0' + (utcDate.getMonth() + 1)).slice(-2) + ('0' + utcDate.getDate()).slice(-2) + 'T' + ('0' + utcDate.getHours()).slice(-2) + ('0' + utcDate.getMinutes()).slice(-2) + ('0' + utcDate.getSeconds()).slice(-2) + 'Z';
+      // リンクを組み立てる
+      // 終了時刻はわからないのでとりあえず同じ時間としておく
+      const calLink = googleCalendarUrl + '&text=' + encodedEventTitle + '&details=' + siteUrl + '&dates=' + calDate + '/' + calDate;
 
-    addCalendarBtn.setAttribute('href', calLink);
+      addCalendarBtn.setAttribute('href', calLink);
+    }
+  } catch(error) {
+    console.error('Error: Google calendar');
   }
 
   /////////////////////////////////////
   // -Introduction-
   // Introduction Heading
-  const domIntroductionHeading = document.querySelector('.js-introduction-heading');
-  const optIntroductionHeading = array.filter((value) => value.option === 'Introduction Heading');
-  const valIntroductionHeading = optIntroductionHeading[0].value1;
-  domIntroductionHeading.textContent = valIntroductionHeading;
-  document.querySelector('.js-nav-link-about').textContent = valIntroductionHeading;
+  try {
+    const domIntroductionHeading = document.querySelector('.js-introduction-heading');
+    const optIntroductionHeading = array.filter((value) => value.option === 'Introduction Heading');
+    const valIntroductionHeading = optIntroductionHeading[0].value1;
+    domIntroductionHeading.textContent = valIntroductionHeading;
+    document.querySelector('.js-nav-link-about').textContent = valIntroductionHeading;
+  } catch(error) {
+    console.error('Error: Introduction heading');
+  }
 
   // Introduction
-  const domIntroductionWrap = document.querySelector('.js-introduction-wrap');
-  const domIntroduction = document.querySelector('.js-introduction'); // コピー元を取得
-  for (let i = 0; i < optIntroduction.length; i++) {
-    const domIntroductionClone = domIntroduction.cloneNode(true);
-    domIntroductionClone.textContent = optIntroduction[i].value1;
-    domIntroductionWrap.appendChild(domIntroductionClone);
+  try {
+    const domIntroductionWrap = document.querySelector('.js-introduction-wrap');
+    const domIntroduction = document.querySelector('.js-introduction'); // コピー元を取得
+    for (let i = 0; i < optIntroduction.length; i++) {
+      const domIntroductionClone = domIntroduction.cloneNode(true);
+      domIntroductionClone.textContent = optIntroduction[i].value1;
+      domIntroductionWrap.appendChild(domIntroductionClone);
+    }
+    domIntroduction.remove(); // コピー元を削除
+  } catch(error) {
+    console.error('Error: Introduction');
   }
-  domIntroduction.remove(); // コピー元を削除
-
-
 
   /////////////////////////////////////
   // -Schedule-
 
   // Schedule Heading
-  const domScheduleHeading = document.querySelector('.js-schedule-heading');
-  const optScheduleHeading = array.filter((value) => value.option === 'Schedule Heading');
-  const valScheduleHeading = optScheduleHeading[0].value1;
-  domScheduleHeading.textContent = valScheduleHeading;
-  document.querySelector('.js-nav-link-schedule').textContent = valScheduleHeading;
+  try {
+    const domScheduleHeading = document.querySelector('.js-schedule-heading');
+    const optScheduleHeading = array.filter((value) => value.option === 'Schedule Heading');
+    const valScheduleHeading = optScheduleHeading[0].value1;
+    domScheduleHeading.textContent = valScheduleHeading;
+    document.querySelector('.js-nav-link-schedule').textContent = valScheduleHeading;
+  } catch(error) {
+    console.error('Error: Schedule heading');
+  }
 
   // Schedule
-  const domScheduleWrap = document.querySelector('.js-schedule-wrap');
-  const domSchedule = document.querySelector('.js-schedule'); // コピー元を取得
-  const optSchedule = array.filter((value) => value.option === 'Schedule');
-  for (let i = 0; i < optSchedule.length; i++) {
-    const domScheduleClone = domSchedule.cloneNode(true);
-    domScheduleClone.querySelector('.js-schedule-time').textContent =
-      optSchedule[i].value1;
-    domScheduleClone.querySelector('.js-schedule-name').textContent =
-      optSchedule[i].value2;
-    domScheduleClone.querySelector('.js-schedule-description').textContent =
-      optSchedule[i].value3;
-    domScheduleWrap.appendChild(domScheduleClone);
+  try {
+    const domScheduleWrap = document.querySelector('.js-schedule-wrap');
+    const domSchedule = document.querySelector('.js-schedule'); // コピー元を取得
+    const optSchedule = array.filter((value) => value.option === 'Schedule');
+    for (let i = 0; i < optSchedule.length; i++) {
+      const domScheduleClone = domSchedule.cloneNode(true);
+      domScheduleClone.querySelector('.js-schedule-time').textContent =
+        optSchedule[i].value1;
+      domScheduleClone.querySelector('.js-schedule-name').textContent =
+        optSchedule[i].value2;
+      domScheduleClone.querySelector('.js-schedule-description').textContent =
+        optSchedule[i].value3;
+      domScheduleWrap.appendChild(domScheduleClone);
+    }
+    domSchedule.remove(); // コピー元を削除
+  } catch(error) {
+    console.error('Error: Schedule');
   }
-  domSchedule.remove(); // コピー元を削除
 
   /////////////////////////////////////
   // -member-
+
   // Member heading
-  const domMemberHeading = document.querySelector('.js-member-heading');
-  const optMemberHeading = array.filter((value) => value.option === 'Member Heading');
-  const valMemberHeading = optMemberHeading[0].value1;
-  domMemberHeading.textContent = valMemberHeading;
-  document.querySelector('.js-nav-link-member').textContent = valMemberHeading;
+  try {
+    const domMemberHeading = document.querySelector('.js-member-heading');
+    const optMemberHeading = array.filter((value) => value.option === 'Member Heading');
+    const valMemberHeading = optMemberHeading[0].value1;
+    domMemberHeading.textContent = valMemberHeading;
+    document.querySelector('.js-nav-link-member').textContent = valMemberHeading;
+  } catch(error) {
+    console.error('Error: Member heading');
+  }
 
   // Member
-  const domMemberWrap = document.querySelector('.js-member-wrap');
-  const domMember = document.querySelector('.js-member'); // コピー元を取得
-  const optMember = array.filter((value) => value.option === 'Member');
-  for (let i = 0; i < optMember.length; i++) {
-    const domMemberClone = domMember.cloneNode(true);
-    domMemberClone.querySelector('.js-member-name').textContent = optMember[i].value1;
-    domMemberClone.querySelector('.js-member-image').setAttribute('alt', optMember[i].value1);
-    domMemberClone.querySelector('.js-member-image').setAttribute('src', optMember[i].value2);
-    domMemberClone.querySelector('.js-member-profile').textContent = optMember[i].value4;
-    // option
-    if (optMember[i].value3 != '') {
-      domMemberClone.querySelector('.js-member-role').textContent = optMember[i].value3;
-    } else {
-      domMemberClone.querySelector('.js-member-role').remove();
+  try {
+    const domMemberWrap = document.querySelector('.js-member-wrap');
+    const domMember = document.querySelector('.js-member'); // コピー元を取得
+    const optMember = array.filter((value) => value.option === 'Member');
+    for (let i = 0; i < optMember.length; i++) {
+      const domMemberClone = domMember.cloneNode(true);
+      domMemberClone.querySelector('.js-member-name').textContent = optMember[i].value1;
+      domMemberClone.querySelector('.js-member-image').setAttribute('alt', optMember[i].value1);
+      domMemberClone.querySelector('.js-member-image').setAttribute('src', optMember[i].value2);
+      domMemberClone.querySelector('.js-member-profile').textContent = optMember[i].value4;
+      // option
+      if (optMember[i].value3 != '') {
+        domMemberClone.querySelector('.js-member-role').textContent = optMember[i].value3;
+      } else {
+        domMemberClone.querySelector('.js-member-role').remove();
+      }
+      if (optMember[i].value5 != '') {
+        domMemberClone.querySelector('.js-member-url').setAttribute('href', optMember[i].value5);
+      } else {
+        domMemberClone.querySelector('.js-member-link').remove();
+      }
+      domMemberWrap.appendChild(domMemberClone);
     }
-    if (optMember[i].value5 != '') {
-      domMemberClone.querySelector('.js-member-url').setAttribute('href', optMember[i].value5);
-    } else {
-      domMemberClone.querySelector('.js-member-link').remove();
-    }
-    domMemberWrap.appendChild(domMemberClone);
+    domMember.remove(); // コピー元を削除
+  } catch(error) {
+    console.error('Error: Member');
   }
-  domMember.remove(); // コピー元を削除
-
 
   /////////////////////////////////////
   // -Overview-
+  const optEventVenueAddress = array.filter((value) => value.option === 'Address'); // try-catch内で宣言してしまうと他から参照できなくなるので一旦外に置く
 
   //Event Title
-  const domEventTitle = document.querySelector('.js-event-title');
-  domEventTitle.textContent = valEventTitle;
+  try {
+    const domEventTitle = document.querySelector('.js-event-title');
+    domEventTitle.textContent = valEventTitle;
+  } catch(error) {
+    console.error('Error: Overview event title');
+  }
 
   // Date
-  const domEventDate = document.querySelector('.js-event-date');
-  domEventDate.textContent = valEventDate;
+  try {
+    const domEventDate = document.querySelector('.js-event-date');
+    domEventDate.textContent = valEventDate;
+  } catch(error) {
+    console.error('Error: Overview date');
+  }
 
   // Venue
-  const domEventVenueLabel = document.querySelector('.js-event-venue-label');
-  const domEventVenueContent = document.querySelector(
-    '.js-event-venue-content'
-  );
-  const optEventVenue = array.filter((value) => value.option === 'Venue');
-  if (domEventVenueLabel && optEventVenue) {
-    const valEventVenueHeading = optEventVenue[0].value1;
-    const valEventVenueTitle = optEventVenue[0].value2;
-    domEventVenueLabel.textContent = valEventVenueHeading;
-    domEventVenueContent.textContent = valEventVenueTitle;
+  try {
+    const domEventVenueLabel = document.querySelector('.js-event-venue-label');
+    const domEventVenueContent = document.querySelector(
+      '.js-event-venue-content'
+    );
+    const optEventVenue = array.filter((value) => value.option === 'Venue');
+    if (domEventVenueLabel && optEventVenue) {
+      const valEventVenueHeading = optEventVenue[0].value1;
+      const valEventVenueTitle = optEventVenue[0].value2;
+      domEventVenueLabel.textContent = valEventVenueHeading;
+      domEventVenueContent.textContent = valEventVenueTitle;
+    }
+  } catch(error) {
+    console.error('Error: Overview venue');
   }
 
   // Address (option)
-  const domEventVenueAddress = document.querySelector(
-    '.js-event-venue-address'
-  );
-  const optEventVenueAddress = array.filter((value) => value.option === 'Address');
-  if (domEventVenueAddress && optEventVenueAddress) {
-    const valEventVenueAddress = optEventVenueAddress[0].value1;
-    domEventVenueAddress.textContent = valEventVenueAddress;
-  } else {
-    domEventVenueAddress.remove();
+  try {
+    const domEventVenueAddress = document.querySelector(
+      '.js-event-venue-address'
+    );
+    if (domEventVenueAddress && optEventVenueAddress) {
+      const valEventVenueAddress = optEventVenueAddress[0].value1;
+      domEventVenueAddress.textContent = valEventVenueAddress;
+    } else {
+      domEventVenueAddress.remove();
+    }
+  } catch(error) {
+    console.error('Error: Overview address');
   }
 
   // map (Option)
-  const domMap = document.querySelector('.js-event-venue-map');
-  if (optEventVenueAddress[0].value2 != '') {
-    domMap.setAttribute('src', 'https://www.google.com/maps/embed?pb=' + optEventVenueAddress[0].value2);
-  } else {
-    domMap.remove();
+  try {
+    const domMap = document.querySelector('.js-event-venue-map');
+    if (optEventVenueAddress[0].value2 != '') {
+      domMap.setAttribute('src', 'https://www.google.com/maps/embed?pb=' + optEventVenueAddress[0].value2);
+    } else {
+      domMap.remove();
+    }
+  } catch(error) {
+    console.error('Error: Overview map');
   }
 
   // Additional Overview (option)
-  const domOverview = document.querySelector('.js-overview');
-  const domOverviewLabel = document.querySelector('.js-overview-label');
-  const domOverviewContent = document.querySelector('.js-overview-content');
-  const optOverview = array.filter((value) => value.option === 'Overview');
-  for (let i = 0; i < optOverview.length; i++) {
-    const domOverviewLabelClone = domOverviewLabel.cloneNode(true);
-    const domOverviewContentClone = domOverviewContent.cloneNode(true);
-    domOverviewLabelClone.textContent = optOverview[i].value1;
-    domOverview.appendChild(domOverviewLabelClone);
-    domOverviewContentClone.textContent = optOverview[i].value2;
-    domOverview.appendChild(domOverviewContentClone);
+  try {
+    const domOverview = document.querySelector('.js-overview');
+    const domOverviewLabel = document.querySelector('.js-overview-label');
+    const domOverviewContent = document.querySelector('.js-overview-content');
+    const optOverview = array.filter((value) => value.option === 'Overview');
+    for (let i = 0; i < optOverview.length; i++) {
+      const domOverviewLabelClone = domOverviewLabel.cloneNode(true);
+      const domOverviewContentClone = domOverviewContent.cloneNode(true);
+      domOverviewLabelClone.textContent = optOverview[i].value1;
+      domOverview.appendChild(domOverviewLabelClone);
+      domOverviewContentClone.textContent = optOverview[i].value2;
+      domOverview.appendChild(domOverviewContentClone);
+    }
+    domOverviewLabel.remove();
+    domOverviewContent.remove();
+  } catch(error) {
+    console.error('Error: Overview additional');
   }
-  domOverviewLabel.remove();
-  domOverviewContent.remove();
 
   /////////////////////////////////////
   // -Notice-
-  const domNoticeWrap = document.querySelector('.js-notice-wrap');
-  const domNotice = document.querySelector('.js-notice'); // コピー元を取得
-  const optNotice = array.filter((value) => value.option === 'Notice');
-  for (let i = 0; i < optNotice.length; i++) {
-    const domNoticeClone = domNotice.cloneNode(true);
-    domNoticeClone.textContent = optNotice[i].value1;
-    domNoticeWrap.appendChild(domNoticeClone);
+  try {
+    const domNoticeWrap = document.querySelector('.js-notice-wrap');
+    const domNotice = document.querySelector('.js-notice'); // コピー元を取得
+    const optNotice = array.filter((value) => value.option === 'Notice');
+    for (let i = 0; i < optNotice.length; i++) {
+      const domNoticeClone = domNotice.cloneNode(true);
+      domNoticeClone.textContent = optNotice[i].value1;
+      domNoticeWrap.appendChild(domNoticeClone);
+    }
+    domNotice.remove(); // コピー元を削除
+
+  } catch(error) {
+    console.error('Error: Notice');
   }
-  domNotice.remove(); // コピー元を削除
 
   /////////////////////////////////////
   // footer
   document.querySelector('.js-footer-eventTitle').textContent = valEventTitle;
   // footer-text (option)
-  const domFooterText = document.querySelector('.js-footer-text');
-  const optFooterText = array.filter((value) => value.option === 'Footer Text');
-  const valFooterText = optFooterText[0].value1;
-  if (valFooterText != '') {
-    domFooterText.textContent = valFooterText
-  } else {
-    domFooterText.remove();
+  try {
+    const domFooterText = document.querySelector('.js-footer-text');
+    const optFooterText = array.filter((value) => value.option === 'Footer Text');
+    const valFooterText = optFooterText[0].value1;
+    if (valFooterText != '') {
+      domFooterText.textContent = valFooterText
+    } else {
+      domFooterText.remove();
+    }
+  } catch(error) {
+    console.error('Error: Footer text');
   }
 
   // クエリパラメータが?prebuild=trueのときテンプレートをダウンロード
   const urlParam = location.search;
-
   if (urlParam === "?prebuild=true") {
     // プレビュー用バナーを消す
     document.querySelector('.js-prebuild').remove();
