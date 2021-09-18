@@ -50,11 +50,22 @@
     display: inline-block;
 }
 
-.stream-player-container:hover ~ .stream-marquee .marquee-text {
-    animation: stream-marquee 16s linear infinite;
-}
-.stream-player-container:hover ~ .stream-marquee-top .marquee-text {
-    animation: stream-marquee-reverse 16s linear infinite;
+// ホバーするたび止まったり動いたりする制御
+.stream-player-container {
+    & ~ .stream-marquee .marquee-text {
+        animation: stream-marquee 16s linear infinite;
+        animation-play-state: paused;
+    }
+    & ~ .stream-marquee-top .marquee-text {
+        animation: stream-marquee-reverse 16s linear infinite;
+        animation-play-state: paused;
+    }
+    &:hover {
+        & ~ .stream-marquee-top .marquee-text,
+        & ~ .stream-marquee .marquee-text {
+            animation-play-state: running;
+        }
+    }
 }
 
 .stream-player-container {
