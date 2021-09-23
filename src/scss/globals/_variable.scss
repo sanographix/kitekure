@@ -64,7 +64,9 @@
     --color-primary: var(--color-red);
     --color-service: #6107aa;
     --color-white-transparent: rgba(255,255,255,.16);  // 背景の上に薄い色を重ねたいとき
-    --color-black-transparent: rgba(0,0,0,.06);  // 背景の上に薄い色を重ねたいとき
+    --color-black-transparent: rgba(0,0,0,.16);  // 背景の上に薄い色を重ねたいとき
+    --color-black-blur: rgba(0,0,0,.3);
+
     --color-tw: #55acee;
     --color-fb: #4e69a2;
 
@@ -88,7 +90,7 @@
     --color-btn-fb: var(--color-fb);
 
     --color-border: var(--color-white-transparent);
-    --color-blur: var(--color-white-transparent);
+    --color-blur: var(--color-black-blur);
 }
 
 :root[data-theme='Light'] {
@@ -99,7 +101,7 @@
     --color-text-invert: var(--color-white);
     --color-border: var(--color-black-transparent);
     --color-btn-secondary: var(--color-black-transparent);
-    --color-blur: var(--color-black-transparent);
+    --color-blur: var(--color-white-transparent);
 }
 
 // media queries

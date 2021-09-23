@@ -6,6 +6,7 @@
     -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
     background-color: var(--color-blur);
+    border: 1px solid var(--color-border);
     border-radius: 100px; // 決め打ち
     overflow: auto;
     white-space: nowrap;
