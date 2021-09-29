@@ -1,6 +1,6 @@
-<h2 align="center">
+<h1 align="center">
 Kitekure
-</h2>
+</h1>
 <p align="center">The club event website builder with no coding</p>
 <h2 align="center">
   <a href="http://kitekure.sanographix.net/">Introduction</a>
