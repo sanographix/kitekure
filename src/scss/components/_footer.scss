@@ -39,9 +39,6 @@
     }
     p {
         margin: 0;
-        &:first-child {
-            display: none; //  TODO: 完成するまで隠す
-        }
     }
     a {
         font-weight: bold;
@@ -50,7 +47,6 @@
     }
 }
 .theme-info-install {
-    display: none; //  TODO: 完成するまで隠す
     flex-shrink: 0;
 }
 .install-btn {
