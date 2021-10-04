@@ -53,6 +53,7 @@
     // Global tokens
     --color-white: #fff;
     --color-ivory: #F0EDEA;
+    --color-ivory-darken: #e1ded9;
     --color-red: #F70138;
     --color-black: #000;
     --color-gray-100: #111111;
@@ -95,7 +96,7 @@
 
 :root[data-theme='Light'] {
     --color-bg: var(--color-ivory);
-    --color-bg-secondary: var(--color-gray-900);
+    --color-bg-secondary: var(--color-ivory-darken);
     --color-text: var(--color-gray-200);
     --color-text-secondary: var(--color-gray-800);
     --color-text-invert: var(--color-white);
