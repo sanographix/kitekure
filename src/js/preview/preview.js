@@ -210,10 +210,11 @@ function csv_array(data) {
     const valReverseTitleColor = optReverseTitleColor[0].value1;
     // 有効時
     if (valReverseTitleColor == '✅') {
+      const domTitle = document.querySelector('.js-title');
       domTitle.classList.toggle('is-reverse-color');
     }
   } catch(error) {
-    console.error('Error: Reverse title tolor');
+    console.error('Error: Reverse title color');
   }
 
   // Header Subtitle (Option)
