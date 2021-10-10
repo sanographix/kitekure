@@ -45,3 +45,30 @@
     }
 }
 
+.setup-footer {
+    margin-top: var(--space-8);
+    text-align: center;
+    .setup-footer-logo {
+        svg {
+            opacity: .5;
+            width: 136px;
+            height: 58px;
+        }
+        a:hover {
+            svg {
+                opacity: 1;
+            }
+        }
+    }
+    .setup-footer-address {
+        a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: var(--font-size-75);
+            font-style: normal;
+            &:hover {
+                color: var(--color-text);
+            }
+        }
+    }
+}
