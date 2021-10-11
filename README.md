@@ -1,7 +1,7 @@
 <h1 align="center">
 Kitekure
 </h1>
-<p align="center">The club event website builder with no coding</p>
+<p align="center">Free website builder designed for DJs and organizers</p>
 <h2 align="center">
   <a href="http://kitekure.sanographix.net/">Introduction</a>
   <span> · </span>
