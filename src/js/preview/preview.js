@@ -1,3 +1,15 @@
+/*@license
+ *
+ * Kitekure:
+ *   licenses: MIT
+ *   Copyright (c) 2021 sanographix
+ *   https://github.com/sanographix/kitekure
+ * CSV.js:
+ *   licenses: MIT
+ *   Copyright (c) 2014 Kash Nouroozi
+ *   https://github.com/knrz/CSV.js
+ */
+
 // watchされているので保存したらビルドされる
 function csv_data(dataPath) {
   const request = new XMLHttpRequest();
