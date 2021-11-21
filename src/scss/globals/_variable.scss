@@ -62,7 +62,7 @@
     --color-gray-400: #444444;
     --color-gray-800: #888888;
     --color-gray-900: #dddddd;
-    --color-primary: var(--color-red);
+    --color-primary: var(--color-red); // configシートで変えられる
     --color-service: #6107aa;
     --color-white-transparent: rgba(255,255,255,.16);  // 背景の上に薄い色を重ねたいとき
     --color-black-transparent: rgba(0,0,0,.16);  // 背景の上に薄い色を重ねたいとき

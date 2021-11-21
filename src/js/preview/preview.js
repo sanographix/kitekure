@@ -54,6 +54,9 @@ function csv_array(data) {
   // Site URL (トレイリングスラッシュありに統一してる)
   const siteUrl = `${location.protocol}//${location.hostname}/`;
 
+  // Hashtag
+  const valHashtag = array.filter((value) => value.option === 'Hashtag')[0].value1;
+
   // Favicon
   try {
     const optFavicon = array.filter((value) => value.option === 'Site Icon (favicon)');
@@ -326,14 +329,18 @@ function csv_array(data) {
   try {
     const domShareTwitter = document.querySelector('.js-share-tw');
     const domShareFacebook = document.querySelector('.js-share-fb');
-    const twitterLink = 'https://twitter.com/share?text=' + encodedSiteTitle + '&url=' + siteUrl;
+    let twitterLink = 'https://twitter.com/share?text=' + encodedSiteTitle + '&url=' + siteUrl;
+    // ハッシュタグが設定されていればシェアURLに含める
+    if (valHashtag != '') {
+      twitterLink += '&hashtags=' + valHashtag;
+    }
     domShareTwitter.setAttribute('href', twitterLink);
     const facebookLink = 'http://www.facebook.com/sharer.php?u=' + siteUrl;
     domShareFacebook.setAttribute('href', facebookLink);
+
   } catch(error) {
     console.error('Error: Share buttons');
   }
-
 
   // googleカレンダーに追加
   try {
@@ -479,6 +486,21 @@ function csv_array(data) {
     domEventDate.textContent = valEventDate;
   } catch(error) {
     console.error('Error: Overview date');
+  }
+
+  // Hashtag
+  try {
+    const domEventHashtag = document.querySelector('.js-event-hashtag');
+    const domEventHashtagLink = document.querySelector('.js-event-hashtag-link');
+    if (valHashtag != '') {
+      domEventHashtagLink.textContent = '#' + valHashtag;
+      const eventHashtagLink = 'https://twitter.com/hashtag/' + valHashtag + '?src=hash';
+      domEventHashtagLink.setAttribute('href', eventHashtagLink);
+    } else {
+      domEventHashtag.remove();
+    }
+  } catch(error) {
+    console.error('Error: Overview hashtag');
   }
 
   // Venue
