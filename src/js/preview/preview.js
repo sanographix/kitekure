@@ -121,20 +121,6 @@ function csv_array(data) {
     console.error('Error: OGP');
   }
 
-  // 検索避け
-  try {
-    const valRobots = array.filter((value) => value.option === 'Hide on Search Results')[0].value1;
-    // 検索に出す設定ならrobots書き換え
-    if (valRobots == '✅') {
-      const metaRobots = document.createElement('meta');
-      metaRobots.setAttribute('name', 'robots')
-      metaRobots.setAttribute('content', 'noindex');
-      document.head.appendChild(metaRobots);
-    }
-  } catch(error) {
-    console.error('Error: meta-noindex');
-  }
-
   // Date (UTC) (Option)
   // カウントダウンタイマー
   const valDateUtc = array.filter((value) => value.option === 'Date (UTC)')[0].value1;
@@ -616,6 +602,11 @@ function csv_array(data) {
   if (urlParam === "?prebuild=true") {
     // プレビュー用バナーを消す
     document.querySelector('.js-prebuild').remove();
+    // 検索避けない設定の場合noindex消す
+    const valRobots = array.filter((value) => value.option === 'Hide on Search Results')[0].value1;
+    if (valRobots == '-') {
+      document.getElementById('meta-robots').remove();
+    }
     // jsでの書き換えがロードしきってからDOMを取得する
     window.addEventListener("load", function () {
       let snapshot = new XMLSerializer().serializeToString(document);
