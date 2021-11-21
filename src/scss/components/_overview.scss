@@ -1,5 +1,11 @@
 .overview {
     margin: 0;
+    a {
+        color: var(--color-text);
+        &:hover {
+            color: var(--color-text-highlight);
+        }
+    }
 }
 .overview-label {
     color: var(--color-text-highlight);
