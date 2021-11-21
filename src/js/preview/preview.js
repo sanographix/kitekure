@@ -491,6 +491,7 @@ function csv_array(data) {
   // Hashtag
   try {
     const domEventHashtag = document.querySelector('.js-event-hashtag');
+    const domEventHashtagLabel = document.querySelector('.js-event-hashtag-label');
     const domEventHashtagLink = document.querySelector('.js-event-hashtag-link');
     if (valHashtag != '') {
       domEventHashtagLink.textContent = '#' + valHashtag;
@@ -498,6 +499,7 @@ function csv_array(data) {
       domEventHashtagLink.setAttribute('href', eventHashtagLink);
     } else {
       domEventHashtag.remove();
+      domEventHashtagLabel.remove();
     }
   } catch(error) {
     console.error('Error: Overview hashtag');
