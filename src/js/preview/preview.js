@@ -605,7 +605,7 @@ function csv_array(data) {
     // 検索避けない設定の場合noindex消す
     const valRobots = array.filter((value) => value.option === 'Hide on Search Results')[0].value1;
     if (valRobots == '-') {
-      document.getElementById('.meta-robots').remove();
+      document.getElementById('meta-robots').remove();
     }
     // jsでの書き換えがロードしきってからDOMを取得する
     window.addEventListener("load", function () {
