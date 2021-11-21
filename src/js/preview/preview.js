@@ -67,6 +67,14 @@ function csv_array(data) {
     console.error('Error: favicon');
   }
 
+  // Canonical
+  try {
+    const domCanonical = document.getElementById('canonical');
+    domCanonical.href = siteUrl;
+  } catch(error) {
+    console.error('Error: canonical');
+  }
+
   // og-image
   const optOgImage = array.filter((value) => value.option === 'Share Image');
   const valOgImage = optOgImage[0].value1;
