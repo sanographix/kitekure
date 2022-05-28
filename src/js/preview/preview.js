@@ -53,7 +53,7 @@ function csv_array(data) {
 
   // Site URL (ファイル名を除いたパスを取得)
   const url = location.href.split(/#/)[0];
-  const siteUrl = url.substring(0, url.lastIndexOf("/"))
+  const siteUrl = `${url.substring(0, url.lastIndexOf("/"))}/`
 
   // Hashtag
   const valHashtag = array.filter((value) => value.option === 'Hashtag')[0].value1;
