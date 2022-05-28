@@ -51,8 +51,9 @@ function csv_array(data) {
 
   document.title = siteTitle;
 
-  // Site URL (トレイリングスラッシュありに統一してる)
-  const siteUrl = `${location.protocol}//${location.hostname}/`;
+  // Site URL (ファイル名を除いたパスを取得)
+  const url = location.href.split(/#/)[0];
+  const siteUrl = url.substring(0, url.lastIndexOf("/"))
 
   // Hashtag
   const valHashtag = array.filter((value) => value.option === 'Hashtag')[0].value1;
