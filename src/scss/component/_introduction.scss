@@ -1,6 +1,8 @@
+@use "../global" as g;
+
 .introduction {
     margin: 0;
-    @media #{$mq-md} {
+    @media #{g.$mq-md} {
         font-size: var(--font-size-200);
     }
     &:not(:first-child) {

@@ -1,0 +1,6 @@
+@use "../global" as g;
+
+// container
+.container {
+    @include g.container();
+}

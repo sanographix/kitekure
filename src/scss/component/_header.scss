@@ -1,22 +1,24 @@
+@use "../global" as g;
+
 .header-wrapper {
     margin: auto;
     margin-left: var(--col-space);
     margin-right: var(--col-space);
-    @media #{$mq-md} {
+    @media #{g.$mq-md} {
         margin-right: auto;
     }
-    @media #{$mq-xl} {
+    @media #{g.$mq-xl} {
         margin-left: auto;
         max-width: var(--col-width-lg);
     }
-    @media #{$mq-xxl} {
+    @media #{g.$mq-xxl} {
     }
 }
 .header {
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
-    @media #{$mq-md} {
+    @media #{g.$mq-md} {
         flex-direction: row;
         align-items: center;
         gap: 3%;
@@ -24,14 +26,14 @@
 }
 .header-content {
     flex: 1;
-    @media #{$mq-md} {
+    @media #{g.$mq-md} {
         order: 1;
     }
 }
 .header-image-layout {
     margin-left: calc(var(--col-space) * -1);
     margin-right: calc(var(--col-space) * -1);
-    @media #{$mq-md} {
+    @media #{g.$mq-md} {
         order: 2;
         width: 60%;
         margin: 0;
@@ -61,26 +63,26 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     font-size: var(--font-size-500);
-    @media #{$mq-md} {
+    @media #{g.$mq-md} {
         margin-bottom: var(--space-4);
         margin-right: -140%; // 右に表示領域を伸ばす。140%は決め打ち
         font-size: var(--font-size-900);
     }
-    @media #{$mq-lg} {
+    @media #{g.$mq-lg} {
         font-size: var(--font-size-title);
     }
     // タイトル文字数が長い
     &.is-string-count-long {
-        @media #{$mq-md} {
+        @media #{g.$mq-md} {
             font-size: var(--font-size-500);
         }
-        @media #{$mq-lg} {
+        @media #{g.$mq-lg} {
             font-size: var(--font-size-900);
         }
     }
     // 途中で色反転するオプション
     &.is-reverse-color {
-        @media #{$mq-md} {
+        @media #{g.$mq-md} {
             background: linear-gradient(90deg, var(--color-text) 45%, var(--color-text-invert) 45%); // 中頃で色反転する。45%は計算したわけではなく目視でたまたま境界にピタリだった値
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -90,17 +92,17 @@
 .header-subtitle {
     margin: var(--space-2) 0 0;
     line-height: var(--line-height-sm);
-    @media #{$mq-lg} {
+    @media #{g.$mq-lg} {
         font-size: var(--font-size-200);
     }
-    @media #{$mq-xl} {
+    @media #{g.$mq-xl} {
         font-size: var(--font-size-300);
     }
 }
 .action-button {
     margin-top: var(--space-4);
     text-align: center;
-    @media #{$mq-md} {
+    @media #{g.$mq-md} {
         text-align: initial;
     }
 }

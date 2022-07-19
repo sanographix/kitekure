@@ -111,3 +111,14 @@ $mq-md: "(min-width: 768px)";
 $mq-lg: "(min-width: 992px)";
 $mq-xl: "(min-width: 1280px)";
 $mq-xxl: "(min-width: 1600px)";
+
+@mixin container() {
+    margin-left: var(--col-space);
+    margin-right: var(--col-space);
+    @media #{$mq-md} {
+        margin-left: auto;
+        margin-right: auto;
+        width: var(--col-width);
+        max-width: var(--col-width-lg);
+    }
+}

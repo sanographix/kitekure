@@ -1,9 +1,11 @@
+@use "../global" as g;
+
 .countdown {
     display: flex;
     gap: var(--space-4);
     margin: var(--space-4) auto 0;
     width: fit-content;
-    @media #{$mq-md} {
+    @media #{g.$mq-md} {
         margin-left: 0;
         margin-right: 0;
     }

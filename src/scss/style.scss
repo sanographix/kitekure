@@ -1,22 +1,2 @@
-@import "node_modules/normalize.css/normalize.css";
-@import "globals/_variable";
-@import "globals/_common";
-
-@import "components/_button";
-@import "components/_callout";
-@import "components/_container";
-@import "components/_countdown";
-@import "components/_footer";
-@import "components/_header";
-@import "components/_introduction";
-@import "components/_link";
-@import "components/_member";
-@import "components/_nav-menu";
-@import "components/_notice";
-@import "components/_overview";
-@import "components/_prebuild-banner";
-@import "components/_schedule";
-@import "components/_section";
-@import "components/_setup";
-@import "components/_share";
-@import "components/_stream";
+@use 'foundation';
+@use 'component';

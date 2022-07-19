@@ -1,3 +1,5 @@
+@use "../global" as g;
+
 .section-stream {
     position: relative;
     margin: var(--space-9) auto;
@@ -17,14 +19,14 @@
     font-style: italic;
     line-height: var(--line-height-xs);
     bottom: -.65em;
-    @media #{$mq-md} {
+    @media #{g.$mq-md} {
         font-size: var(--font-size-title);
         bottom: -.5em;
     }
     &.stream-marquee-top {
         top: -.65em;
         bottom: unset;
-        @media #{$mq-md} {
+        @media #{g.$mq-md} {
             top: -.5em;
         }
     }
@@ -71,7 +73,7 @@
 .stream-player-container {
     margin-left: auto;
     margin-right: auto;
-    @media #{$mq-md} {
+    @media #{g.$mq-md} {
         width: var(--col-width);
         max-width: var(--col-width-md);
     }
@@ -85,7 +87,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        @media #{$mq-md} {
+        @media #{g.$mq-md} {
             border-radius: var(--border-radius-base);
         }
     }
