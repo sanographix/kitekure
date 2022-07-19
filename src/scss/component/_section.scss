@@ -1,3 +1,5 @@
+@use "../global" as g;
+
 .section {
     margin: var(--space-8) auto;
 }
@@ -5,7 +7,7 @@
     display: flex;
     gap: var(--space-4);
     flex-direction: column;
-    @media #{$mq-md} {
+    @media #{g.$mq-md} {
         flex-direction: row;
     }
 }
@@ -14,10 +16,10 @@
     padding-top: var(--space-4);
 }
 .setion-content {
-    @media #{$mq-md} {
+    @media #{g.$mq-md} {
         width: 60%;
     }
-    @media #{$mq-xl} {
+    @media #{g.$mq-xl} {
         width: var(--col-width-sm);
     }
 }
@@ -28,7 +30,7 @@
     font-size: var(--font-size-400);
     margin: 0;
     line-height: var(--line-height-xs);
-    @media #{$mq-md} {
+    @media #{g.$mq-md} {
         font-size: var(--font-size-600);
     }
 }

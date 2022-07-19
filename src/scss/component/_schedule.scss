@@ -1,7 +1,9 @@
+@use "../global" as g;
+
 // タイムテーブル
 .schedule-table {
     .schedule-tr {
-        @media #{$mq-lg} {
+        @media #{g.$mq-lg} {
             display: flex;
             width: 100%;
             gap: var(--space-4);
@@ -15,7 +17,7 @@
         line-height: var(--line-height-sm);
         font-weight: bold;
         margin-bottom: var(--space-1);
-        @media #{$mq-lg} {
+        @media #{g.$mq-lg} {
             margin-top: var(--space-1); // ちょっとずれて見えるので補正
             width: 180px;
             text-align: right;

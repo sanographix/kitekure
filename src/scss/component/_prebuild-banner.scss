@@ -1,3 +1,5 @@
+@use "../global" as g;
+
 .prebuild-banner {
     position: fixed;
     align-items: center;
@@ -29,7 +31,7 @@
     gap: var(--space-4);
     padding: var(--space-2) var(--space-6) var(--space-6);
     transition: all .25s;
-    @media #{$mq-md} {
+    @media #{g.$mq-md} {
         flex-direction: row;
     }
     // 最小化

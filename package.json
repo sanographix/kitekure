@@ -8,7 +8,7 @@
   "scripts": {
     "prestart": "npm run build",
     "start": "npm-run-all -p watch server",
-    "scss": "node-sass src/scss/style.scss build/_src/style.css --output-style compressed --indent-width 4 --source-map build/_src/ --importer node_modules/node-sass-globbing/index.js",
+    "scss": "sass src/scss/style.scss build/_src/style.css --style compressed",
     "autoprefixer": "postcss --use autoprefixer -r build/_src/style.css",
     "ejs": "ejs-cli --base-dir src/templates/pages/ --file '**/**.ejs' --out build/",
     "server": "browser-sync start -c bs-config.js",
@@ -27,14 +27,13 @@
     "browser-sync": "^2.27.5",
     "chokidar-cli": "^3.0.0",
     "ejs-cli": "^2.2.1",
-    "node-sass": "^6.0.1",
-    "node-sass-globbing": "0.0.23",
+    "mkdirp": "^1.0.4",
     "normalize.css": "^8.0.1",
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
     "postcss-cli": "^8.3.1",
     "rimraf": "^3.0.2",
-    "uglify-es": "^3.3.9",
-    "mkdirp": "^1.0.4"
+    "sass": "^1.53.0",
+    "uglify-es": "^3.3.9"
   }
 }

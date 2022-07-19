@@ -1,3 +1,5 @@
+@use "../global" as g;
+
 .footer {
     margin: var(--space-6) auto;
 }
@@ -7,7 +9,7 @@
     gap: var(--space-4);
     color: var(--color-text-secondary);
     flex-direction: column;
-    @media #{$mq-md} {
+    @media #{g.$mq-md} {
         flex-direction: row;
         align-items: center;
     }
@@ -34,7 +36,7 @@
 }
 .theme-info-label {
     font-size: var(--font-size-50);
-    @media #{$mq-md} {
+    @media #{g.$mq-md} {
         text-align: right;
     }
     p {

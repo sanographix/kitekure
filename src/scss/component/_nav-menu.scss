@@ -1,3 +1,5 @@
+@use "../global" as g;
+
 .nav-menu {
     margin: var(--space-6) var(--col-space);
     background: var(--color-bg);
@@ -25,7 +27,7 @@
     color: var(--color-text);
     text-decoration: none;
     transition: all .25s;
-    @media #{$mq-md} {
+    @media #{g.$mq-md} {
         font-size: var(--font-size-200);
     }
     &:hover {
