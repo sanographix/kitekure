@@ -97,7 +97,7 @@ function csv_array(data) {
         'property': 'og:url',
         'content': siteUrl
       }, {
-        'name': 'og:image',
+        'property': 'og:image',
         'content': siteUrl + valOgImage
       }, {
         'name': 'twitter:title',
